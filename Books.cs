@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -6,14 +7,46 @@ namespace BookShopManager
 {
     public partial class Books : Form
     {
-        public Books()
-        {
-            InitializeComponent();
-        }
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        public Books()
+        {
+            InitializeComponent();
+            populate();
+            dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dvBooks.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+        }
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
+        private void populate()
+        {
+            try
+            {
+                con.Open();
+                string query = "select * from BookTbl";
+                SqlDataAdapter sda = new SqlDataAdapter(query, con);
+                SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+                var ds = new DataSet();
+                sda.Fill(ds);
+                dvBooks.DataSource = ds.Tables[0];
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void Filter()
+        {
+            con.Open();
+            string query = "select * from BookTbl where Bcat='" + cbFilerBooka.SelectedItem.ToString() + "'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(sda);
+            var ds = new DataSet();
+            sda.Fill(ds);
+            dvBooks.DataSource = ds.Tables[0];
+            con.Close();
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -29,6 +62,8 @@ namespace BookShopManager
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Book Saved Successfully");
                     con.Close();
+                    populate();
+                    RestColum();
                 }
                 catch (Exception ex)
                 {
@@ -36,6 +71,132 @@ namespace BookShopManager
                 }
 
             }
+        }
+
+        private void cbFilerBook_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Filter();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            populate();
+            cbFilerBooka.SelectedIndex = -1;
+        }
+
+        private void RestColum()
+        {
+            txtTitle.Text = "";
+            txtAuthor.Text = "";
+            cbCate.SelectedIndex = -1;
+            txtQty.Text = "";
+            txtPrice.Value = 0;
+        }
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            RestColum();
+            cbFilerBooka.SelectedIndex = -1;
+        }
+
+        int key = 0;
+        string re;
+        private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
+            txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
+            cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+            txtQty.Text = dvBooks.SelectedRows[0].Cells[4].Value.ToString();
+            txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
+
+            string s;
+            s = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+            re = s.Replace(" ", "");
+            cbCate.SelectedItem = re;
+            if (txtTitle.Text == "")
+            {
+                key = 0;
+            }
+            else
+            {
+                key = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[0].Value.ToString());
+            }
+        }
+
+        private void btnDelet_Click(object sender, EventArgs e)
+        {
+            if (key == 0)
+                MessageBox.Show("Missing Infor Books");
+            else
+            {
+                try
+                {
+                    con.Open();
+                    string query = "delete from BookTbl where BId=" + key + ";";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Book deleted Successfully");
+                    con.Close();
+                    populate();
+                    RestColum();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Text == "" || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
+                MessageBox.Show("Missing Infor Books");
+            else
+            {
+                try
+                {
+                    //con.Open();
+                    ////string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
+                    //string query = "update BookTbl set BTitle='" + txtTitle.Text + "', BAuthor='" + txtAuthor.Text + "', BCat=" + cbCate.SelectedItem.ToString() + ", BQty=" + txtQty.Text + ", BPrice=" + txtPrice.Value.ToString() + " where BId=" + key + ";";
+
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
+                    //MessageBox.Show("Book Updated Successfully");
+                    //con.Close();
+                    //populate();
+                    //RestColum();
+                    con.Open();
+
+                    string query = "UPDATE BookTbl SET BTitle=@BTitle, BAuthor=@BAuthor, BCat=@BCat, BQty=@BQty, BPrice=@BPrice WHERE BId=@BId";
+                    SqlCommand cmd = new SqlCommand(query, con);
+
+                    cmd.Parameters.AddWithValue("@BTitle", txtTitle.Text);
+                    cmd.Parameters.AddWithValue("@BAuthor", txtAuthor.Text);
+                    cmd.Parameters.AddWithValue("@BCat", cbCate.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@BQty", txtQty.Text);
+                    cmd.Parameters.AddWithValue("@BPrice", txtPrice.Value);
+                    cmd.Parameters.AddWithValue("@BId", key);
+
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Book Updated Successfully");
+
+                    con.Close();
+                    populate();
+                    RestColum();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            }
+
+        }
+
+        private void cbCate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

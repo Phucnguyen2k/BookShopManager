@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Books));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.cbFilerBook = new System.Windows.Forms.ComboBox();
+            this.cbFilerBooka = new System.Windows.Forms.ComboBox();
             this.dvBooks = new System.Windows.Forms.DataGridView();
             this.txtPrice = new System.Windows.Forms.NumericUpDown();
             this.cbCate = new System.Windows.Forms.ComboBox();
@@ -83,7 +83,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.cbFilerBook);
+            this.panel2.Controls.Add(this.cbFilerBooka);
             this.panel2.Controls.Add(this.dvBooks);
             this.panel2.Controls.Add(this.txtPrice);
             this.panel2.Controls.Add(this.cbCate);
@@ -108,31 +108,35 @@
             this.panel2.Size = new System.Drawing.Size(909, 648);
             this.panel2.TabIndex = 0;
             // 
-            // cbFilerBook
+            // cbFilerBooka
             // 
-            this.cbFilerBook.FormattingEnabled = true;
-            this.cbFilerBook.ItemHeight = 16;
-            this.cbFilerBook.Items.AddRange(new object[] {
+            this.cbFilerBooka.FormattingEnabled = true;
+            this.cbFilerBooka.ItemHeight = 16;
+            this.cbFilerBooka.Items.AddRange(new object[] {
             "Programming",
             "Novels",
             "Light Novel",
             "Nofiction",
             "Self-Help"});
-            this.cbFilerBook.Location = new System.Drawing.Point(392, 212);
-            this.cbFilerBook.Name = "cbFilerBook";
-            this.cbFilerBook.Size = new System.Drawing.Size(173, 24);
-            this.cbFilerBook.TabIndex = 9;
-            this.cbFilerBook.Text = "Filer By Category";
+            this.cbFilerBooka.Location = new System.Drawing.Point(392, 212);
+            this.cbFilerBooka.Name = "cbFilerBooka";
+            this.cbFilerBooka.Size = new System.Drawing.Size(173, 24);
+            this.cbFilerBooka.TabIndex = 9;
+            this.cbFilerBooka.Text = "Filer By Category";
+            this.cbFilerBooka.SelectionChangeCommitted += new System.EventHandler(this.cbFilerBook_SelectionChangeCommitted);
             // 
             // dvBooks
             // 
-            this.dvBooks.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dvBooks.BackgroundColor = System.Drawing.Color.White;
             this.dvBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvBooks.GridColor = System.Drawing.Color.Black;
             this.dvBooks.Location = new System.Drawing.Point(25, 261);
             this.dvBooks.Name = "dvBooks";
+            this.dvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvBooks.Size = new System.Drawing.Size(863, 374);
             this.dvBooks.TabIndex = 10;
+            this.dvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentClick);
             // 
             // txtPrice
             // 
@@ -163,6 +167,7 @@
             this.cbCate.Size = new System.Drawing.Size(155, 24);
             this.cbCate.TabIndex = 2;
             this.cbCate.Text = "Select Category";
+            this.cbCate.SelectedIndexChanged += new System.EventHandler(this.cbCate_SelectedIndexChanged);
             // 
             // btnExit
             // 
@@ -188,6 +193,7 @@
             this.button4.TabIndex = 9;
             this.button4.Text = "Refersh";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnReset
             // 
@@ -201,6 +207,7 @@
             this.btnReset.TabIndex = 8;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnEdit
             // 
@@ -214,6 +221,7 @@
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelet
             // 
@@ -227,6 +235,7 @@
             this.btnDelet.TabIndex = 7;
             this.btnDelet.Text = "Delete";
             this.btnDelet.UseVisualStyleBackColor = false;
+            this.btnDelet.Click += new System.EventHandler(this.btnDelet_Click);
             // 
             // btnSave
             // 
@@ -578,7 +587,7 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelet;
-        private System.Windows.Forms.ComboBox cbFilerBook;
+        private System.Windows.Forms.ComboBox cbFilerBooka;
         private System.Windows.Forms.DataGridView dvBooks;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
