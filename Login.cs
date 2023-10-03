@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace BookShopManager
 {
-    public partial class Splash : Form
+    public partial class Login : Form
     {
         //code move windown
         private Point startPoint;
@@ -47,9 +47,14 @@ namespace BookShopManager
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        public Splash()
+        public Login()
         {
             InitializeComponent();
+        }
+
+        private void btnExit_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
