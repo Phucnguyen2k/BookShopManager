@@ -95,6 +95,7 @@
             this.label8.Size = new System.Drawing.Size(96, 27);
             this.label8.TabIndex = 6;
             this.label8.Text = "Logout";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // pictureBox5
             // 
@@ -116,6 +117,7 @@
             this.label7.Size = new System.Drawing.Size(138, 27);
             this.label7.TabIndex = 6;
             this.label7.Text = "Dashboard";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // btnReset
             // 
@@ -375,6 +377,7 @@
             this.label6.Size = new System.Drawing.Size(68, 27);
             this.label6.TabIndex = 6;
             this.label6.Text = "User";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // pictureBox3
             // 
@@ -407,6 +410,7 @@
             this.label5.Size = new System.Drawing.Size(82, 27);
             this.label5.TabIndex = 6;
             this.label5.Text = "Books";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox2
             // 

@@ -199,5 +199,29 @@ namespace BookShopManager
 
         }
 
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Users obj = new Users();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Dashboard obj = new Dashboard();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            obj.Show();
+            this.Hide();
+        }
     }
 }

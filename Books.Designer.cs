@@ -388,6 +388,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(198, 60);
             this.panel6.TabIndex = 2;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // label8
             // 
@@ -399,6 +400,7 @@
             this.label8.Size = new System.Drawing.Size(96, 27);
             this.label8.TabIndex = 6;
             this.label8.Text = "Logout";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // pictureBox5
             // 
@@ -430,6 +432,7 @@
             this.label7.Size = new System.Drawing.Size(138, 27);
             this.label7.TabIndex = 6;
             this.label7.Text = "Dashboard";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // pictureBox4
             // 
@@ -461,6 +464,7 @@
             this.label6.Size = new System.Drawing.Size(68, 27);
             this.label6.TabIndex = 6;
             this.label6.Text = "User";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // pictureBox3
             // 
@@ -526,6 +530,7 @@
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Books";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

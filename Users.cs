@@ -12,6 +12,10 @@ namespace BookShopManager
             InitializeComponent();
             populate();
 
+            user = txtUser.Text;
+            password = txtPassword.Text;
+            address = txtAddress.Text;
+            phone = txtPhone.Text;
             dvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //dvUser.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
@@ -20,10 +24,6 @@ namespace BookShopManager
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-            user = txtUser.Text;
-            password = txtPassword.Text;
-            address = txtAddress.Text;
-            phone = txtPhone.Text;
         }
         private string user;
         private string password;
@@ -176,6 +176,31 @@ namespace BookShopManager
                 }
 
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Books obj = new Books();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Dashboard obj = new Dashboard();
+            obj.Show();
+            this.Hide();
         }
     }
 }

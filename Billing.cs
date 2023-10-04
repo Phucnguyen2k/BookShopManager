@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace BookShopManager
@@ -31,7 +32,27 @@ namespace BookShopManager
                 MessageBox.Show(ex.Message);
             }
         }
-        int n = 0;
+        private void UpdateBook()
+        {
+            int newQty = stock - Convert.ToInt32(txtQty.Value);
+            try
+            {
+                con.Open();
+                //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
+                string query = "update BookTbl set BQty=" + newQty + " where BId=" + key + ";";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                populate();
+                //RestColum();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        int n = 0, GrdTotal = 0;
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtQty.Value == 0 || Convert.ToInt32(txtQty.Value) > stock)
@@ -50,6 +71,9 @@ namespace BookShopManager
                 newRow.Cells[4].Value = total;
                 dvBill.Rows.Add(newRow);
                 n++;
+                UpdateBook();
+                GrdTotal = GrdTotal + total;
+                lbTotal.Text = "Total $: " + GrdTotal;
             }
         }
 
@@ -81,6 +105,86 @@ namespace BookShopManager
 
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+            if (txtClientName.Text == "" || txtTitle.Text == "")
+                MessageBox.Show("Select Client Name");
+            else
+            {
+                try
+                {
+                    con.Open();
+                    string query = "insert into BillTbl values('" + lbUserName.Text + "','" + txtClientName.Text + "'," + GrdTotal + ")";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Bill Saved Successfully");
+                    con.Close();
+                    //populate();
+                    //RestColum();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
+                if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    printDocument1.Print();
+                }
+
+
+            }
+        }
+
+        int prodid, prodqty, prodprice, tottal, pos = 60;
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            Login obj = new Login();
+            obj.Show();
+            this.Hide();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Billing_Load(object sender, EventArgs e)
+        {
+            lbUserName.Text = Login.UserName;
+        }
+
+        string prodname;
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("      Book Shop", new Font("Courier New", 18, FontStyle.Bold), Brushes.Blue, new Point(80));
+            e.Graphics.DrawString("ID PRODUCT            PRICE QUANTITY TOTAL", new Font("Courier New", 9, FontStyle.Bold), Brushes.Blue, new Point(26, 40));
+            foreach (DataGridViewRow row in dvBill.Rows)
+            {
+                prodid = Convert.ToInt32(row.Cells["Column1"].Value);
+                prodname = "" + row.Cells["Column2"].Value;
+                prodprice = Convert.ToInt32(row.Cells["Column3"].Value);
+                prodqty = Convert.ToInt32(row.Cells["Column4"].Value);
+                //tottal = Convert.ToInt32(row.Cells[row.Cells["Column5"].Value);
+                tottal = Convert.ToInt32(row.Cells["Column5"].Value);
+
+                e.Graphics.DrawString("" + prodid, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(26, pos));
+                e.Graphics.DrawString("" + prodname, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(45, pos));
+                e.Graphics.DrawString("" + prodprice, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(200, pos));
+                e.Graphics.DrawString("" + prodqty, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(230, pos));
+                e.Graphics.DrawString("" + tottal, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(265, pos));
+                pos = pos + 20;
+            }
+            e.Graphics.DrawString("       Grand ToTal: $" + GrdTotal, new Font("Courier New", 12, FontStyle.Bold), Brushes.Blue, new Point(60, pos + 50));
+            e.Graphics.DrawString("       =========== BookStore ===========", new Font("Courier New", 10, FontStyle.Bold), Brushes.Blue, new Point(40, pos + 85));
+            dvBill.Rows.Clear();
+            dvBill.Refresh();
+            pos = 100;
+            GrdTotal = 0;
+        }
         private void Reset()
         {
             txtClientName.Text = "";

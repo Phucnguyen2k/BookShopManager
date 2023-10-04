@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -51,10 +53,40 @@ namespace BookShopManager
         {
             InitializeComponent();
         }
-
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
         private void btnExit_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        public static string UserName = "";
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM UserTbl WHERE UName='" + txtUserName.Text + "' AND UPass='" + txtPassword.Text + "'", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows[0][0].ToString() == "1")
+            {
+                UserName = txtUserName.Text;
+                Billing obj = new Billing();
+                obj.Show();
+                this.Hide();
+                con.Close();
+            }
+            else
+            {
+                MessageBox.Show("Wrong Username or Password");
+            }
+            con.Close();
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            AdminLogin obj = new AdminLogin();
+            obj.Show();
+            this.Hide();
         }
     }
 }
