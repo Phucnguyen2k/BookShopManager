@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnShowPass = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnExit = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -50,39 +53,41 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Location = new System.Drawing.Point(13, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(207, 310);
             this.panel1.TabIndex = 5;
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(13, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(186, 92);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Học Phần: Cấu Trúc Dữ Liệu & Giải Thuật";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(3, 60);
+            this.label4.Location = new System.Drawing.Point(13, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(194, 27);
             this.label4.TabIndex = 5;
             this.label4.Text = "Đồ Án Winfom ";
             // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(3, 90);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 74);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.Text = "Học Phần: Cấu Trúc Dữ Liệu & Giải Thuật";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.btnShowPass);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.btnLogin);
@@ -96,6 +101,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(337, 310);
             this.panel2.TabIndex = 0;
+            // 
+            // btnShowPass
+            // 
+            this.btnShowPass.FlatAppearance.BorderSize = 0;
+            this.btnShowPass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowPass.ImageList = this.imageList1;
+            this.btnShowPass.Location = new System.Drawing.Point(280, 163);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(34, 29);
+            this.btnShowPass.TabIndex = 5;
+            this.btnShowPass.UseVisualStyleBackColor = true;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "3844476-eye-see-show-view-watch_110339.png");
+            this.imageList1.Images.SetKeyName(1, "3844477-disable-eye-inactive-see-show-view-watch_110343.png");
             // 
             // btnExit
             // 
@@ -115,7 +139,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(116, 260);
+            this.label3.Location = new System.Drawing.Point(113, 272);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 21);
             this.label3.TabIndex = 3;
@@ -124,6 +148,8 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.Location = new System.Drawing.Point(76, 224);
@@ -141,7 +167,7 @@
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(139, 33);
+            this.txtPassword.Size = new System.Drawing.Size(176, 33);
             this.txtPassword.TabIndex = 1;
             // 
             // txtUserName
@@ -150,13 +176,13 @@
             this.txtUserName.Location = new System.Drawing.Point(138, 118);
             this.txtUserName.Multiline = true;
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(139, 33);
+            this.txtUserName.Size = new System.Drawing.Size(176, 33);
             this.txtUserName.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(138, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(138, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(53, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -215,6 +241,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fplash";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -236,8 +263,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnShowPass;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label5;
     }
 }
 

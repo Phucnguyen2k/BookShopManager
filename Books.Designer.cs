@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Books));
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbFilerBooka = new System.Windows.Forms.ComboBox();
@@ -65,6 +66,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.ttMain = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
@@ -184,7 +186,11 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.button4.FlatAppearance.BorderSize = 2;
+            this.button4.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(571, 203);
@@ -198,7 +204,11 @@
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnReset.FlatAppearance.BorderSize = 2;
+            this.btnReset.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.Location = new System.Drawing.Point(593, 129);
@@ -212,7 +222,11 @@
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnEdit.FlatAppearance.BorderSize = 2;
+            this.btnEdit.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(371, 129);
@@ -226,7 +240,11 @@
             // btnDelet
             // 
             this.btnDelet.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnDelet.FlatAppearance.BorderSize = 0;
+            this.btnDelet.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnDelet.FlatAppearance.BorderSize = 2;
+            this.btnDelet.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnDelet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnDelet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelet.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelet.Location = new System.Drawing.Point(482, 129);
@@ -240,7 +258,11 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnSave.FlatAppearance.BorderSize = 2;
+            this.btnSave.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(260, 129);
@@ -248,6 +270,7 @@
             this.btnSave.Size = new System.Drawing.Size(105, 33);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
+            this.ttMain.SetToolTip(this.btnSave, "Save Books");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -388,6 +411,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(198, 60);
             this.panel6.TabIndex = 2;
+            this.ttMain.SetToolTip(this.panel6, "Logout Account");
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // label8
@@ -395,7 +419,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(49, 21);
+            this.label8.Location = new System.Drawing.Point(60, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 27);
             this.label8.TabIndex = 6;
@@ -405,7 +429,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(3, 11);
+            this.pictureBox5.Location = new System.Drawing.Point(14, 11);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(40, 37);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -427,17 +451,18 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(49, 21);
+            this.label7.Location = new System.Drawing.Point(60, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(138, 27);
             this.label7.TabIndex = 6;
             this.label7.Text = "Dashboard";
+            this.ttMain.SetToolTip(this.label7, "Open DashBoard");
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(3, 11);
+            this.pictureBox4.Location = new System.Drawing.Point(14, 11);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -453,13 +478,14 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(198, 60);
             this.panel4.TabIndex = 2;
+            this.ttMain.SetToolTip(this.panel4, "Show List User");
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(49, 21);
+            this.label6.Location = new System.Drawing.Point(60, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 27);
             this.label6.TabIndex = 6;
@@ -469,7 +495,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(3, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(14, 11);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 37);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -492,7 +518,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(49, 21);
+            this.label5.Location = new System.Drawing.Point(60, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 27);
             this.label5.TabIndex = 6;
@@ -501,7 +527,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 11);
+            this.pictureBox2.Location = new System.Drawing.Point(14, 7);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(40, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -596,5 +622,6 @@
         private System.Windows.Forms.DataGridView dvBooks;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ToolTip ttMain;
     }
 }

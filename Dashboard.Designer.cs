@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.lbTitle = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpDashBoard = new System.Windows.Forms.TabPage();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lbUsers = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -52,6 +56,18 @@
             this.lbBooksStock = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lbUserMost = new System.Windows.Forms.Label();
+            this.lbMost = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.tpChart = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.lbTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -62,22 +78,25 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.lbMost = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.lbUserMost = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.ttHome = new System.Windows.Forms.ToolTip(this.components);
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tpDashBoard.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.tpChart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -85,9 +104,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel6
@@ -99,7 +115,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(198, 60);
             this.panel6.TabIndex = 2;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            this.ttHome.SetToolTip(this.panel6, "Logout Account");
             // 
             // label8
             // 
@@ -148,17 +164,313 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.chart1);
+            this.panel2.Controls.Add(this.tabControl1);
             this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.lbTitle);
-            this.panel2.Controls.Add(this.panel10);
-            this.panel2.Controls.Add(this.panel9);
-            this.panel2.Controls.Add(this.panel8);
-            this.panel2.Controls.Add(this.panel7);
             this.panel2.Location = new System.Drawing.Point(219, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(909, 648);
             this.panel2.TabIndex = 8;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tpDashBoard);
+            this.tabControl1.Controls.Add(this.tpChart);
+            this.tabControl1.ImageList = this.imageList1;
+            this.tabControl1.Location = new System.Drawing.Point(0, 34);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(909, 614);
+            this.tabControl1.TabIndex = 7;
+            // 
+            // tpDashBoard
+            // 
+            this.tpDashBoard.BackColor = System.Drawing.Color.White;
+            this.tpDashBoard.Controls.Add(this.panel9);
+            this.tpDashBoard.Controls.Add(this.panel8);
+            this.tpDashBoard.Controls.Add(this.panel7);
+            this.tpDashBoard.Controls.Add(this.panel10);
+            this.tpDashBoard.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tpDashBoard.ImageIndex = 0;
+            this.tpDashBoard.Location = new System.Drawing.Point(4, 24);
+            this.tpDashBoard.Name = "tpDashBoard";
+            this.tpDashBoard.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDashBoard.Size = new System.Drawing.Size(901, 586);
+            this.tpDashBoard.TabIndex = 0;
+            this.tpDashBoard.Text = "DashBoard";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.Aqua;
+            this.panel9.Controls.Add(this.lbUsers);
+            this.panel9.Controls.Add(this.label11);
+            this.panel9.Controls.Add(this.pictureBox8);
+            this.panel9.Location = new System.Drawing.Point(65, 34);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(339, 188);
+            this.panel9.TabIndex = 2;
+            // 
+            // lbUsers
+            // 
+            this.lbUsers.AutoSize = true;
+            this.lbUsers.BackColor = System.Drawing.Color.Transparent;
+            this.lbUsers.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsers.ForeColor = System.Drawing.Color.Black;
+            this.lbUsers.Location = new System.Drawing.Point(37, 92);
+            this.lbUsers.Name = "lbUsers";
+            this.lbUsers.Size = new System.Drawing.Size(82, 27);
+            this.lbUsers.TabIndex = 6;
+            this.lbUsers.Text = "Stock";
+            this.lbUsers.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(36, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 33);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Users";
+            this.label11.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(218, 47);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(60, 62);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 1;
+            this.pictureBox8.TabStop = false;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel8.Controls.Add(this.lbToTalAmount);
+            this.panel8.Controls.Add(this.label9);
+            this.panel8.Controls.Add(this.pictureBox7);
+            this.panel8.Location = new System.Drawing.Point(513, 34);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(339, 188);
+            this.panel8.TabIndex = 2;
+            // 
+            // lbToTalAmount
+            // 
+            this.lbToTalAmount.AutoSize = true;
+            this.lbToTalAmount.BackColor = System.Drawing.Color.Transparent;
+            this.lbToTalAmount.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbToTalAmount.ForeColor = System.Drawing.Color.Black;
+            this.lbToTalAmount.Location = new System.Drawing.Point(49, 103);
+            this.lbToTalAmount.Name = "lbToTalAmount";
+            this.lbToTalAmount.Size = new System.Drawing.Size(82, 27);
+            this.lbToTalAmount.TabIndex = 6;
+            this.lbToTalAmount.Text = "Stock";
+            this.lbToTalAmount.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(11, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(219, 33);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "ToTal Amount";
+            this.label9.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(255, 24);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(60, 62);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 1;
+            this.pictureBox7.TabStop = false;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Turquoise;
+            this.panel7.Controls.Add(this.lbBooksStock);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Controls.Add(this.pictureBox6);
+            this.panel7.Location = new System.Drawing.Point(65, 349);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(339, 188);
+            this.panel7.TabIndex = 2;
+            // 
+            // lbBooksStock
+            // 
+            this.lbBooksStock.AutoSize = true;
+            this.lbBooksStock.BackColor = System.Drawing.Color.Transparent;
+            this.lbBooksStock.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBooksStock.ForeColor = System.Drawing.Color.Black;
+            this.lbBooksStock.Location = new System.Drawing.Point(54, 102);
+            this.lbBooksStock.Name = "lbBooksStock";
+            this.lbBooksStock.Size = new System.Drawing.Size(82, 27);
+            this.lbBooksStock.TabIndex = 6;
+            this.lbBooksStock.Text = "Stock";
+            this.lbBooksStock.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(24, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 33);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Books Stock";
+            this.label1.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(232, 27);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(60, 62);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 1;
+            this.pictureBox6.TabStop = false;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.BlueViolet;
+            this.panel10.Controls.Add(this.lbUserMost);
+            this.panel10.Controls.Add(this.lbMost);
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Controls.Add(this.pictureBox9);
+            this.panel10.Location = new System.Drawing.Point(513, 349);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(339, 188);
+            this.panel10.TabIndex = 2;
+            // 
+            // lbUserMost
+            // 
+            this.lbUserMost.AutoSize = true;
+            this.lbUserMost.BackColor = System.Drawing.Color.Transparent;
+            this.lbUserMost.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUserMost.ForeColor = System.Drawing.Color.Black;
+            this.lbUserMost.Location = new System.Drawing.Point(22, 102);
+            this.lbUserMost.Name = "lbUserMost";
+            this.lbUserMost.Size = new System.Drawing.Size(82, 27);
+            this.lbUserMost.TabIndex = 6;
+            this.lbUserMost.Text = "Stock";
+            this.lbUserMost.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // lbMost
+            // 
+            this.lbMost.AutoSize = true;
+            this.lbMost.BackColor = System.Drawing.Color.Transparent;
+            this.lbMost.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMost.ForeColor = System.Drawing.Color.Black;
+            this.lbMost.Location = new System.Drawing.Point(124, 102);
+            this.lbMost.Name = "lbMost";
+            this.lbMost.Size = new System.Drawing.Size(82, 27);
+            this.lbMost.TabIndex = 6;
+            this.lbMost.Text = "Stock";
+            this.lbMost.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Courier New", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(11, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 33);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Users Most";
+            this.label3.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(243, 27);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(60, 62);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 1;
+            this.pictureBox9.TabStop = false;
+            // 
+            // tpChart
+            // 
+            this.tpChart.BackColor = System.Drawing.Color.White;
+            this.tpChart.Controls.Add(this.label10);
+            this.tpChart.Controls.Add(this.label2);
+            this.tpChart.Controls.Add(this.chart2);
+            this.tpChart.Controls.Add(this.chart1);
+            this.tpChart.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tpChart.ImageIndex = 1;
+            this.tpChart.Location = new System.Drawing.Point(4, 24);
+            this.tpChart.Name = "tpChart";
+            this.tpChart.Padding = new System.Windows.Forms.Padding(3);
+            this.tpChart.Size = new System.Drawing.Size(901, 586);
+            this.tpChart.TabIndex = 1;
+            this.tpChart.Text = "Chart";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(347, 558);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(128, 18);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Book Storage";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(336, 258);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(198, 18);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Transaction history";
+            // 
+            // chart2
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
+            this.chart2.Location = new System.Drawing.Point(26, 289);
+            this.chart2.Name = "chart2";
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Book storage";
+            series3.YValuesPerPoint = 2;
+            this.chart2.Series.Add(series3);
+            this.chart2.Size = new System.Drawing.Size(847, 266);
+            this.chart2.TabIndex = 6;
+            this.chart2.Text = "chart1";
+            // 
+            // chart1
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
+            this.chart1.Location = new System.Drawing.Point(26, 28);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Money";
+            this.chart1.Series.Add(series4);
+            this.chart1.Size = new System.Drawing.Size(847, 224);
+            this.chart1.TabIndex = 6;
+            this.chart1.Text = "chart1";
             // 
             // btnExit
             // 
@@ -183,149 +495,9 @@
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Book Shop";
             // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.Aqua;
-            this.panel9.Controls.Add(this.lbUsers);
-            this.panel9.Controls.Add(this.label11);
-            this.panel9.Controls.Add(this.pictureBox8);
-            this.panel9.Location = new System.Drawing.Point(65, 222);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(275, 118);
-            this.panel9.TabIndex = 2;
-            // 
-            // lbUsers
-            // 
-            this.lbUsers.AutoSize = true;
-            this.lbUsers.BackColor = System.Drawing.Color.Transparent;
-            this.lbUsers.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUsers.ForeColor = System.Drawing.Color.Black;
-            this.lbUsers.Location = new System.Drawing.Point(70, 62);
-            this.lbUsers.Name = "lbUsers";
-            this.lbUsers.Size = new System.Drawing.Size(82, 27);
-            this.lbUsers.TabIndex = 6;
-            this.lbUsers.Text = "Stock";
-            this.lbUsers.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(70, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 27);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Users";
-            this.label11.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(184, 27);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(60, 62);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 1;
-            this.pictureBox8.TabStop = false;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel8.Controls.Add(this.lbToTalAmount);
-            this.panel8.Controls.Add(this.label9);
-            this.panel8.Controls.Add(this.pictureBox7);
-            this.panel8.Location = new System.Drawing.Point(510, 67);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(282, 118);
-            this.panel8.TabIndex = 2;
-            // 
-            // lbToTalAmount
-            // 
-            this.lbToTalAmount.AutoSize = true;
-            this.lbToTalAmount.BackColor = System.Drawing.Color.Transparent;
-            this.lbToTalAmount.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbToTalAmount.ForeColor = System.Drawing.Color.Black;
-            this.lbToTalAmount.Location = new System.Drawing.Point(70, 62);
-            this.lbToTalAmount.Name = "lbToTalAmount";
-            this.lbToTalAmount.Size = new System.Drawing.Size(82, 27);
-            this.lbToTalAmount.TabIndex = 6;
-            this.lbToTalAmount.Text = "Stock";
-            this.lbToTalAmount.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(11, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(180, 27);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "ToTal Amount";
-            this.label9.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(196, 27);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(60, 62);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 1;
-            this.pictureBox7.TabStop = false;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.Turquoise;
-            this.panel7.Controls.Add(this.lbBooksStock);
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Controls.Add(this.pictureBox6);
-            this.panel7.Location = new System.Drawing.Point(65, 67);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(275, 118);
-            this.panel7.TabIndex = 2;
-            // 
-            // lbBooksStock
-            // 
-            this.lbBooksStock.AutoSize = true;
-            this.lbBooksStock.BackColor = System.Drawing.Color.Transparent;
-            this.lbBooksStock.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBooksStock.ForeColor = System.Drawing.Color.Black;
-            this.lbBooksStock.Location = new System.Drawing.Point(70, 62);
-            this.lbBooksStock.Name = "lbBooksStock";
-            this.lbBooksStock.Size = new System.Drawing.Size(82, 27);
-            this.lbBooksStock.TabIndex = 6;
-            this.lbBooksStock.Text = "Stock";
-            this.lbBooksStock.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(24, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 27);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Books Stock";
-            this.label1.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(196, 27);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(60, 62);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 1;
-            this.pictureBox6.TabStop = false;
-            // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(20, 3);
             this.pictureBox1.Name = "pictureBox1";
@@ -367,6 +539,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(198, 60);
             this.panel4.TabIndex = 2;
+            this.ttHome.SetToolTip(this.panel4, "Show List User");
             // 
             // label6
             // 
@@ -399,7 +572,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(198, 60);
             this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.ttHome.SetToolTip(this.panel3, "Show List Books");
             // 
             // label5
             // 
@@ -427,91 +600,25 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(66, 13);
+            this.label4.Location = new System.Drawing.Point(63, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(138, 27);
             this.label4.TabIndex = 0;
             this.label4.Text = "Book Shop";
             // 
-            // panel10
+            // imageList1
             // 
-            this.panel10.BackColor = System.Drawing.Color.BlueViolet;
-            this.panel10.Controls.Add(this.lbUserMost);
-            this.panel10.Controls.Add(this.lbMost);
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Controls.Add(this.pictureBox9);
-            this.panel10.Location = new System.Drawing.Point(510, 222);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(282, 118);
-            this.panel10.TabIndex = 2;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "analytic_dashboard_home_manage_user_interface_icon_123286.png");
+            this.imageList1.Images.SetKeyName(1, "4115231-dashboard-stats_114039.png");
             // 
-            // lbMost
+            // ttHome
             // 
-            this.lbMost.AutoSize = true;
-            this.lbMost.BackColor = System.Drawing.Color.Transparent;
-            this.lbMost.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMost.ForeColor = System.Drawing.Color.Black;
-            this.lbMost.Location = new System.Drawing.Point(96, 62);
-            this.lbMost.Name = "lbMost";
-            this.lbMost.Size = new System.Drawing.Size(82, 27);
-            this.lbMost.TabIndex = 6;
-            this.lbMost.Text = "Stock";
-            this.lbMost.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(11, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 27);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Users Most";
-            this.label3.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(196, 27);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(60, 62);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 1;
-            this.pictureBox9.TabStop = false;
-            // 
-            // lbUserMost
-            // 
-            this.lbUserMost.AutoSize = true;
-            this.lbUserMost.BackColor = System.Drawing.Color.Transparent;
-            this.lbUserMost.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserMost.ForeColor = System.Drawing.Color.Black;
-            this.lbUserMost.Location = new System.Drawing.Point(11, 62);
-            this.lbUserMost.Name = "lbUserMost";
-            this.lbUserMost.Size = new System.Drawing.Size(82, 27);
-            this.lbUserMost.TabIndex = 6;
-            this.lbUserMost.Text = "Stock";
-            this.lbUserMost.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(65, 359);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Money";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(814, 257);
-            this.chart1.TabIndex = 6;
-            this.chart1.Text = "chart1";
+            this.ttHome.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // Dashboard
             // 
@@ -534,6 +641,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tpDashBoard.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -543,6 +652,13 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.tpChart.ResumeLayout(false);
+            this.tpChart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -554,10 +670,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -600,5 +712,13 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label lbUserMost;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpDashBoard;
+        private System.Windows.Forms.TabPage tpChart;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolTip ttHome;
     }
 }

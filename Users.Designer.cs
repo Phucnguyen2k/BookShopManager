@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.dvUser = new System.Windows.Forms.DataGridView();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -60,11 +62,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dvUser = new System.Windows.Forms.DataGridView();
+            this.ttMain = new System.Windows.Forms.ToolTip(this.components);
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -72,7 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvUser)).BeginInit();
             this.SuspendLayout();
             // 
             // panel6
@@ -95,6 +97,7 @@
             this.label8.Size = new System.Drawing.Size(96, 27);
             this.label8.TabIndex = 6;
             this.label8.Text = "Logout";
+            this.ttMain.SetToolTip(this.label8, "Logout Account");
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // pictureBox5
@@ -117,12 +120,17 @@
             this.label7.Size = new System.Drawing.Size(138, 27);
             this.label7.TabIndex = 6;
             this.label7.Text = "Dashboard";
+            this.ttMain.SetToolTip(this.label7, "Open Dashboard");
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnReset.FlatAppearance.BorderSize = 2;
+            this.btnReset.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.Location = new System.Drawing.Point(593, 129);
@@ -130,13 +138,18 @@
             this.btnReset.Size = new System.Drawing.Size(105, 33);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
+            this.ttMain.SetToolTip(this.btnReset, "Reset User");
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnEdit.FlatAppearance.BorderSize = 2;
+            this.btnEdit.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(371, 129);
@@ -144,13 +157,18 @@
             this.btnEdit.Size = new System.Drawing.Size(105, 33);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
+            this.ttMain.SetToolTip(this.btnEdit, "Edit User");
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelet
             // 
             this.btnDelet.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnDelet.FlatAppearance.BorderSize = 0;
+            this.btnDelet.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnDelet.FlatAppearance.BorderSize = 2;
+            this.btnDelet.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnDelet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDelet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnDelet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelet.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelet.Location = new System.Drawing.Point(482, 129);
@@ -158,6 +176,7 @@
             this.btnDelet.Size = new System.Drawing.Size(105, 33);
             this.btnDelet.TabIndex = 6;
             this.btnDelet.Text = "Delete";
+            this.ttMain.SetToolTip(this.btnDelet, "Delete User");
             this.btnDelet.UseVisualStyleBackColor = false;
             this.btnDelet.Click += new System.EventHandler(this.btnDelet_Click);
             // 
@@ -246,6 +265,19 @@
             this.panel2.Size = new System.Drawing.Size(909, 648);
             this.panel2.TabIndex = 0;
             // 
+            // dvUser
+            // 
+            this.dvUser.BackgroundColor = System.Drawing.Color.White;
+            this.dvUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvUser.GridColor = System.Drawing.Color.Black;
+            this.dvUser.Location = new System.Drawing.Point(25, 224);
+            this.dvUser.Name = "dvUser";
+            this.dvUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvUser.Size = new System.Drawing.Size(863, 409);
+            this.dvUser.TabIndex = 11;
+            this.dvUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvUser_CellContentClick);
+            // 
             // btnExit
             // 
             this.btnExit.FlatAppearance.BorderSize = 0;
@@ -261,7 +293,11 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnSave.FlatAppearance.BorderSize = 2;
+            this.btnSave.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(260, 129);
@@ -269,6 +305,7 @@
             this.btnSave.Size = new System.Drawing.Size(105, 33);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
+            this.ttMain.SetToolTip(this.btnSave, "Save User");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -317,7 +354,7 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.Black;
-            this.lbTitle.Location = new System.Drawing.Point(409, 1);
+            this.lbTitle.Location = new System.Drawing.Point(419, 3);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(138, 27);
             this.lbTitle.TabIndex = 10;
@@ -410,6 +447,7 @@
             this.label5.Size = new System.Drawing.Size(82, 27);
             this.label5.TabIndex = 6;
             this.label5.Text = "Books";
+            this.ttMain.SetToolTip(this.label5, "Open List Books");
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox2
@@ -433,19 +471,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Book Shop";
             // 
-            // dvUser
-            // 
-            this.dvUser.BackgroundColor = System.Drawing.Color.White;
-            this.dvUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvUser.GridColor = System.Drawing.Color.Black;
-            this.dvUser.Location = new System.Drawing.Point(25, 224);
-            this.dvUser.Name = "dvUser";
-            this.dvUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvUser.Size = new System.Drawing.Size(863, 409);
-            this.dvUser.TabIndex = 11;
-            this.dvUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvUser_CellContentClick);
-            // 
             // Users
             // 
             this.AcceptButton = this.btnSave;
@@ -466,6 +491,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -477,7 +503,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvUser)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -516,5 +541,6 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dvUser;
+        private System.Windows.Forms.ToolTip ttMain;
     }
 }

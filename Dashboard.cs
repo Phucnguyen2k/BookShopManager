@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BookShopManager
 {
@@ -68,38 +69,41 @@ namespace BookShopManager
             DataTable dt5 = new DataTable();
             adapter.Fill(dt5);
 
-            // Gán nguồn dữ liệu cho biểu đồ
             chart1.DataSource = dt5;
 
-            // Thiết lập trục x và trục y của biểu đồ
-            chart1.Series[0].XValueMember = "UName"; // Trục x sẽ hiển thị tên người dùng
-            chart1.Series[0].YValueMembers = "Amount"; // Trục y sẽ hiển thị số lượng (Amount)
-
-            // Chọn loại biểu đồ, ví dụ: cột dọc (Column)
+            chart1.Series[0].XValueMember = "UName"; chart1.Series[0].YValueMembers = "Amount";
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-
-            // Cập nhật biểu đồ
             chart1.DataBind();
 
+            string query2 = "SELECT BTitle, BQty FROM BookTbl";
+            SqlCommand command = new SqlCommand(query2, con);
+
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter adapter2 = new SqlDataAdapter(command);
+            adapter2.Fill(dataTable);
+
+            chart2.DataSource = dataTable;
+
+            chart2.Series.Clear();
+            Series series = new Series("Storage");
+            series.ChartType = SeriesChartType.Column;
+            series.XValueMember = "BTitle";
+            series.YValueMembers = "BQty";
+            chart2.Series.Add(series);
+
+            //chart2.ChartAreas[0].AxisX.Title = "Book Title";
+            chart2.ChartAreas[0].AxisY.Title = "Quantity";
+
+            chart2.DataBind();
 
             con.Close();
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void label8_Click(object sender, EventArgs e)
         {
             Login obj = new Login();
             obj.Show();
-            this.Hide();
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-
+            this.Close();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

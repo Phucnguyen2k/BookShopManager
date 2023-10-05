@@ -19,6 +19,7 @@ namespace BookShopManager
             dvBooks.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
+
         private void populate()
         {
             try

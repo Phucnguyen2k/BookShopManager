@@ -71,12 +71,16 @@ namespace BookShopManager
                 UserName = txtUserName.Text;
                 Billing obj = new Billing();
                 obj.Show();
-                this.Hide();
+                this.Close();
                 con.Close();
             }
             else
             {
-                MessageBox.Show("Wrong Username or Password");
+                MessageBox.Show("Wrong Username or Password",
+                    "Wrong",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                    );
             }
             con.Close();
 
@@ -88,5 +92,26 @@ namespace BookShopManager
             obj.Show();
             this.Hide();
         }
+
+        private void btnShowPass_Click(object sender, EventArgs e)
+        {
+            if (txtPassword.PasswordChar == '\0')
+            {
+                txtPassword.PasswordChar = '*';
+                btnShowPass.ImageIndex = 1;
+            }
+            else
+            {
+                txtPassword.PasswordChar = '\0';
+                btnShowPass.ImageIndex = 0;
+            }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            btnShowPass.ImageIndex = 1;
+        }
+
+
     }
 }

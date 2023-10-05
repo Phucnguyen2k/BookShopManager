@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             // 
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(169, 224);
+            this.btnLogin.Location = new System.Drawing.Point(149, 224);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(146, 33);
             this.btnLogin.TabIndex = 8;
@@ -63,7 +64,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(190, 55);
+            this.pictureBox1.Location = new System.Drawing.Point(191, 55);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(53, 49);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -86,7 +87,7 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.Black;
-            this.lbTitle.Location = new System.Drawing.Point(185, 25);
+            this.lbTitle.Location = new System.Drawing.Point(174, 25);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(82, 27);
             this.lbTitle.TabIndex = 5;
@@ -98,12 +99,24 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(202, 260);
+            this.label3.Location = new System.Drawing.Point(191, 260);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 21);
             this.label3.TabIndex = 9;
             this.label3.Text = "Cacel";
             this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Location = new System.Drawing.Point(439, 1);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // AdminLogin
             // 
@@ -112,6 +125,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(463, 308);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -121,7 +135,7 @@
             this.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminLogin";
@@ -138,5 +152,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnExit;
     }
 }
