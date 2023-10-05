@@ -129,7 +129,8 @@ namespace BookShopManager
                         ")";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Bill Saved Successfully");
+                    //MessageBox.Show("Bill Saved Successfully");
+                    NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
                     con.Close();
                     //populate();
                     //RestColum();
@@ -140,10 +141,10 @@ namespace BookShopManager
                 }
 
                 printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
+
+                printPreviewDialog1.PointToScreen(Cursor.Position);
                 if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-                {
                     printDocument1.Print();
-                }
             }
         }
 
@@ -165,10 +166,10 @@ namespace BookShopManager
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics
-                .DrawString("      Book Shop", new Font("Courier New", 18, FontStyle.Bold), Brushes.Blue, new Point(80));
+                .DrawString("      Book Shop", new Font("Courier New", 18, FontStyle.Bold), Brushes.Blue, new Point(80, 15));
             e.Graphics
                 .DrawString(
-                    "ID PRODUCT            PRICE QUANTITY TOTAL",
+                    "ID PRODUCT            PRICE QTY TOTAL",
                     new Font("Courier New", 9, FontStyle.Bold),
                     Brushes.Blue,
                     new Point(26, 40));

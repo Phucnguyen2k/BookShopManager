@@ -99,6 +99,16 @@ namespace BookShopManager
 
             chart2.DataBind();
 
+
+            string query3 = "SELECT * FROM BillTbl";
+
+            SqlDataAdapter adapter3 = new SqlDataAdapter(query3, con);
+
+            DataTable dataTable3 = new DataTable();
+
+            adapter3.Fill(dataTable3);
+
+            dvHistory.DataSource = dataTable3;
             con.Close();
         }
 

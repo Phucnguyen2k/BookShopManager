@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -80,6 +80,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ttHome = new System.Windows.Forms.ToolTip(this.components);
+            this.tpHistory = new System.Windows.Forms.TabPage();
+            this.dvHistory = new System.Windows.Forms.DataGridView();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -104,6 +106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tpHistory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // panel6
@@ -175,6 +179,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tpDashBoard);
+            this.tabControl1.Controls.Add(this.tpHistory);
             this.tabControl1.Controls.Add(this.tpChart);
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 34);
@@ -439,35 +444,35 @@
             // 
             // chart2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea9.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            this.chart2.Legends.Add(legend9);
             this.chart2.Location = new System.Drawing.Point(26, 289);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Book storage";
-            series1.YValuesPerPoint = 2;
-            this.chart2.Series.Add(series1);
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Book storage";
+            series9.YValuesPerPoint = 2;
+            this.chart2.Series.Add(series9);
             this.chart2.Size = new System.Drawing.Size(847, 266);
             this.chart2.TabIndex = 6;
             this.chart2.Text = "chart1";
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea10.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea10);
+            legend10.Name = "Legend1";
+            this.chart1.Legends.Add(legend10);
             this.chart1.Location = new System.Drawing.Point(26, 28);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Money";
-            this.chart1.Series.Add(series2);
+            series10.ChartArea = "ChartArea1";
+            series10.Legend = "Legend1";
+            series10.Name = "Money";
+            this.chart1.Series.Add(series10);
             this.chart1.Size = new System.Drawing.Size(847, 224);
             this.chart1.TabIndex = 6;
             this.chart1.Text = "chart1";
@@ -478,6 +483,7 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "analytic_dashboard_home_manage_user_interface_icon_123286.png");
             this.imageList1.Images.SetKeyName(1, "4115231-dashboard-stats_114039.png");
+            this.imageList1.Images.SetKeyName(2, "history-clock-button_icon-icons.com_72701.png");
             // 
             // btnExit
             // 
@@ -621,6 +627,32 @@
             // 
             this.ttHome.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // tpHistory
+            // 
+            this.tpHistory.Controls.Add(this.dvHistory);
+            this.tpHistory.ImageIndex = 2;
+            this.tpHistory.Location = new System.Drawing.Point(4, 24);
+            this.tpHistory.Name = "tpHistory";
+            this.tpHistory.Size = new System.Drawing.Size(901, 586);
+            this.tpHistory.TabIndex = 2;
+            this.tpHistory.Text = "History";
+            this.tpHistory.UseVisualStyleBackColor = true;
+            // 
+            // dvHistory
+            // 
+            this.dvHistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvHistory.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dvHistory.BackgroundColor = System.Drawing.Color.White;
+            this.dvHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dvHistory.GridColor = System.Drawing.Color.Black;
+            this.dvHistory.Location = new System.Drawing.Point(0, 0);
+            this.dvHistory.Name = "dvHistory";
+            this.dvHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvHistory.Size = new System.Drawing.Size(901, 586);
+            this.dvHistory.TabIndex = 11;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -671,6 +703,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tpHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -721,5 +755,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolTip ttHome;
+        private System.Windows.Forms.TabPage tpHistory;
+        private System.Windows.Forms.DataGridView dvHistory;
     }
 }
