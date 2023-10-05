@@ -16,14 +16,10 @@ namespace BookShopManager
             {
                 Books obj = new Books();
                 obj.Show();
+                NotificationHelper.ShowNotification("Login", "Login Sussecfull", ToolTipIcon.Info);
                 this.Hide();
             }
             else MessageBox.Show("Wrong Password Contact The Admin");
-        }
-
-        private void lbTitle_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label3_Click(object sender, EventArgs e)

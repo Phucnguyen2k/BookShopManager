@@ -92,7 +92,6 @@
             this.lbTitle.Size = new System.Drawing.Size(82, 27);
             this.lbTitle.TabIndex = 5;
             this.lbTitle.Text = "Admin";
-            this.lbTitle.Click += new System.EventHandler(this.lbTitle_Click);
             // 
             // label3
             // 

@@ -85,7 +85,7 @@
             this.panel6.BackColor = System.Drawing.Color.Transparent;
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.pictureBox5);
-            this.panel6.Location = new System.Drawing.Point(8, 572);
+            this.panel6.Location = new System.Drawing.Point(8, 555);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(167, 60);
             this.panel6.TabIndex = 2;
@@ -185,6 +185,7 @@
             this.btnExit.Size = new System.Drawing.Size(25, 25);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "X";
+            this.ttMain.SetToolTip(this.btnExit, "Close");
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 

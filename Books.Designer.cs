@@ -253,6 +253,7 @@
             this.btnDelet.Size = new System.Drawing.Size(105, 33);
             this.btnDelet.TabIndex = 7;
             this.btnDelet.Text = "Delete";
+            this.ttMain.SetToolTip(this.btnDelet, "Close");
             this.btnDelet.UseVisualStyleBackColor = false;
             this.btnDelet.Click += new System.EventHandler(this.btnDelet_Click);
             // 

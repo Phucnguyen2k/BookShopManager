@@ -146,7 +146,8 @@ namespace BookShopManager
 
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("User Updated Successfully");
+                    //MessageBox.Show("User Updated Successfully");
+                    NotificationHelper.ShowNotification("Updated", "User Updated Successfully", ToolTipIcon.Info);
                     con.Close();
                     populate();
                     Reset();

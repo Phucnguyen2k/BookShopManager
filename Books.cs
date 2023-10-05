@@ -53,7 +53,10 @@ namespace BookShopManager
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Value == 0 || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
-                MessageBox.Show("Missing Infor Books");
+            {
+                //MessageBox.Show("Missing Infor Books");
+                NotificationHelper.ShowNotification("Miss", "Missing Infor Books", ToolTipIcon.Info);
+            }
             else
             {
                 try
@@ -62,7 +65,8 @@ namespace BookShopManager
                     string query = "insert into BookTbl values('" + txtTitle.Text + "','" + txtAuthor.Text + "','" + cbCate.SelectedItem.ToString() + "','" + txtQty.Value + "','" + txtPrice.Value + "')";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Book Saved Successfully");
+                    //MessageBox.Show("Book Saved Successfully");
+                    NotificationHelper.ShowNotification("Success", "Book Save Successfully", ToolTipIcon.Info);
                     con.Close();
                     populate();
                     RestColum();
@@ -128,7 +132,10 @@ namespace BookShopManager
         private void btnDelet_Click(object sender, EventArgs e)
         {
             if (key == 0)
+            {
+
                 MessageBox.Show("Missing Infor Books");
+            }
             else
             {
                 try
@@ -137,7 +144,8 @@ namespace BookShopManager
                     string query = "delete from BookTbl where BId=" + key + ";";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Book deleted Successfully");
+                    //MessageBox.Show("Book deleted Successfully");
+                    NotificationHelper.ShowNotification("Success", "Book deleted Successfully", ToolTipIcon.Info);
                     con.Close();
                     populate();
                     RestColum();
@@ -153,7 +161,10 @@ namespace BookShopManager
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Value == 0 || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
-                MessageBox.Show("Missing Infor Books");
+            {
+                //MessageBox.Show("Missing Infor Books");
+                NotificationHelper.ShowNotification("Miss", "Missing Infor Books", ToolTipIcon.Info);
+            }
             else
             {
                 try
@@ -182,7 +193,8 @@ namespace BookShopManager
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Book Updated Successfully");
+                    //MessageBox.Show("Book Updated Successfully");
+                    NotificationHelper.ShowNotification("Update", "Book Updated Successfully", ToolTipIcon.Info);
 
                     con.Close();
                     populate();

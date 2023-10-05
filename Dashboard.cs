@@ -64,6 +64,7 @@ namespace BookShopManager
             string stringWithoutSpaces = originalString.Replace(" ", "");
             lbUserMost.Text = stringWithoutSpaces;
 
+            //chart Bill
             string query = "SELECT UName, Amount FROM BillTbl";
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             DataTable dt5 = new DataTable();
@@ -75,6 +76,7 @@ namespace BookShopManager
             chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             chart1.DataBind();
 
+            //char Books
             string query2 = "SELECT BTitle, BQty FROM BookTbl";
             SqlCommand command = new SqlCommand(query2, con);
 
@@ -91,7 +93,8 @@ namespace BookShopManager
             series.YValueMembers = "BQty";
             chart2.Series.Add(series);
 
-            //chart2.ChartAreas[0].AxisX.Title = "Book Title";
+            //Change Title Hirizon
+            chart2.ChartAreas[0].AxisX.Title = "Book Title";
             chart2.ChartAreas[0].AxisY.Title = "Quantity";
 
             chart2.DataBind();
@@ -111,10 +114,6 @@ namespace BookShopManager
             Application.Exit();
         }
 
-        private void lbTitle_Click(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }
