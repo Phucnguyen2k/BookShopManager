@@ -52,7 +52,7 @@ namespace BookShopManager
         {
             Console.WriteLine(txtAddress.Text);
 
-            if (user == "" || phone == "" || address == "" || password == "")
+            if (txtUser.Text == "" || txtPhone.Text == "" || txtAddress.Text == "" || txtPassword.Text == "")
                 MessageBox.Show("Missing Infor User");
             else
             {

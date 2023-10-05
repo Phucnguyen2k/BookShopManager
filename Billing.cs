@@ -13,7 +13,10 @@ namespace BookShopManager
             InitializeComponent();
             populate();
         }
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
+
+        SqlConnection con = new SqlConnection(
+            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
+
         private void populate()
         {
             try
@@ -32,6 +35,7 @@ namespace BookShopManager
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void UpdateBook()
         {
             int newQty = stock - Convert.ToInt32(txtQty.Value);
@@ -45,14 +49,16 @@ namespace BookShopManager
                 cmd.ExecuteNonQuery();
                 con.Close();
                 populate();
-                //RestColum();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            //RestColum();
         }
+
         int n = 0, GrdTotal = 0;
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (txtQty.Value == 0 || Convert.ToInt32(txtQty.Value) > stock)
@@ -78,6 +84,7 @@ namespace BookShopManager
         }
 
         int key = 0, stock = 0;
+
         private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
@@ -102,12 +109,10 @@ namespace BookShopManager
 
         private void label2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
             if (txtClientName.Text == "" || txtTitle.Text == "")
                 MessageBox.Show("Select Client Name");
             else
@@ -115,7 +120,13 @@ namespace BookShopManager
                 try
                 {
                     con.Open();
-                    string query = "insert into BillTbl values('" + lbUserName.Text + "','" + txtClientName.Text + "'," + GrdTotal + ")";
+                    string query = "insert into BillTbl values('" +
+                        lbUserName.Text +
+                        "','" +
+                        txtClientName.Text +
+                        "'," +
+                        GrdTotal +
+                        ")";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Bill Saved Successfully");
@@ -133,8 +144,6 @@ namespace BookShopManager
                 {
                     printDocument1.Print();
                 }
-
-
             }
         }
 
@@ -147,21 +156,22 @@ namespace BookShopManager
             this.Hide();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void btnExit_Click(object sender, EventArgs e) { Application.Exit(); }
 
-        private void Billing_Load(object sender, EventArgs e)
-        {
-            lbUserName.Text = Login.UserName;
-        }
+        private void Billing_Load(object sender, EventArgs e) { lbUserName.Text = Login.UserName; }
 
         string prodname;
+
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("      Book Shop", new Font("Courier New", 18, FontStyle.Bold), Brushes.Blue, new Point(80));
-            e.Graphics.DrawString("ID PRODUCT            PRICE QUANTITY TOTAL", new Font("Courier New", 9, FontStyle.Bold), Brushes.Blue, new Point(26, 40));
+            e.Graphics
+                .DrawString("      Book Shop", new Font("Courier New", 18, FontStyle.Bold), Brushes.Blue, new Point(80));
+            e.Graphics
+                .DrawString(
+                    "ID PRODUCT            PRICE QUANTITY TOTAL",
+                    new Font("Courier New", 9, FontStyle.Bold),
+                    Brushes.Blue,
+                    new Point(26, 40));
             foreach (DataGridViewRow row in dvBill.Rows)
             {
                 prodid = Convert.ToInt32(row.Cells["Column1"].Value);
@@ -170,21 +180,56 @@ namespace BookShopManager
                 prodqty = Convert.ToInt32(row.Cells["Column4"].Value);
                 //tottal = Convert.ToInt32(row.Cells[row.Cells["Column5"].Value);
                 tottal = Convert.ToInt32(row.Cells["Column5"].Value);
-
-                e.Graphics.DrawString("" + prodid, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(26, pos));
-                e.Graphics.DrawString("" + prodname, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(45, pos));
-                e.Graphics.DrawString("" + prodprice, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(200, pos));
-                e.Graphics.DrawString("" + prodqty, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(230, pos));
-                e.Graphics.DrawString("" + tottal, new Font("Courier New", 9, FontStyle.Bold), Brushes.Black, new Point(265, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodid,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(26, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodname,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(45, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodprice,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(200, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodqty,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(230, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + tottal,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(265, pos));
                 pos = pos + 20;
             }
-            e.Graphics.DrawString("       Grand ToTal: $" + GrdTotal, new Font("Courier New", 12, FontStyle.Bold), Brushes.Blue, new Point(60, pos + 50));
-            e.Graphics.DrawString("       =========== BookStore ===========", new Font("Courier New", 10, FontStyle.Bold), Brushes.Blue, new Point(40, pos + 85));
+            e.Graphics
+                .DrawString(
+                    "       Grand ToTal: $" + GrdTotal,
+                    new Font("Courier New", 12, FontStyle.Bold),
+                    Brushes.Blue,
+                    new Point(60, pos + 50));
+            e.Graphics
+                .DrawString(
+                    "       =========== BookStore ===========",
+                    new Font("Courier New", 10, FontStyle.Bold),
+                    Brushes.Blue,
+                    new Point(40, pos + 85));
             dvBill.Rows.Clear();
             dvBill.Refresh();
             pos = 100;
             GrdTotal = 0;
         }
+
         private void Reset()
         {
             txtClientName.Text = "";
@@ -192,9 +237,7 @@ namespace BookShopManager
             txtQty.Value = 0;
             txtPrice.Value = 0;
         }
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            Reset();
-        }
+
+        private void btnReset_Click(object sender, EventArgs e) { Reset(); }
     }
 }

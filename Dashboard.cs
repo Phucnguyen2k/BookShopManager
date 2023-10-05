@@ -50,6 +50,38 @@ namespace BookShopManager
             DataTable dt2 = new DataTable();
             sda2.Fill(dt2);
             lbUsers.Text = dt2.Rows[0][0].ToString();
+
+            SqlDataAdapter sda3 = new SqlDataAdapter("select max(Amount) from BillTbl", con);
+            DataTable dt3 = new DataTable();
+            sda3.Fill(dt3);
+            lbMost.Text = dt3.Rows[0][0].ToString();
+
+            SqlDataAdapter sda4 = new SqlDataAdapter("SELECT TOP 1 UName, MAX(Amount) AS MaxAmount FROM BillTbl GROUP BY UName ORDER BY MaxAmount DESC", con);
+            DataTable dt4 = new DataTable();
+            sda4.Fill(dt4);
+            string originalString = dt4.Rows[0]["UName"].ToString();
+            string stringWithoutSpaces = originalString.Replace(" ", "");
+            lbUserMost.Text = stringWithoutSpaces;
+
+            string query = "SELECT UName, Amount FROM BillTbl";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, con);
+            DataTable dt5 = new DataTable();
+            adapter.Fill(dt5);
+
+            // Gán nguồn dữ liệu cho biểu đồ
+            chart1.DataSource = dt5;
+
+            // Thiết lập trục x và trục y của biểu đồ
+            chart1.Series[0].XValueMember = "UName"; // Trục x sẽ hiển thị tên người dùng
+            chart1.Series[0].YValueMembers = "Amount"; // Trục y sẽ hiển thị số lượng (Amount)
+
+            // Chọn loại biểu đồ, ví dụ: cột dọc (Column)
+            chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            // Cập nhật biểu đồ
+            chart1.DataBind();
+
+
             con.Close();
         }
 
