@@ -11,6 +11,7 @@ namespace BookShopManager
         {
             Application.Exit();
         }
+
         public Books()
         {
             InitializeComponent();
@@ -51,14 +52,14 @@ namespace BookShopManager
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Text == "" || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
+            if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Value == 0 || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
                 MessageBox.Show("Missing Infor Books");
             else
             {
                 try
                 {
                     con.Open();
-                    string query = "insert into BookTbl values('" + txtTitle.Text + "','" + txtAuthor.Text + "','" + cbCate.SelectedItem.ToString() + "','" + txtQty.Text + "','" + txtPrice.Value + "')";
+                    string query = "insert into BookTbl values('" + txtTitle.Text + "','" + txtAuthor.Text + "','" + cbCate.SelectedItem.ToString() + "','" + txtQty.Value + "','" + txtPrice.Value + "')";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Book Saved Successfully");
@@ -90,7 +91,7 @@ namespace BookShopManager
             txtTitle.Text = "";
             txtAuthor.Text = "";
             cbCate.SelectedIndex = -1;
-            txtQty.Text = "";
+            txtQty.Value = 0;
             txtPrice.Value = 0;
         }
         private void btnReset_Click(object sender, EventArgs e)
@@ -106,7 +107,8 @@ namespace BookShopManager
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
             txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
             cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
-            txtQty.Text = dvBooks.SelectedRows[0].Cells[4].Value.ToString();
+            // txtQty.Value = dvBooks.SelectedRows[0].Cells[4].Value.ToString();
+            txtQty.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
             txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
 
             string s;
@@ -150,7 +152,7 @@ namespace BookShopManager
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Text == "" || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
+            if (txtTitle.Text == "" || txtAuthor.Text == "" || txtQty.Value == 0 || txtPrice.Value == 0 || cbCate.SelectedIndex == -1)
                 MessageBox.Show("Missing Infor Books");
             else
             {
@@ -174,7 +176,7 @@ namespace BookShopManager
                     cmd.Parameters.AddWithValue("@BTitle", txtTitle.Text);
                     cmd.Parameters.AddWithValue("@BAuthor", txtAuthor.Text);
                     cmd.Parameters.AddWithValue("@BCat", cbCate.SelectedItem.ToString());
-                    cmd.Parameters.AddWithValue("@BQty", txtQty.Text);
+                    cmd.Parameters.AddWithValue("@BQty", txtQty.Value);
                     cmd.Parameters.AddWithValue("@BPrice", txtPrice.Value);
                     cmd.Parameters.AddWithValue("@BId", key);
 

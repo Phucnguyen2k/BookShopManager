@@ -110,5 +110,11 @@ namespace BookShopManager
         {
             Application.Exit();
         }
+
+        private void lbTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

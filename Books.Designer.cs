@@ -42,7 +42,6 @@
             this.btnDelet = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtAuthor = new System.Windows.Forms.TextBox();
-            this.txtQty = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -67,6 +66,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ttMain = new System.Windows.Forms.ToolTip(this.components);
+            this.txtQty = new System.Windows.Forms.NumericUpDown();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
@@ -80,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -87,6 +88,7 @@
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.cbFilerBooka);
             this.panel2.Controls.Add(this.dvBooks);
+            this.panel2.Controls.Add(this.txtQty);
             this.panel2.Controls.Add(this.txtPrice);
             this.panel2.Controls.Add(this.cbCate);
             this.panel2.Controls.Add(this.btnExit);
@@ -96,7 +98,6 @@
             this.panel2.Controls.Add(this.btnDelet);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.txtAuthor);
-            this.panel2.Controls.Add(this.txtQty);
             this.panel2.Controls.Add(this.txtTitle);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label12);
@@ -282,15 +283,6 @@
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(122, 24);
             this.txtAuthor.TabIndex = 1;
-            // 
-            // txtQty
-            // 
-            this.txtQty.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQty.Location = new System.Drawing.Point(621, 80);
-            this.txtQty.Multiline = true;
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(109, 24);
-            this.txtQty.TabIndex = 3;
             // 
             // txtTitle
             // 
@@ -545,6 +537,20 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Book Shop";
             // 
+            // txtQty
+            // 
+            this.txtQty.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQty.Location = new System.Drawing.Point(627, 78);
+            this.txtQty.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(92, 26);
+            this.txtQty.TabIndex = 4;
+            this.txtQty.ThousandsSeparator = true;
+            // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -580,6 +586,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -611,7 +618,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbCate;
-        private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown txtPrice;
@@ -623,5 +629,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolTip ttMain;
+        private System.Windows.Forms.NumericUpDown txtQty;
     }
 }

@@ -24,6 +24,7 @@ namespace BookShopManager
                 this.Hide();
             }
 
+
         }
     }
 }
