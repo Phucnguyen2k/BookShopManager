@@ -208,16 +208,6 @@ namespace BookShopManager
             }
 
         }
-
-        private void cbCate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel6_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void label6_Click(object sender, EventArgs e)
         {
             frmUsers obj = new frmUsers();
@@ -257,7 +247,8 @@ namespace BookShopManager
         private void dvBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmEditBook frmEditBook = new frmEditBook();
-            frmEditBook.Show();
+            frmEditBook.ShowDialog();
+            //frmEditBook.Show();
         }
     }
 }

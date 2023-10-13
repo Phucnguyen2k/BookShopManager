@@ -23,8 +23,8 @@ namespace BookShopManager
             childForm.BringToFront();
             childForm.Show();
         }
-        private Color ColorSecond = Color.LightSkyBlue;
-        private Color ColorMain = Color.AntiqueWhite;
+        private Color ColorMain = Color.FromArgb(152, 94, 255);
+        private Color ColorSecond = Color.FromArgb(219, 178, 255);
         void changeColor()
         {
             pBook.BackColor = ColorMain;

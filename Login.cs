@@ -72,8 +72,9 @@ namespace BookShopManager
                 Billing obj = new Billing();
                 obj.Show();
                 this.Close();
-                NotificationHelper.ShowNotification("Login", "Login Sussecfull", ToolTipIcon.Info);
                 con.Close();
+                NotificationHelper.ShowNotification("Login", "Login Sussecfull", ToolTipIcon.Info);
+
             }
             else
             {
@@ -83,6 +84,7 @@ namespace BookShopManager
                     MessageBoxIcon.Warning
                     );
             }
+
             con.Close();
         }
 

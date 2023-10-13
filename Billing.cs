@@ -16,7 +16,6 @@ namespace BookShopManager
 
         SqlConnection con = new SqlConnection(
             @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
-
         private void populate()
         {
             try
@@ -56,7 +55,6 @@ namespace BookShopManager
             }
             //RestColum();
         }
-
         int n = 0, GrdTotal = 0;
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -106,11 +104,6 @@ namespace BookShopManager
                 stock = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
             }
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (txtClientName.Text == "" || txtTitle.Text == "")
@@ -149,7 +142,6 @@ namespace BookShopManager
         }
 
         int prodid, prodqty, prodprice, tottal, pos = 60;
-
         private void label8_Click(object sender, EventArgs e)
         {
             frmLogin obj = new frmLogin();

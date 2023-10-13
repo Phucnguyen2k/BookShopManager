@@ -189,7 +189,6 @@
             this.cbCate.Size = new System.Drawing.Size(155, 24);
             this.cbCate.TabIndex = 2;
             this.cbCate.Text = "Select Category";
-            this.cbCate.SelectedIndexChanged += new System.EventHandler(this.cbCate_SelectedIndexChanged);
             // 
             // button4
             // 

@@ -66,7 +66,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(393, 308);
+            this.label12.Location = new System.Drawing.Point(393, 312);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 21);
@@ -90,7 +90,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(265, 308);
+            this.label11.Location = new System.Drawing.Point(265, 312);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 21);
@@ -126,7 +126,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 25);
+            this.textBox1.Size = new System.Drawing.Size(199, 25);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Wandering Witch: The Journey of Elaina";
             // 
@@ -136,24 +136,24 @@
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(244, 25);
+            this.textBox2.Size = new System.Drawing.Size(199, 25);
             this.textBox2.TabIndex = 1;
             this.textBox2.Text = "Jougi Shiraishi";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(269, 333);
+            this.numericUpDown1.Location = new System.Drawing.Point(269, 337);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(116, 25);
+            this.numericUpDown1.Size = new System.Drawing.Size(94, 25);
             this.numericUpDown1.TabIndex = 3;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(397, 333);
+            this.numericUpDown2.Location = new System.Drawing.Point(397, 337);
             this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(116, 25);
+            this.numericUpDown2.Size = new System.Drawing.Size(71, 25);
             this.numericUpDown2.TabIndex = 4;
             // 
             // comboBox1
@@ -161,7 +161,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(269, 246);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(244, 25);
+            this.comboBox1.Size = new System.Drawing.Size(199, 25);
             this.comboBox1.TabIndex = 2;
             // 
             // btnBrowser
@@ -202,7 +202,7 @@
             this.btnApply.Location = new System.Drawing.Point(269, 400);
             this.btnApply.Name = "btnApply";
             this.btnApply.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnApply.Size = new System.Drawing.Size(262, 45);
+            this.btnApply.Size = new System.Drawing.Size(199, 45);
             this.btnApply.TabIndex = 5;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             this.AcceptButton = this.btnApply;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 460);
+            this.ClientSize = new System.Drawing.Size(488, 460);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnSave);
