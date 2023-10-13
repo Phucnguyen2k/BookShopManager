@@ -14,7 +14,7 @@ namespace BookShopManager
         {
             if (txtPassword.Text == "admin")
             {
-                Books obj = new Books();
+                frmBooks obj = new frmBooks();
                 obj.Show();
                 NotificationHelper.ShowNotification("Login", "Login Sussecfull", ToolTipIcon.Info);
                 this.Hide();
@@ -24,7 +24,7 @@ namespace BookShopManager
 
         private void label3_Click(object sender, EventArgs e)
         {
-            Login obj = new Login();
+            frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
         }

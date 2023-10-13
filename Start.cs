@@ -19,7 +19,7 @@ namespace BookShopManager
             {
                 MyProcess.Value = 0;
                 timer1.Stop();
-                Login log = new Login();
+                frmLogin log = new frmLogin();
                 log.Show();
                 this.Hide();
             }

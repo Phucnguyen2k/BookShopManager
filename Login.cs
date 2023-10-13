@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BookShopManager
 {
-    public partial class Login : Form
+    public partial class frmLogin : Form
     {
         //code move windown
         private Point startPoint;
@@ -49,7 +49,7 @@ namespace BookShopManager
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        public Login()
+        public frmLogin()
         {
             InitializeComponent();
         }
@@ -84,7 +84,6 @@ namespace BookShopManager
                     );
             }
             con.Close();
-
         }
 
         private void label3_Click(object sender, EventArgs e)

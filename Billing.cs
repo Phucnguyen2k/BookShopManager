@@ -152,14 +152,14 @@ namespace BookShopManager
 
         private void label8_Click(object sender, EventArgs e)
         {
-            Login obj = new Login();
+            frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
         }
 
         private void btnExit_Click(object sender, EventArgs e) { Application.Exit(); }
 
-        private void Billing_Load(object sender, EventArgs e) { lbUserName.Text = Login.UserName; }
+        private void Billing_Load(object sender, EventArgs e) { lbUserName.Text = frmLogin.UserName; }
 
         string prodname;
 

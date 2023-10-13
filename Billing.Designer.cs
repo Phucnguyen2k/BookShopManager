@@ -156,6 +156,7 @@
             this.dvBooks.GridColor = System.Drawing.Color.Black;
             this.dvBooks.Location = new System.Drawing.Point(25, 365);
             this.dvBooks.Name = "dvBooks";
+            this.dvBooks.ReadOnly = true;
             this.dvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvBooks.Size = new System.Drawing.Size(874, 263);
             this.dvBooks.TabIndex = 10;
@@ -354,6 +355,7 @@
             this.dvBill.GridColor = System.Drawing.Color.Black;
             this.dvBill.Location = new System.Drawing.Point(384, 80);
             this.dvBill.Name = "dvBill";
+            this.dvBill.ReadOnly = true;
             this.dvBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvBill.Size = new System.Drawing.Size(515, 115);
             this.dvBill.TabIndex = 11;
@@ -362,30 +364,35 @@
             // 
             this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             this.Column1.Width = 83;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Books";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 84;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Price";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Width = 83;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Quantily";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             this.Column4.Width = 84;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Total";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.Width = 83;
             // 
             // pictureBox3

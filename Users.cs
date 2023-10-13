@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace BookShopManager
 {
-    public partial class Users : Form
+    public partial class frmUsers : Form
     {
-        public Users()
+        public frmUsers()
         {
             InitializeComponent();
             populate();
@@ -181,7 +181,7 @@ namespace BookShopManager
 
         private void label8_Click(object sender, EventArgs e)
         {
-            Login obj = new Login();
+            frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
         }
@@ -192,14 +192,14 @@ namespace BookShopManager
 
         private void label5_Click(object sender, EventArgs e)
         {
-            Books obj = new Books();
+            frmBooks obj = new frmBooks();
             obj.Show();
             this.Hide();
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
-            Dashboard obj = new Dashboard();
+            frmDashboard obj = new frmDashboard();
             obj.Show();
             this.Hide();
         }

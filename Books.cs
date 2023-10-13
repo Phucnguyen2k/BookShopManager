@@ -5,14 +5,14 @@ using System.Windows.Forms;
 
 namespace BookShopManager
 {
-    public partial class Books : Form
+    public partial class frmBooks : Form
     {
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        public Books()
+        public frmBooks()
         {
             InitializeComponent();
             populate();
@@ -220,23 +220,38 @@ namespace BookShopManager
 
         private void label6_Click(object sender, EventArgs e)
         {
-            Users obj = new Users();
+            frmUsers obj = new frmUsers();
             obj.Show();
             this.Hide();
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
-            Dashboard obj = new Dashboard();
+            frmDashboard obj = new frmDashboard();
             obj.Show();
             this.Hide();
         }
 
         private void label8_Click(object sender, EventArgs e)
         {
-            Login obj = new Login();
+            frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnDelet_Click(sender, e);
+        }
+
+        private void reToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnReset_Click(sender, e);
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
