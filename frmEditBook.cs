@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BookShopManager
 {
-    public partial class frmTest : Form
+    public partial class frmEditBook : Form
     {
-        public frmTest()
+        public frmEditBook()
         {
             InitializeComponent();
         }

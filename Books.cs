@@ -253,5 +253,11 @@ namespace BookShopManager
         {
 
         }
+
+        private void dvBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmEditBook frmEditBook = new frmEditBook();
+            frmEditBook.Show();
+        }
     }
 }

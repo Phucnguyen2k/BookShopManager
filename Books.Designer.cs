@@ -120,6 +120,7 @@
             this.dvBooks.Size = new System.Drawing.Size(863, 374);
             this.dvBooks.TabIndex = 10;
             this.dvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentClick);
+            this.dvBooks.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -131,6 +132,7 @@
             // 
             // deleteToolStripMenuItem
             // 
+            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
@@ -138,6 +140,7 @@
             // 
             // reToolStripMenuItem
             // 
+            this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
             this.reToolStripMenuItem.Name = "reToolStripMenuItem";
             this.reToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.reToolStripMenuItem.Text = "ReFersh";

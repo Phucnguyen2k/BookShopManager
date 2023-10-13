@@ -14,7 +14,7 @@ namespace BookShopManager
         {
             if (txtPassword.Text == "admin")
             {
-                frmBooks obj = new frmBooks();
+                frmMain obj = new frmMain();
                 obj.Show();
                 NotificationHelper.ShowNotification("Login", "Login Sussecfull", ToolTipIcon.Info);
                 this.Hide();
