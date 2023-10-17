@@ -35,18 +35,18 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.txtQty = new System.Windows.Forms.NumericUpDown();
+            this.txtPrice = new System.Windows.Forms.NumericUpDown();
+            this.cbCate = new System.Windows.Forms.ComboBox();
             this.btnBrowser = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
             this.SuspendLayout();
             // 
             // label10
@@ -120,49 +120,55 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // txtTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(269, 75);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 25);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Wandering Witch: The Journey of Elaina";
+            this.txtTitle.Location = new System.Drawing.Point(269, 75);
+            this.txtTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTitle.Multiline = true;
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(199, 25);
+            this.txtTitle.TabIndex = 0;
+            this.txtTitle.Text = "Wandering Witch: The Journey of Elaina";
             // 
-            // textBox2
+            // txtAuthor
             // 
-            this.textBox2.Location = new System.Drawing.Point(269, 167);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 25);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Jougi Shiraishi";
+            this.txtAuthor.Location = new System.Drawing.Point(269, 167);
+            this.txtAuthor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAuthor.Multiline = true;
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(199, 25);
+            this.txtAuthor.TabIndex = 1;
+            this.txtAuthor.Text = "Jougi Shiraishi";
             // 
-            // numericUpDown1
+            // txtQty
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(269, 337);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(94, 25);
-            this.numericUpDown1.TabIndex = 3;
+            this.txtQty.Location = new System.Drawing.Point(269, 337);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(94, 25);
+            this.txtQty.TabIndex = 3;
             // 
-            // numericUpDown2
+            // txtPrice
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(397, 337);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(71, 25);
-            this.numericUpDown2.TabIndex = 4;
+            this.txtPrice.Location = new System.Drawing.Point(397, 337);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(71, 25);
+            this.txtPrice.TabIndex = 4;
             // 
-            // comboBox1
+            // cbCate
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(269, 246);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(199, 25);
-            this.comboBox1.TabIndex = 2;
+            this.cbCate.FormattingEnabled = true;
+            this.cbCate.Items.AddRange(new object[] {
+            "Programming",
+            "Novels",
+            "Light Novel",
+            "Nofiction",
+            "Self-Help"});
+            this.cbCate.Location = new System.Drawing.Point(269, 246);
+            this.cbCate.Name = "cbCate";
+            this.cbCate.Size = new System.Drawing.Size(199, 25);
+            this.cbCate.TabIndex = 2;
             // 
             // btnBrowser
             // 
@@ -192,6 +198,7 @@
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnApply
             // 
@@ -227,11 +234,11 @@
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnBrowser);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cbCate);
+            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtQty);
+            this.Controls.Add(this.txtAuthor);
+            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label12);
@@ -243,9 +250,10 @@
             this.Name = "frmEditBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmEditBook";
+            this.Load += new System.EventHandler(this.frmEditBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,11 +267,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.TextBox txtAuthor;
+        private System.Windows.Forms.NumericUpDown txtQty;
+        private System.Windows.Forms.NumericUpDown txtPrice;
+        private System.Windows.Forms.ComboBox cbCate;
         private System.Windows.Forms.Button btnBrowser;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnApply;

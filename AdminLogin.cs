@@ -21,7 +21,6 @@ namespace BookShopManager
             }
             else MessageBox.Show("Wrong Password Contact The Admin");
         }
-
         private void label3_Click(object sender, EventArgs e)
         {
             frmLogin obj = new frmLogin();

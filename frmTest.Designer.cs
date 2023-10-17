@@ -1,6 +1,6 @@
 ﻿namespace BookShopManager
 {
-    partial class frmBooks
+    partial class frmTest
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBooks));
-            this.panel2 = new System.Windows.Forms.Panel();
             this.cbFilerBooka = new System.Windows.Forms.ComboBox();
             this.dvBooks = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -39,60 +37,34 @@
             this.txtQty = new System.Windows.Forms.NumericUpDown();
             this.txtPrice = new System.Windows.Forms.NumericUpDown();
             this.cbCate = new System.Windows.Forms.ComboBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelet = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtAuthor = new System.Windows.Forms.TextBox();
-            this.txtTitle = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.ttMain = new System.Windows.Forms.ToolTip(this.components);
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.ttMain = new System.Windows.Forms.ToolTip(this.components);
-            this.panel2.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.cbFilerBooka);
-            this.panel2.Controls.Add(this.dvBooks);
-            this.panel2.Controls.Add(this.txtQty);
-            this.panel2.Controls.Add(this.txtPrice);
-            this.panel2.Controls.Add(this.cbCate);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.btnReset);
-            this.panel2.Controls.Add(this.btnEdit);
-            this.panel2.Controls.Add(this.btnDelet);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.txtAuthor);
-            this.panel2.Controls.Add(this.txtTitle);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.lbTitle);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(901, 586);
-            this.panel2.TabIndex = 0;
             // 
             // cbFilerBooka
             // 
             this.cbFilerBooka.FormattingEnabled = true;
-            this.cbFilerBooka.ItemHeight = 16;
+            this.cbFilerBooka.ItemHeight = 13;
             this.cbFilerBooka.Items.AddRange(new object[] {
             "Programming",
             "Novels",
@@ -101,10 +73,9 @@
             "Self-Help"});
             this.cbFilerBooka.Location = new System.Drawing.Point(392, 212);
             this.cbFilerBooka.Name = "cbFilerBooka";
-            this.cbFilerBooka.Size = new System.Drawing.Size(173, 24);
+            this.cbFilerBooka.Size = new System.Drawing.Size(173, 21);
             this.cbFilerBooka.TabIndex = 9;
             this.cbFilerBooka.Text = "Filer By Category";
-            this.cbFilerBooka.SelectionChangeCommitted += new System.EventHandler(this.cbFilerBook_SelectionChangeCommitted);
             // 
             // dvBooks
             // 
@@ -119,8 +90,6 @@
             this.dvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvBooks.Size = new System.Drawing.Size(863, 374);
             this.dvBooks.TabIndex = 10;
-            this.dvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentClick);
-            this.dvBooks.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -132,19 +101,15 @@
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // reToolStripMenuItem
             // 
-            this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
             this.reToolStripMenuItem.Name = "reToolStripMenuItem";
             this.reToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.reToolStripMenuItem.Text = "ReFersh";
-            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
             // 
             // txtQty
             // 
@@ -177,7 +142,7 @@
             // cbCate
             // 
             this.cbCate.FormattingEnabled = true;
-            this.cbCate.ItemHeight = 16;
+            this.cbCate.ItemHeight = 13;
             this.cbCate.Items.AddRange(new object[] {
             "Programming",
             "Novels",
@@ -186,9 +151,20 @@
             "Self-Help"});
             this.cbCate.Location = new System.Drawing.Point(410, 80);
             this.cbCate.Name = "cbCate";
-            this.cbCate.Size = new System.Drawing.Size(155, 24);
+            this.cbCate.Size = new System.Drawing.Size(155, 21);
             this.cbCate.TabIndex = 2;
             this.cbCate.Text = "Select Category";
+            // 
+            // btnExit
+            // 
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Location = new System.Drawing.Point(881, 3);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -206,7 +182,6 @@
             this.button4.TabIndex = 9;
             this.button4.Text = "Refersh";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnReset
             // 
@@ -224,7 +199,6 @@
             this.btnReset.TabIndex = 8;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnEdit
             // 
@@ -242,7 +216,6 @@
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelet
             // 
@@ -261,7 +234,6 @@
             this.btnDelet.Text = "Delete";
             this.ttMain.SetToolTip(this.btnDelet, "Close");
             this.btnDelet.UseVisualStyleBackColor = false;
-            this.btnDelet.Click += new System.EventHandler(this.btnDelet_Click);
             // 
             // btnSave
             // 
@@ -280,7 +252,6 @@
             this.btnSave.Text = "Save";
             this.ttMain.SetToolTip(this.btnSave, "Save Books");
             this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtAuthor
             // 
@@ -291,22 +262,13 @@
             this.txtAuthor.Size = new System.Drawing.Size(122, 24);
             this.txtAuthor.TabIndex = 1;
             // 
-            // txtTitle
-            // 
-            this.txtTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(25, 80);
-            this.txtTitle.Multiline = true;
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(197, 24);
-            this.txtTitle.TabIndex = 0;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(410, 54);
-            this.label10.Name = "lbCate";
+            this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(120, 21);
             this.label10.TabIndex = 0;
             this.label10.Text = "Categories";
@@ -317,10 +279,19 @@
             this.label12.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(778, 54);
-            this.label12.Name = "lbPrice";
+            this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 21);
             this.label12.TabIndex = 0;
             this.label12.Text = "Price";
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitle.Location = new System.Drawing.Point(25, 80);
+            this.txtTitle.Multiline = true;
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(197, 24);
+            this.txtTitle.TabIndex = 0;
             // 
             // label9
             // 
@@ -328,7 +299,7 @@
             this.label9.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(256, 54);
-            this.label9.Name = "lbAuthor";
+            this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 21);
             this.label9.TabIndex = 0;
             this.label9.Text = "Author";
@@ -339,7 +310,7 @@
             this.label11.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(621, 54);
-            this.label11.Name = "lbQty";
+            this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 21);
             this.label11.TabIndex = 0;
             this.label11.Text = "Quantily";
@@ -377,56 +348,81 @@
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Book Shop";
             // 
-            // frmBooks
+            // panel2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.cbFilerBooka);
+            this.panel2.Controls.Add(this.dvBooks);
+            this.panel2.Controls.Add(this.txtQty);
+            this.panel2.Controls.Add(this.txtPrice);
+            this.panel2.Controls.Add(this.cbCate);
+            this.panel2.Controls.Add(this.btnExit);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.btnReset);
+            this.panel2.Controls.Add(this.btnEdit);
+            this.panel2.Controls.Add(this.btnDelet);
+            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.txtAuthor);
+            this.panel2.Controls.Add(this.txtTitle);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lbTitle);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(909, 648);
+            this.panel2.TabIndex = 8;
+            // 
+            // frmTest
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(901, 586);
+            this.ClientSize = new System.Drawing.Size(909, 648);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmBooks";
+            this.Name = "frmTest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Books";
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Text = "frmTest";
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.TextBox txtAuthor;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cbCate;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown txtPrice;
-        private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnDelet;
         private System.Windows.Forms.ComboBox cbFilerBooka;
         private System.Windows.Forms.DataGridView dvBooks;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ToolTip ttMain;
-        private System.Windows.Forms.NumericUpDown txtQty;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown txtQty;
+        private System.Windows.Forms.NumericUpDown txtPrice;
+        private System.Windows.Forms.ComboBox cbCate;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelet;
+        private System.Windows.Forms.ToolTip ttMain;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtAuthor;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.Panel panel2;
     }
 }

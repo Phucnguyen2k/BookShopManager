@@ -85,6 +85,8 @@ namespace BookShopManager
 
         private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //reset bill
+            btnReset_Click(sender, e);
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
             //txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
             //cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
@@ -148,6 +150,8 @@ namespace BookShopManager
             obj.Show();
             this.Hide();
         }
+
+
 
         private void btnExit_Click(object sender, EventArgs e) { Application.Exit(); }
 
@@ -230,6 +234,7 @@ namespace BookShopManager
             txtQty.Value = 0;
             txtPrice.Value = 0;
         }
+
 
         private void btnReset_Click(object sender, EventArgs e) { Reset(); }
     }

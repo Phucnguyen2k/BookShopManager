@@ -70,8 +70,10 @@ namespace BookShopManager
             {
                 UserName = txtUserName.Text;
                 Billing obj = new Billing();
+                //frmMain obj = new frmMain();
                 obj.Show();
-                this.Close();
+                //dung this.clos se tat ung dung
+                this.Hide();
                 con.Close();
                 NotificationHelper.ShowNotification("Login", "Login Sussecfull", ToolTipIcon.Info);
 

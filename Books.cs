@@ -106,7 +106,53 @@ namespace BookShopManager
 
         int key = 0;
         string re;
-        private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private CBooks createBook()
+        {
+            CBooks book = new CBooks();
+            book.Title = txtTitle.Text;
+            book.Author = txtAuthor.Text;
+            if (cbCate.SelectedItem != null)
+            {
+                book.Cate = cbCate.SelectedItem.ToString();
+            }
+            book.Qty = Convert.ToInt32(txtQty.Value);
+            book.Price = Convert.ToInt32(txtPrice.Value);
+
+            return book;
+        }
+        void classAddBooks()
+        {
+
+            txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
+            txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
+            cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+            // txtQty.Value = dvBooks.SelectedRows[0].Cells[4].Value.ToString();
+            txtQty.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
+            txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
+
+            createBook();
+            //CBooks book = new CBooks();
+            //book.Title = txtTitle.Text;
+            //book.Author = txtAuthor.Text;
+            //book.Cate = cbCate.SelectedItem.ToString();
+            //book.Qty = Convert.ToInt32(txtQty.Value);
+            //book.Price = Convert.ToInt32(txtPrice.Value);
+
+            string s;
+            s = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+            re = s.Replace(" ", "");
+            cbCate.SelectedItem = re;
+            if (txtTitle.Text == "")
+            {
+                key = 0;
+            }
+            else
+            {
+                key = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[0].Value.ToString());
+            }
+
+        }
+        void normalAddBooks()
         {
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
             txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
@@ -127,6 +173,10 @@ namespace BookShopManager
             {
                 key = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[0].Value.ToString());
             }
+
+        }
+        private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
 
         private void btnDelet_Click(object sender, EventArgs e)
@@ -241,14 +291,43 @@ namespace BookShopManager
 
         private void label5_Click(object sender, EventArgs e)
         {
-
         }
 
         private void dvBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmEditBook frmEditBook = new frmEditBook();
-            frmEditBook.ShowDialog();
-            //frmEditBook.Show();
+            // Check if a valid row is double-clicked
+            if (e.RowIndex >= 0 && e.RowIndex < dvBooks.Rows.Count)
+            {
+                // Create an instance of the frmEditBook form
+                CBooks books = createBook();
+                frmEditBook frmEditBook = new frmEditBook(books);
+
+                // Load the data from the selected row into the form
+                CBooks bookToEdit = new CBooks();
+                bookToEdit.Title = dvBooks.Rows[e.RowIndex].Cells[1].Value.ToString();
+                bookToEdit.Author = dvBooks.Rows[e.RowIndex].Cells[2].Value.ToString();
+                bookToEdit.Cate = dvBooks.Rows[e.RowIndex].Cells[3].Value.ToString();
+                bookToEdit.Qty = Convert.ToInt32(dvBooks.Rows[e.RowIndex].Cells[4].Value);
+                bookToEdit.Price = Convert.ToInt32(dvBooks.Rows[e.RowIndex].Cells[5].Value);
+
+                frmEditBook.LoadBookData(bookToEdit);
+
+                // Show the frmEditBook form as a dialog
+                if (frmEditBook.ShowDialog() == DialogResult.OK)
+                {
+                    // The user clicked "Save" in the frmEditBook form.
+                    // You can access the updated book data using frmEditBook.EditedBook.
+                    CBooks updatedBook = frmEditBook.EditedBook;
+
+                    // Now you can update your DataGridView or book list with the updated data.
+                    // For example, you can update the DataGridView cell values here.
+                    dvBooks.Rows[e.RowIndex].Cells[1].Value = updatedBook.Title;
+                    dvBooks.Rows[e.RowIndex].Cells[2].Value = updatedBook.Author;
+                    dvBooks.Rows[e.RowIndex].Cells[3].Value = updatedBook.Cate;
+                    dvBooks.Rows[e.RowIndex].Cells[4].Value = updatedBook.Qty;
+                    dvBooks.Rows[e.RowIndex].Cells[5].Value = updatedBook.Price;
+                }
+            }
         }
     }
 }
