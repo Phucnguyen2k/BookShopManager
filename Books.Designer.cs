@@ -54,11 +54,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.ttMain = new System.Windows.Forms.ToolTip(this.components);
+            this.tcBook = new System.Windows.Forms.TabControl();
+            this.tpEditBooks = new System.Windows.Forms.TabPage();
+            this.tpFilterBooks = new System.Windows.Forms.TabPage();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
+            this.tcBook.SuspendLayout();
+            this.tpEditBooks.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -82,11 +87,10 @@
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.lbTitle);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(901, 586);
+            this.panel2.Size = new System.Drawing.Size(887, 515);
             this.panel2.TabIndex = 0;
             // 
             // cbFilerBooka
@@ -94,12 +98,13 @@
             this.cbFilerBooka.FormattingEnabled = true;
             this.cbFilerBooka.ItemHeight = 16;
             this.cbFilerBooka.Items.AddRange(new object[] {
+            "All",
             "Programming",
             "Novels",
             "Light Novel",
             "Nofiction",
             "Self-Help"});
-            this.cbFilerBooka.Location = new System.Drawing.Point(392, 212);
+            this.cbFilerBooka.Location = new System.Drawing.Point(390, 158);
             this.cbFilerBooka.Name = "cbFilerBooka";
             this.cbFilerBooka.Size = new System.Drawing.Size(173, 24);
             this.cbFilerBooka.TabIndex = 9;
@@ -113,28 +118,29 @@
             this.dvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvBooks.ContextMenuStrip = this.contextMenuStrip1;
             this.dvBooks.GridColor = System.Drawing.Color.Black;
-            this.dvBooks.Location = new System.Drawing.Point(25, 261);
+            this.dvBooks.Location = new System.Drawing.Point(0, 193);
             this.dvBooks.Name = "dvBooks";
             this.dvBooks.ReadOnly = true;
+            this.dvBooks.RowHeadersWidth = 51;
             this.dvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvBooks.Size = new System.Drawing.Size(863, 374);
+            this.dvBooks.Size = new System.Drawing.Size(882, 325);
             this.dvBooks.TabIndex = 10;
             this.dvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentClick);
-            this.dvBooks.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentDoubleClick);
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteToolStripMenuItem,
             this.reToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(116, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 56);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -142,14 +148,14 @@
             // 
             this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
             this.reToolStripMenuItem.Name = "reToolStripMenuItem";
-            this.reToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.reToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
             this.reToolStripMenuItem.Text = "ReFersh";
             this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
             // 
             // txtQty
             // 
             this.txtQty.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQty.Location = new System.Drawing.Point(627, 78);
+            this.txtQty.Location = new System.Drawing.Point(625, 44);
             this.txtQty.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -163,7 +169,7 @@
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrice.Location = new System.Drawing.Point(782, 78);
+            this.txtPrice.Location = new System.Drawing.Point(780, 44);
             this.txtPrice.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -184,7 +190,7 @@
             "Light Novel",
             "Nofiction",
             "Self-Help"});
-            this.cbCate.Location = new System.Drawing.Point(410, 80);
+            this.cbCate.Location = new System.Drawing.Point(408, 46);
             this.cbCate.Name = "cbCate";
             this.cbCate.Size = new System.Drawing.Size(155, 24);
             this.cbCate.TabIndex = 2;
@@ -200,7 +206,7 @@
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(571, 203);
+            this.button4.Location = new System.Drawing.Point(578, 149);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(105, 33);
             this.button4.TabIndex = 9;
@@ -218,7 +224,7 @@
             this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(593, 129);
+            this.btnReset.Location = new System.Drawing.Point(591, 84);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(105, 33);
             this.btnReset.TabIndex = 8;
@@ -236,7 +242,7 @@
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(371, 129);
+            this.btnEdit.Location = new System.Drawing.Point(369, 84);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 33);
             this.btnEdit.TabIndex = 6;
@@ -254,7 +260,7 @@
             this.btnDelet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelet.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelet.Location = new System.Drawing.Point(482, 129);
+            this.btnDelet.Location = new System.Drawing.Point(480, 84);
             this.btnDelet.Name = "btnDelet";
             this.btnDelet.Size = new System.Drawing.Size(105, 33);
             this.btnDelet.TabIndex = 7;
@@ -273,7 +279,7 @@
             this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(260, 129);
+            this.btnSave.Location = new System.Drawing.Point(258, 84);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 33);
             this.btnSave.TabIndex = 5;
@@ -285,7 +291,7 @@
             // txtAuthor
             // 
             this.txtAuthor.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAuthor.Location = new System.Drawing.Point(256, 80);
+            this.txtAuthor.Location = new System.Drawing.Point(254, 46);
             this.txtAuthor.Multiline = true;
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(122, 24);
@@ -294,7 +300,7 @@
             // txtTitle
             // 
             this.txtTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitle.Location = new System.Drawing.Point(25, 80);
+            this.txtTitle.Location = new System.Drawing.Point(23, 46);
             this.txtTitle.Multiline = true;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(197, 24);
@@ -305,8 +311,8 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(410, 54);
-            this.label10.Name = "lbCate";
+            this.label10.Location = new System.Drawing.Point(408, 20);
+            this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(120, 21);
             this.label10.TabIndex = 0;
             this.label10.Text = "Categories";
@@ -316,8 +322,8 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(778, 54);
-            this.label12.Name = "lbPrice";
+            this.label12.Location = new System.Drawing.Point(776, 20);
+            this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 21);
             this.label12.TabIndex = 0;
             this.label12.Text = "Price";
@@ -327,8 +333,8 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(256, 54);
-            this.label9.Name = "lbAuthor";
+            this.label9.Location = new System.Drawing.Point(254, 20);
+            this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 21);
             this.label9.TabIndex = 0;
             this.label9.Text = "Author";
@@ -338,8 +344,8 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(621, 54);
-            this.label11.Name = "lbQty";
+            this.label11.Location = new System.Drawing.Point(619, 20);
+            this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 21);
             this.label11.TabIndex = 0;
             this.label11.Text = "Quantily";
@@ -349,7 +355,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 54);
+            this.label1.Location = new System.Drawing.Point(23, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 21);
             this.label1.TabIndex = 0;
@@ -360,7 +366,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(405, 182);
+            this.label2.Location = new System.Drawing.Point(407, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 27);
             this.label2.TabIndex = 0;
@@ -371,11 +377,42 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.Black;
-            this.lbTitle.Location = new System.Drawing.Point(409, 1);
+            this.lbTitle.Location = new System.Drawing.Point(397, 5);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(138, 27);
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Book Shop";
+            // 
+            // tcBook
+            // 
+            this.tcBook.Controls.Add(this.tpEditBooks);
+            this.tcBook.Controls.Add(this.tpFilterBooks);
+            this.tcBook.Location = new System.Drawing.Point(0, 35);
+            this.tcBook.Name = "tcBook";
+            this.tcBook.SelectedIndex = 0;
+            this.tcBook.Size = new System.Drawing.Size(901, 550);
+            this.tcBook.TabIndex = 11;
+            // 
+            // tpEditBooks
+            // 
+            this.tpEditBooks.Controls.Add(this.panel2);
+            this.tpEditBooks.Location = new System.Drawing.Point(4, 25);
+            this.tpEditBooks.Name = "tpEditBooks";
+            this.tpEditBooks.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEditBooks.Size = new System.Drawing.Size(893, 521);
+            this.tpEditBooks.TabIndex = 0;
+            this.tpEditBooks.Text = "Edit Books";
+            this.tpEditBooks.UseVisualStyleBackColor = true;
+            // 
+            // tpFilterBooks
+            // 
+            this.tpFilterBooks.Location = new System.Drawing.Point(4, 25);
+            this.tpFilterBooks.Name = "tpFilterBooks";
+            this.tpFilterBooks.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFilterBooks.Size = new System.Drawing.Size(893, 521);
+            this.tpFilterBooks.TabIndex = 1;
+            this.tpFilterBooks.Text = "Filter Books";
+            this.tpFilterBooks.UseVisualStyleBackColor = true;
             // 
             // frmBooks
             // 
@@ -383,7 +420,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(901, 586);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.tcBook);
+            this.Controls.Add(this.lbTitle);
             this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -392,13 +430,17 @@
             this.Name = "frmBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Books";
+            this.Load += new System.EventHandler(this.frmBooks_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
+            this.tcBook.ResumeLayout(false);
+            this.tpEditBooks.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -428,5 +470,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
+        private System.Windows.Forms.TabControl tcBook;
+        private System.Windows.Forms.TabPage tpFilterBooks;
+        private System.Windows.Forms.TabPage tpEditBooks;
     }
 }

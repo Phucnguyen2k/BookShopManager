@@ -16,11 +16,14 @@ namespace BookShopManager
         {
             InitializeComponent();
             populate();
-            dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
+
+        private void frmBooks_Load(object sender, EventArgs e)
+        {
+            dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dvBooks.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
-
         private void populate()
         {
             try
@@ -41,6 +44,11 @@ namespace BookShopManager
         }
         private void Filter()
         {
+            if (cbFilerBooka.SelectedItem == "All")
+            {
+                populate();
+                return;
+            }
             con.Open();
             string query = "select * from BookTbl where Bcat='" + cbFilerBooka.SelectedItem.ToString() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
@@ -122,7 +130,6 @@ namespace BookShopManager
         }
         void classAddBooks()
         {
-
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
             txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
             cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
@@ -177,13 +184,13 @@ namespace BookShopManager
         }
         private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            normalAddBooks();
         }
 
         private void btnDelet_Click(object sender, EventArgs e)
         {
             if (key == 0)
             {
-
                 MessageBox.Show("Missing Infor Books");
             }
             else
@@ -287,47 +294,6 @@ namespace BookShopManager
         private void reToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnReset_Click(sender, e);
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dvBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Check if a valid row is double-clicked
-            if (e.RowIndex >= 0 && e.RowIndex < dvBooks.Rows.Count)
-            {
-                // Create an instance of the frmEditBook form
-                CBooks books = createBook();
-                frmEditBook frmEditBook = new frmEditBook(books);
-
-                // Load the data from the selected row into the form
-                CBooks bookToEdit = new CBooks();
-                bookToEdit.Title = dvBooks.Rows[e.RowIndex].Cells[1].Value.ToString();
-                bookToEdit.Author = dvBooks.Rows[e.RowIndex].Cells[2].Value.ToString();
-                bookToEdit.Cate = dvBooks.Rows[e.RowIndex].Cells[3].Value.ToString();
-                bookToEdit.Qty = Convert.ToInt32(dvBooks.Rows[e.RowIndex].Cells[4].Value);
-                bookToEdit.Price = Convert.ToInt32(dvBooks.Rows[e.RowIndex].Cells[5].Value);
-
-                frmEditBook.LoadBookData(bookToEdit);
-
-                // Show the frmEditBook form as a dialog
-                if (frmEditBook.ShowDialog() == DialogResult.OK)
-                {
-                    // The user clicked "Save" in the frmEditBook form.
-                    // You can access the updated book data using frmEditBook.EditedBook.
-                    CBooks updatedBook = frmEditBook.EditedBook;
-
-                    // Now you can update your DataGridView or book list with the updated data.
-                    // For example, you can update the DataGridView cell values here.
-                    dvBooks.Rows[e.RowIndex].Cells[1].Value = updatedBook.Title;
-                    dvBooks.Rows[e.RowIndex].Cells[2].Value = updatedBook.Author;
-                    dvBooks.Rows[e.RowIndex].Cells[3].Value = updatedBook.Cate;
-                    dvBooks.Rows[e.RowIndex].Cells[4].Value = updatedBook.Qty;
-                    dvBooks.Rows[e.RowIndex].Cells[5].Value = updatedBook.Price;
-                }
-            }
         }
     }
 }

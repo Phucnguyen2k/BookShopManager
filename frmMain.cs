@@ -25,7 +25,7 @@ namespace BookShopManager
         }
         private Color ColorMain = Color.FromArgb(152, 94, 255);
         private Color ColorSecond = Color.FromArgb(219, 178, 255);
-        
+
         void changeColor()
         {
             pBook.BackColor = ColorMain;
@@ -76,7 +76,6 @@ namespace BookShopManager
             obj.Show();
             this.Hide();
         }
-
         private void frmMain_Load(object sender, System.EventArgs e)
         {
             OpenChildForm(new frmBooks());

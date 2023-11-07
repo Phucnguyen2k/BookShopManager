@@ -125,10 +125,10 @@
             this.tpDashBoard.Controls.Add(this.panel10);
             this.tpDashBoard.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpDashBoard.ImageIndex = 0;
-            this.tpDashBoard.Location = new System.Drawing.Point(4, 24);
+            this.tpDashBoard.Location = new System.Drawing.Point(4, 26);
             this.tpDashBoard.Name = "tpDashBoard";
             this.tpDashBoard.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDashBoard.Size = new System.Drawing.Size(901, 589);
+            this.tpDashBoard.Size = new System.Drawing.Size(901, 587);
             this.tpDashBoard.TabIndex = 0;
             this.tpDashBoard.Text = "DashBoard";
             // 
@@ -151,7 +151,7 @@
             this.lbUsers.ForeColor = System.Drawing.Color.Black;
             this.lbUsers.Location = new System.Drawing.Point(37, 92);
             this.lbUsers.Name = "lbUsers";
-            this.lbUsers.Size = new System.Drawing.Size(82, 27);
+            this.lbUsers.Size = new System.Drawing.Size(105, 34);
             this.lbUsers.TabIndex = 6;
             this.lbUsers.Text = "Stock";
             this.lbUsers.Click += new System.EventHandler(this.label5_Click);
@@ -164,7 +164,7 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(36, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(100, 33);
+            this.label11.Size = new System.Drawing.Size(128, 41);
             this.label11.TabIndex = 6;
             this.label11.Text = "Users";
             this.label11.Click += new System.EventHandler(this.label5_Click);
@@ -198,7 +198,7 @@
             this.lbToTalAmount.ForeColor = System.Drawing.Color.Black;
             this.lbToTalAmount.Location = new System.Drawing.Point(49, 103);
             this.lbToTalAmount.Name = "lbToTalAmount";
-            this.lbToTalAmount.Size = new System.Drawing.Size(82, 27);
+            this.lbToTalAmount.Size = new System.Drawing.Size(105, 34);
             this.lbToTalAmount.TabIndex = 6;
             this.lbToTalAmount.Text = "Stock";
             this.lbToTalAmount.Click += new System.EventHandler(this.label5_Click);
@@ -211,7 +211,7 @@
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(11, 27);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(219, 33);
+            this.label9.Size = new System.Drawing.Size(282, 41);
             this.label9.TabIndex = 6;
             this.label9.Text = "ToTal Amount";
             this.label9.Click += new System.EventHandler(this.label5_Click);
@@ -245,7 +245,7 @@
             this.lbBooksStock.ForeColor = System.Drawing.Color.Black;
             this.lbBooksStock.Location = new System.Drawing.Point(54, 102);
             this.lbBooksStock.Name = "lbBooksStock";
-            this.lbBooksStock.Size = new System.Drawing.Size(82, 27);
+            this.lbBooksStock.Size = new System.Drawing.Size(105, 34);
             this.lbBooksStock.TabIndex = 6;
             this.lbBooksStock.Text = "Stock";
             this.lbBooksStock.Click += new System.EventHandler(this.label5_Click);
@@ -258,7 +258,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(24, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 33);
+            this.label1.Size = new System.Drawing.Size(260, 41);
             this.label1.TabIndex = 6;
             this.label1.Text = "Books Stock";
             this.label1.Click += new System.EventHandler(this.label5_Click);
@@ -266,7 +266,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(232, 27);
+            this.pictureBox6.Location = new System.Drawing.Point(218, 84);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(60, 62);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -293,7 +293,7 @@
             this.lbUserMost.ForeColor = System.Drawing.Color.Black;
             this.lbUserMost.Location = new System.Drawing.Point(22, 102);
             this.lbUserMost.Name = "lbUserMost";
-            this.lbUserMost.Size = new System.Drawing.Size(82, 27);
+            this.lbUserMost.Size = new System.Drawing.Size(105, 34);
             this.lbUserMost.TabIndex = 6;
             this.lbUserMost.Text = "Stock";
             this.lbUserMost.Click += new System.EventHandler(this.label5_Click);
@@ -306,7 +306,7 @@
             this.lbMost.ForeColor = System.Drawing.Color.Black;
             this.lbMost.Location = new System.Drawing.Point(124, 102);
             this.lbMost.Name = "lbMost";
-            this.lbMost.Size = new System.Drawing.Size(82, 27);
+            this.lbMost.Size = new System.Drawing.Size(105, 34);
             this.lbMost.TabIndex = 6;
             this.lbMost.Text = "Stock";
             this.lbMost.Click += new System.EventHandler(this.label5_Click);
@@ -319,7 +319,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(11, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 33);
+            this.label3.Size = new System.Drawing.Size(238, 41);
             this.label3.TabIndex = 6;
             this.label3.Text = "Users Most";
             this.label3.Click += new System.EventHandler(this.label5_Click);
@@ -327,7 +327,7 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(243, 27);
+            this.pictureBox9.Location = new System.Drawing.Point(255, 55);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(60, 62);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -338,9 +338,9 @@
             // 
             this.tpHistory.Controls.Add(this.dvHistory);
             this.tpHistory.ImageIndex = 2;
-            this.tpHistory.Location = new System.Drawing.Point(4, 24);
+            this.tpHistory.Location = new System.Drawing.Point(4, 26);
             this.tpHistory.Name = "tpHistory";
-            this.tpHistory.Size = new System.Drawing.Size(901, 589);
+            this.tpHistory.Size = new System.Drawing.Size(901, 587);
             this.tpHistory.TabIndex = 2;
             this.tpHistory.Text = "History";
             this.tpHistory.UseVisualStyleBackColor = true;
@@ -356,17 +356,18 @@
             this.dvHistory.GridColor = System.Drawing.Color.Black;
             this.dvHistory.Location = new System.Drawing.Point(0, 0);
             this.dvHistory.Name = "dvHistory";
+            this.dvHistory.RowHeadersWidth = 51;
             this.dvHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvHistory.Size = new System.Drawing.Size(901, 589);
+            this.dvHistory.Size = new System.Drawing.Size(901, 587);
             this.dvHistory.TabIndex = 11;
             // 
             // tpLine
             // 
             this.tpLine.Controls.Add(this.label12);
             this.tpLine.Controls.Add(this.chart1);
-            this.tpLine.Location = new System.Drawing.Point(4, 24);
+            this.tpLine.Location = new System.Drawing.Point(4, 26);
             this.tpLine.Name = "tpLine";
-            this.tpLine.Size = new System.Drawing.Size(901, 589);
+            this.tpLine.Size = new System.Drawing.Size(901, 587);
             this.tpLine.TabIndex = 3;
             this.tpLine.Text = "Line";
             this.tpLine.UseVisualStyleBackColor = true;
@@ -377,7 +378,7 @@
             this.label12.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(345, 526);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(198, 18);
+            this.label12.Size = new System.Drawing.Size(238, 23);
             this.label12.TabIndex = 9;
             this.label12.Text = "Transaction history";
             // 
@@ -407,10 +408,10 @@
             this.tpChart.Controls.Add(this.chart2);
             this.tpChart.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpChart.ImageIndex = 1;
-            this.tpChart.Location = new System.Drawing.Point(4, 24);
+            this.tpChart.Location = new System.Drawing.Point(4, 26);
             this.tpChart.Name = "tpChart";
             this.tpChart.Padding = new System.Windows.Forms.Padding(3);
-            this.tpChart.Size = new System.Drawing.Size(901, 589);
+            this.tpChart.Size = new System.Drawing.Size(901, 587);
             this.tpChart.TabIndex = 1;
             this.tpChart.Text = "Chart";
             // 
@@ -437,7 +438,7 @@
             this.label10.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(385, 548);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(128, 18);
+            this.label10.Size = new System.Drawing.Size(154, 23);
             this.label10.TabIndex = 7;
             this.label10.Text = "Book Storage";
             // 
@@ -447,7 +448,7 @@
             this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(345, 243);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(168, 18);
+            this.label2.Size = new System.Drawing.Size(202, 23);
             this.label2.TabIndex = 7;
             this.label2.Text = "Revenue per user";
             // 
@@ -484,7 +485,7 @@
             this.lbTitle.ForeColor = System.Drawing.Color.Black;
             this.lbTitle.Location = new System.Drawing.Point(409, 1);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(138, 27);
+            this.lbTitle.Size = new System.Drawing.Size(177, 34);
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Book Shop";
             // 
@@ -494,7 +495,7 @@
             // 
             // frmDashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 586);
             this.Controls.Add(this.panel2);

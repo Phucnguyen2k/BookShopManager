@@ -34,7 +34,7 @@ namespace BookShopManager
             obj.Show();
             this.Hide();
         }
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\Asus\OneDrive\Tài liệu\BookShopsDb.mdf"";Integrated Security=True;Connect Timeout=30");
+        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
         private void Dashboard_Load(object sender, EventArgs e)
         {
             con.Open();
@@ -70,7 +70,6 @@ namespace BookShopManager
             SqlDataAdapter adapter = new SqlDataAdapter(query, con);
             DataTable dt5 = new DataTable();
             adapter.Fill(dt5);
-
             chart1.Series.Clear(); // Clear existing series if any
 
             // Create a new series
@@ -105,7 +104,6 @@ namespace BookShopManager
             // Change Title Hirizon
             chart2.ChartAreas[0].AxisX.Title = "Book Title";
             chart2.ChartAreas[0].AxisY.Title = "Quantity";
-
             chart2.DataBind();
 
 
