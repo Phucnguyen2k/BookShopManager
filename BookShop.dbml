@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BOOKSHOPSDB" Class="BookShopDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True" SettingsObjectName="BookShopManager.Properties.Settings" SettingsPropertyName="BOOKSHOPSDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BillTbl" Member="BillTbls">
+    <Type Name="BillTbl">
+      <Column Name="BillId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UName" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClineName" Type="System.String" DbType="NChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTbl" Member="UserTbls">
+    <Type Name="UserTbl">
+      <Column Name="UId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UName" Type="System.String" DbType="NChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="UPhone" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="UAdd" Type="System.String" DbType="NChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="UPass" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="UYob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BookTbl" Member="BookTbls">
+    <Type Name="BookTbl">
+      <Column Name="BId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BTitle" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="BAuthor" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="BCat" Type="System.String" DbType="NChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="BQty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BPrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

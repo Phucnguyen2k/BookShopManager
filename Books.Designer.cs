@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBooks));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cbFilerBooka = new System.Windows.Forms.ComboBox();
+            this.pnBookEdit = new System.Windows.Forms.Panel();
+            this.mmYear = new System.Windows.Forms.NumericUpDown();
+            this.Year = new System.Windows.Forms.Label();
             this.dvBooks = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,6 @@
             this.txtQty = new System.Windows.Forms.NumericUpDown();
             this.txtPrice = new System.Windows.Forms.NumericUpDown();
             this.cbCate = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelet = new System.Windows.Forms.Button();
@@ -56,60 +56,119 @@
             this.ttMain = new System.Windows.Forms.ToolTip(this.components);
             this.tcBook = new System.Windows.Forms.TabControl();
             this.tpEditBooks = new System.Windows.Forms.TabPage();
-            this.tpFilterBooks = new System.Windows.Forms.TabPage();
-            this.panel2.SuspendLayout();
+            this.tpFilterAddSearch = new System.Windows.Forms.TabPage();
+            this.btnRefershBooks = new System.Windows.Forms.Button();
+            this.txtSearchBox = new System.Windows.Forms.TextBox();
+            this.cbFieldSearchBook = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpFilter = new System.Windows.Forms.TabPage();
+            this.pnAmount = new System.Windows.Forms.Panel();
+            this.btnFilterAmountBooks = new System.Windows.Forms.Button();
+            this.ilSort = new System.Windows.Forms.ImageList(this.components);
+            this.label14 = new System.Windows.Forms.Label();
+            this.mmToAmount = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.mmFromAmount = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.pnFilterCatogory = new System.Windows.Forms.Panel();
+            this.cbFilerBook = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFilterPriceBooks = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.mmToPrice = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.mmFromPrice = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tpSort = new System.Windows.Forms.TabPage();
+            this.btnSortBook = new System.Windows.Forms.Button();
+            this.btnYear = new System.Windows.Forms.Button();
+            this.btnPrice = new System.Windows.Forms.Button();
+            this.btnQty = new System.Windows.Forms.Button();
+            this.btnCategory = new System.Windows.Forms.Button();
+            this.btnAuthor = new System.Windows.Forms.Button();
+            this.btnTitle = new System.Windows.Forms.Button();
+            this.btnID = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.dvFilterBooks = new System.Windows.Forms.DataGridView();
+            this.pnBookEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
             this.tcBook.SuspendLayout();
             this.tpEditBooks.SuspendLayout();
+            this.tpFilterAddSearch.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tpFilter.SuspendLayout();
+            this.pnAmount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmToAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mmFromAmount)).BeginInit();
+            this.pnFilterCatogory.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmToPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mmFromPrice)).BeginInit();
+            this.tpSort.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvFilterBooks)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // pnBookEdit
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.cbFilerBooka);
-            this.panel2.Controls.Add(this.dvBooks);
-            this.panel2.Controls.Add(this.txtQty);
-            this.panel2.Controls.Add(this.txtPrice);
-            this.panel2.Controls.Add(this.cbCate);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.btnReset);
-            this.panel2.Controls.Add(this.btnEdit);
-            this.panel2.Controls.Add(this.btnDelet);
-            this.panel2.Controls.Add(this.btnSave);
-            this.panel2.Controls.Add(this.txtAuthor);
-            this.panel2.Controls.Add(this.txtTitle);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(887, 515);
-            this.panel2.TabIndex = 0;
+            this.pnBookEdit.BackColor = System.Drawing.Color.White;
+            this.pnBookEdit.Controls.Add(this.mmYear);
+            this.pnBookEdit.Controls.Add(this.Year);
+            this.pnBookEdit.Controls.Add(this.dvBooks);
+            this.pnBookEdit.Controls.Add(this.txtQty);
+            this.pnBookEdit.Controls.Add(this.txtPrice);
+            this.pnBookEdit.Controls.Add(this.cbCate);
+            this.pnBookEdit.Controls.Add(this.btnReset);
+            this.pnBookEdit.Controls.Add(this.btnEdit);
+            this.pnBookEdit.Controls.Add(this.btnDelet);
+            this.pnBookEdit.Controls.Add(this.btnSave);
+            this.pnBookEdit.Controls.Add(this.txtAuthor);
+            this.pnBookEdit.Controls.Add(this.txtTitle);
+            this.pnBookEdit.Controls.Add(this.label10);
+            this.pnBookEdit.Controls.Add(this.label12);
+            this.pnBookEdit.Controls.Add(this.label9);
+            this.pnBookEdit.Controls.Add(this.label11);
+            this.pnBookEdit.Controls.Add(this.label1);
+            this.pnBookEdit.Controls.Add(this.label2);
+            this.pnBookEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnBookEdit.Location = new System.Drawing.Point(3, 3);
+            this.pnBookEdit.Name = "pnBookEdit";
+            this.pnBookEdit.Size = new System.Drawing.Size(887, 515);
+            this.pnBookEdit.TabIndex = 0;
             // 
-            // cbFilerBooka
+            // mmYear
             // 
-            this.cbFilerBooka.FormattingEnabled = true;
-            this.cbFilerBooka.ItemHeight = 16;
-            this.cbFilerBooka.Items.AddRange(new object[] {
-            "All",
-            "Programming",
-            "Novels",
-            "Light Novel",
-            "Nofiction",
-            "Self-Help"});
-            this.cbFilerBooka.Location = new System.Drawing.Point(390, 158);
-            this.cbFilerBooka.Name = "cbFilerBooka";
-            this.cbFilerBooka.Size = new System.Drawing.Size(173, 24);
-            this.cbFilerBooka.TabIndex = 9;
-            this.cbFilerBooka.Text = "Filer By Category";
-            this.cbFilerBooka.SelectionChangeCommitted += new System.EventHandler(this.cbFilerBook_SelectionChangeCommitted);
+            this.mmYear.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold);
+            this.mmYear.Location = new System.Drawing.Point(801, 48);
+            this.mmYear.Maximum = new decimal(new int[] {
+            2030,
+            0,
+            0,
+            0});
+            this.mmYear.Name = "mmYear";
+            this.mmYear.Size = new System.Drawing.Size(71, 26);
+            this.mmYear.TabIndex = 12;
+            this.mmYear.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            // 
+            // Year
+            // 
+            this.Year.AutoSize = true;
+            this.Year.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Year.ForeColor = System.Drawing.Color.Black;
+            this.Year.Location = new System.Drawing.Point(797, 20);
+            this.Year.Name = "Year";
+            this.Year.Size = new System.Drawing.Size(65, 21);
+            this.Year.TabIndex = 11;
+            this.Year.Text = "Price";
             // 
             // dvBooks
             // 
@@ -118,12 +177,12 @@
             this.dvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvBooks.ContextMenuStrip = this.contextMenuStrip1;
             this.dvBooks.GridColor = System.Drawing.Color.Black;
-            this.dvBooks.Location = new System.Drawing.Point(0, 193);
+            this.dvBooks.Location = new System.Drawing.Point(0, 170);
             this.dvBooks.Name = "dvBooks";
             this.dvBooks.ReadOnly = true;
             this.dvBooks.RowHeadersWidth = 51;
             this.dvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvBooks.Size = new System.Drawing.Size(882, 325);
+            this.dvBooks.Size = new System.Drawing.Size(882, 348);
             this.dvBooks.TabIndex = 10;
             this.dvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentClick);
             // 
@@ -155,7 +214,7 @@
             // txtQty
             // 
             this.txtQty.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQty.Location = new System.Drawing.Point(625, 44);
+            this.txtQty.Location = new System.Drawing.Point(593, 48);
             this.txtQty.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -169,7 +228,7 @@
             // txtPrice
             // 
             this.txtPrice.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrice.Location = new System.Drawing.Point(780, 44);
+            this.txtPrice.Location = new System.Drawing.Point(701, 48);
             this.txtPrice.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -184,35 +243,11 @@
             // 
             this.cbCate.FormattingEnabled = true;
             this.cbCate.ItemHeight = 16;
-            this.cbCate.Items.AddRange(new object[] {
-            "Programming",
-            "Novels",
-            "Light Novel",
-            "Nofiction",
-            "Self-Help"});
-            this.cbCate.Location = new System.Drawing.Point(408, 46);
+            this.cbCate.Location = new System.Drawing.Point(412, 48);
             this.cbCate.Name = "cbCate";
             this.cbCate.Size = new System.Drawing.Size(155, 24);
             this.cbCate.TabIndex = 2;
             this.cbCate.Text = "Select Category";
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.button4.FlatAppearance.BorderSize = 2;
-            this.button4.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(578, 149);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 33);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Refersh";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnReset
             // 
@@ -246,7 +281,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 33);
             this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = " Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -283,7 +318,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(105, 33);
             this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = " Add";
             this.ttMain.SetToolTip(this.btnSave, "Save Books");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -322,7 +357,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(776, 20);
+            this.label12.Location = new System.Drawing.Point(709, 20);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 21);
             this.label12.TabIndex = 0;
@@ -344,7 +379,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(619, 20);
+            this.label11.Location = new System.Drawing.Point(587, 20);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(98, 21);
             this.label11.TabIndex = 0;
@@ -386,7 +421,8 @@
             // tcBook
             // 
             this.tcBook.Controls.Add(this.tpEditBooks);
-            this.tcBook.Controls.Add(this.tpFilterBooks);
+            this.tcBook.Controls.Add(this.tpFilterAddSearch);
+            this.tcBook.ImageList = this.imageList1;
             this.tcBook.Location = new System.Drawing.Point(0, 35);
             this.tcBook.Name = "tcBook";
             this.tcBook.SelectedIndex = 0;
@@ -395,7 +431,8 @@
             // 
             // tpEditBooks
             // 
-            this.tpEditBooks.Controls.Add(this.panel2);
+            this.tpEditBooks.Controls.Add(this.pnBookEdit);
+            this.tpEditBooks.ImageIndex = 0;
             this.tpEditBooks.Location = new System.Drawing.Point(4, 25);
             this.tpEditBooks.Name = "tpEditBooks";
             this.tpEditBooks.Padding = new System.Windows.Forms.Padding(3);
@@ -404,15 +441,478 @@
             this.tpEditBooks.Text = "Edit Books";
             this.tpEditBooks.UseVisualStyleBackColor = true;
             // 
-            // tpFilterBooks
+            // tpFilterAddSearch
             // 
-            this.tpFilterBooks.Location = new System.Drawing.Point(4, 25);
-            this.tpFilterBooks.Name = "tpFilterBooks";
-            this.tpFilterBooks.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFilterBooks.Size = new System.Drawing.Size(893, 521);
-            this.tpFilterBooks.TabIndex = 1;
-            this.tpFilterBooks.Text = "Filter Books";
-            this.tpFilterBooks.UseVisualStyleBackColor = true;
+            this.tpFilterAddSearch.Controls.Add(this.btnRefershBooks);
+            this.tpFilterAddSearch.Controls.Add(this.txtSearchBox);
+            this.tpFilterAddSearch.Controls.Add(this.cbFieldSearchBook);
+            this.tpFilterAddSearch.Controls.Add(this.btnSearch);
+            this.tpFilterAddSearch.Controls.Add(this.tabControl1);
+            this.tpFilterAddSearch.Controls.Add(this.dvFilterBooks);
+            this.tpFilterAddSearch.ImageIndex = 1;
+            this.tpFilterAddSearch.Location = new System.Drawing.Point(4, 25);
+            this.tpFilterAddSearch.Name = "tpFilterAddSearch";
+            this.tpFilterAddSearch.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFilterAddSearch.Size = new System.Drawing.Size(893, 521);
+            this.tpFilterAddSearch.TabIndex = 1;
+            this.tpFilterAddSearch.Text = "Filter Add Search Books";
+            this.tpFilterAddSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnRefershBooks
+            // 
+            this.btnRefershBooks.FlatAppearance.BorderSize = 0;
+            this.btnRefershBooks.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.btnRefershBooks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRefershBooks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnRefershBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefershBooks.Image = ((System.Drawing.Image)(resources.GetObject("btnRefershBooks.Image")));
+            this.btnRefershBooks.Location = new System.Drawing.Point(848, 12);
+            this.btnRefershBooks.Name = "btnRefershBooks";
+            this.btnRefershBooks.Size = new System.Drawing.Size(33, 30);
+            this.btnRefershBooks.TabIndex = 11;
+            this.btnRefershBooks.UseVisualStyleBackColor = false;
+            this.btnRefershBooks.Click += new System.EventHandler(this.btnRefershBooks_Click);
+            // 
+            // txtSearchBox
+            // 
+            this.txtSearchBox.Location = new System.Drawing.Point(181, 12);
+            this.txtSearchBox.Multiline = true;
+            this.txtSearchBox.Name = "txtSearchBox";
+            this.txtSearchBox.Size = new System.Drawing.Size(615, 30);
+            this.txtSearchBox.TabIndex = 17;
+            // 
+            // cbFieldSearchBook
+            // 
+            this.cbFieldSearchBook.FormattingEnabled = true;
+            this.cbFieldSearchBook.Items.AddRange(new object[] {
+            "ID",
+            "Title",
+            "Author",
+            "Qty",
+            "Price",
+            "Year"});
+            this.cbFieldSearchBook.Location = new System.Drawing.Point(32, 16);
+            this.cbFieldSearchBook.Name = "cbFieldSearchBook";
+            this.cbFieldSearchBook.Size = new System.Drawing.Size(143, 24);
+            this.cbFieldSearchBook.TabIndex = 16;
+            this.cbFieldSearchBook.Text = "Feild Search";
+            this.cbFieldSearchBook.SelectedIndexChanged += new System.EventHandler(this.cbFieldSearchBook_SelectedIndexChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(802, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(40, 30);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tpFilter);
+            this.tabControl1.Controls.Add(this.tpSort);
+            this.tabControl1.ImageList = this.imageList1;
+            this.tabControl1.Location = new System.Drawing.Point(6, 46);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(879, 146);
+            this.tabControl1.TabIndex = 14;
+            // 
+            // tpFilter
+            // 
+            this.tpFilter.Controls.Add(this.pnAmount);
+            this.tpFilter.Controls.Add(this.pnFilterCatogory);
+            this.tpFilter.Controls.Add(this.panel1);
+            this.tpFilter.ImageIndex = 1;
+            this.tpFilter.Location = new System.Drawing.Point(4, 25);
+            this.tpFilter.Name = "tpFilter";
+            this.tpFilter.Padding = new System.Windows.Forms.Padding(3);
+            this.tpFilter.Size = new System.Drawing.Size(871, 117);
+            this.tpFilter.TabIndex = 0;
+            this.tpFilter.Text = "Filter";
+            this.tpFilter.UseVisualStyleBackColor = true;
+            // 
+            // pnAmount
+            // 
+            this.pnAmount.Controls.Add(this.btnFilterAmountBooks);
+            this.pnAmount.Controls.Add(this.label14);
+            this.pnAmount.Controls.Add(this.mmToAmount);
+            this.pnAmount.Controls.Add(this.label15);
+            this.pnAmount.Controls.Add(this.mmFromAmount);
+            this.pnAmount.Controls.Add(this.label16);
+            this.pnAmount.Location = new System.Drawing.Point(571, 10);
+            this.pnAmount.Name = "pnAmount";
+            this.pnAmount.Size = new System.Drawing.Size(294, 101);
+            this.pnAmount.TabIndex = 22;
+            // 
+            // btnFilterAmountBooks
+            // 
+            this.btnFilterAmountBooks.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnFilterAmountBooks.FlatAppearance.BorderSize = 0;
+            this.btnFilterAmountBooks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnFilterAmountBooks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnFilterAmountBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterAmountBooks.ImageKey = "atr_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnFilterAmountBooks.ImageList = this.ilSort;
+            this.btnFilterAmountBooks.Location = new System.Drawing.Point(209, 10);
+            this.btnFilterAmountBooks.Name = "btnFilterAmountBooks";
+            this.btnFilterAmountBooks.Size = new System.Drawing.Size(82, 83);
+            this.btnFilterAmountBooks.TabIndex = 18;
+            this.btnFilterAmountBooks.UseVisualStyleBackColor = true;
+            this.btnFilterAmountBooks.Click += new System.EventHandler(this.btnFilterAmountBooks_Click);
+            // 
+            // ilSort
+            // 
+            this.ilSort.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilSort.ImageStream")));
+            this.ilSort.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilSort.Images.SetKeyName(0, "home_FILL0_wght400_GRAD0_opsz48 (1).png");
+            this.ilSort.Images.SetKeyName(1, "person_FILL0_wght400_GRAD0_opsz48.png");
+            this.ilSort.Images.SetKeyName(2, "category_FILL0_wght400_GRAD0_opsz48.png");
+            this.ilSort.Images.SetKeyName(3, "sell_FILL0_wght400_GRAD0_opsz48.png");
+            this.ilSort.Images.SetKeyName(4, "atr_FILL0_wght400_GRAD0_opsz48.png");
+            this.ilSort.Images.SetKeyName(5, "calendar_month_FILL0_wght400_GRAD0_opsz48.png");
+            this.ilSort.Images.SetKeyName(6, "account_circle_FILL0_wght400_GRAD0_opsz48.png");
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(71, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(76, 21);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Amount";
+            // 
+            // mmToAmount
+            // 
+            this.mmToAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mmToAmount.Font = new System.Drawing.Font("Courier New", 14.25F);
+            this.mmToAmount.Location = new System.Drawing.Point(16, 66);
+            this.mmToAmount.Name = "mmToAmount";
+            this.mmToAmount.Size = new System.Drawing.Size(72, 25);
+            this.mmToAmount.TabIndex = 20;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(129, 39);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 21);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "From";
+            // 
+            // mmFromAmount
+            // 
+            this.mmFromAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mmFromAmount.Font = new System.Drawing.Font("Courier New", 14.25F);
+            this.mmFromAmount.Location = new System.Drawing.Point(120, 63);
+            this.mmFromAmount.Name = "mmFromAmount";
+            this.mmFromAmount.Size = new System.Drawing.Size(73, 25);
+            this.mmFromAmount.TabIndex = 20;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(56, 36);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(32, 21);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "To";
+            // 
+            // pnFilterCatogory
+            // 
+            this.pnFilterCatogory.Controls.Add(this.cbFilerBook);
+            this.pnFilterCatogory.Controls.Add(this.label3);
+            this.pnFilterCatogory.Location = new System.Drawing.Point(6, 11);
+            this.pnFilterCatogory.Name = "pnFilterCatogory";
+            this.pnFilterCatogory.Size = new System.Drawing.Size(200, 100);
+            this.pnFilterCatogory.TabIndex = 22;
+            // 
+            // cbFilerBook
+            // 
+            this.cbFilerBook.FormattingEnabled = true;
+            this.cbFilerBook.ItemHeight = 16;
+            this.cbFilerBook.Items.AddRange(new object[] {
+            "All"});
+            this.cbFilerBook.Location = new System.Drawing.Point(16, 58);
+            this.cbFilerBook.Name = "cbFilerBook";
+            this.cbFilerBook.Size = new System.Drawing.Size(173, 24);
+            this.cbFilerBook.TabIndex = 10;
+            this.cbFilerBook.Text = "Filer By Category";
+            this.cbFilerBook.SelectedIndexChanged += new System.EventHandler(this.cbFilerBooka_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(52, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 21);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Category";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnFilterPriceBooks);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.mmToPrice);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.mmFromPrice);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(212, 11);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(353, 100);
+            this.panel1.TabIndex = 21;
+            // 
+            // btnFilterPriceBooks
+            // 
+            this.btnFilterPriceBooks.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnFilterPriceBooks.FlatAppearance.BorderSize = 0;
+            this.btnFilterPriceBooks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnFilterPriceBooks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnFilterPriceBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilterPriceBooks.ImageKey = "sell_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnFilterPriceBooks.ImageList = this.ilSort;
+            this.btnFilterPriceBooks.Location = new System.Drawing.Point(250, 9);
+            this.btnFilterPriceBooks.Name = "btnFilterPriceBooks";
+            this.btnFilterPriceBooks.Size = new System.Drawing.Size(82, 83);
+            this.btnFilterPriceBooks.TabIndex = 18;
+            this.btnFilterPriceBooks.UseVisualStyleBackColor = true;
+            this.btnFilterPriceBooks.Click += new System.EventHandler(this.btnFilterPriceBooks_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(102, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 21);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Price";
+            // 
+            // mmToPrice
+            // 
+            this.mmToPrice.Font = new System.Drawing.Font("Courier New", 14.25F);
+            this.mmToPrice.Location = new System.Drawing.Point(30, 62);
+            this.mmToPrice.Name = "mmToPrice";
+            this.mmToPrice.Size = new System.Drawing.Size(64, 29);
+            this.mmToPrice.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(159, 36);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 21);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Form";
+            // 
+            // mmFromPrice
+            // 
+            this.mmFromPrice.Font = new System.Drawing.Font("Courier New", 14.25F);
+            this.mmFromPrice.Location = new System.Drawing.Point(151, 65);
+            this.mmFromPrice.Name = "mmFromPrice";
+            this.mmFromPrice.Size = new System.Drawing.Size(75, 29);
+            this.mmFromPrice.TabIndex = 20;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(46, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 21);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "To";
+            // 
+            // tpSort
+            // 
+            this.tpSort.Controls.Add(this.btnSortBook);
+            this.tpSort.Controls.Add(this.btnYear);
+            this.tpSort.Controls.Add(this.btnPrice);
+            this.tpSort.Controls.Add(this.btnQty);
+            this.tpSort.Controls.Add(this.btnCategory);
+            this.tpSort.Controls.Add(this.btnAuthor);
+            this.tpSort.Controls.Add(this.btnTitle);
+            this.tpSort.Controls.Add(this.btnID);
+            this.tpSort.ImageIndex = 3;
+            this.tpSort.Location = new System.Drawing.Point(4, 25);
+            this.tpSort.Name = "tpSort";
+            this.tpSort.Padding = new System.Windows.Forms.Padding(3);
+            this.tpSort.Size = new System.Drawing.Size(871, 117);
+            this.tpSort.TabIndex = 1;
+            this.tpSort.Text = "Sort";
+            this.tpSort.UseVisualStyleBackColor = true;
+            // 
+            // btnSortBook
+            // 
+            this.btnSortBook.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnSortBook.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnSortBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSortBook.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortBook.Location = new System.Drawing.Point(792, 6);
+            this.btnSortBook.Name = "btnSortBook";
+            this.btnSortBook.Size = new System.Drawing.Size(73, 105);
+            this.btnSortBook.TabIndex = 1;
+            this.btnSortBook.Text = "Az";
+            this.btnSortBook.UseVisualStyleBackColor = false;
+            this.btnSortBook.Click += new System.EventHandler(this.btnSortBook_Click);
+            // 
+            // btnYear
+            // 
+            this.btnYear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnYear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYear.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYear.ImageKey = "calendar_month_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnYear.ImageList = this.ilSort;
+            this.btnYear.Location = new System.Drawing.Point(684, 6);
+            this.btnYear.Name = "btnYear";
+            this.btnYear.Size = new System.Drawing.Size(102, 105);
+            this.btnYear.TabIndex = 1;
+            this.btnYear.Text = "Year";
+            this.btnYear.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnYear.UseVisualStyleBackColor = true;
+            this.btnYear.Click += new System.EventHandler(this.btnYear_Click);
+            // 
+            // btnPrice
+            // 
+            this.btnPrice.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnPrice.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrice.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrice.ImageKey = "sell_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnPrice.ImageList = this.ilSort;
+            this.btnPrice.Location = new System.Drawing.Point(571, 6);
+            this.btnPrice.Name = "btnPrice";
+            this.btnPrice.Size = new System.Drawing.Size(102, 105);
+            this.btnPrice.TabIndex = 0;
+            this.btnPrice.Text = "Price ";
+            this.btnPrice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPrice.UseVisualStyleBackColor = true;
+            this.btnPrice.Click += new System.EventHandler(this.btnPrice_Click);
+            // 
+            // btnQty
+            // 
+            this.btnQty.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnQty.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnQty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQty.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQty.ImageKey = "atr_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnQty.ImageList = this.ilSort;
+            this.btnQty.Location = new System.Drawing.Point(458, 6);
+            this.btnQty.Name = "btnQty";
+            this.btnQty.Size = new System.Drawing.Size(102, 105);
+            this.btnQty.TabIndex = 0;
+            this.btnQty.Text = "Qty";
+            this.btnQty.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnQty.UseVisualStyleBackColor = true;
+            this.btnQty.Click += new System.EventHandler(this.btnQty_Click);
+            // 
+            // btnCategory
+            // 
+            this.btnCategory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategory.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategory.ImageKey = "category_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnCategory.ImageList = this.ilSort;
+            this.btnCategory.Location = new System.Drawing.Point(345, 6);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(102, 105);
+            this.btnCategory.TabIndex = 0;
+            this.btnCategory.Text = "Category ";
+            this.btnCategory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            // 
+            // btnAuthor
+            // 
+            this.btnAuthor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnAuthor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuthor.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuthor.ImageKey = "account_circle_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnAuthor.ImageList = this.ilSort;
+            this.btnAuthor.Location = new System.Drawing.Point(232, 6);
+            this.btnAuthor.Name = "btnAuthor";
+            this.btnAuthor.Size = new System.Drawing.Size(102, 105);
+            this.btnAuthor.TabIndex = 0;
+            this.btnAuthor.Text = "Author";
+            this.btnAuthor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAuthor.UseVisualStyleBackColor = true;
+            this.btnAuthor.Click += new System.EventHandler(this.btnAuthor_Click);
+            // 
+            // btnTitle
+            // 
+            this.btnTitle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnTitle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTitle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTitle.ImageKey = "person_FILL0_wght400_GRAD0_opsz48.png";
+            this.btnTitle.ImageList = this.ilSort;
+            this.btnTitle.Location = new System.Drawing.Point(119, 6);
+            this.btnTitle.Name = "btnTitle";
+            this.btnTitle.Size = new System.Drawing.Size(102, 105);
+            this.btnTitle.TabIndex = 0;
+            this.btnTitle.Text = "Title";
+            this.btnTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTitle.UseVisualStyleBackColor = true;
+            this.btnTitle.Click += new System.EventHandler(this.btnTitle_Click);
+            // 
+            // btnID
+            // 
+            this.btnID.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.btnID.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Aqua;
+            this.btnID.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnID.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnID.ImageKey = "home_FILL0_wght400_GRAD0_opsz48 (1).png";
+            this.btnID.ImageList = this.ilSort;
+            this.btnID.Location = new System.Drawing.Point(6, 6);
+            this.btnID.Name = "btnID";
+            this.btnID.Size = new System.Drawing.Size(102, 105);
+            this.btnID.TabIndex = 0;
+            this.btnID.Text = "ID";
+            this.btnID.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnID.UseVisualStyleBackColor = true;
+            this.btnID.Click += new System.EventHandler(this.btnID_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "edit_FILL0_wght400_GRAD0_opsz24.png");
+            this.imageList1.Images.SetKeyName(1, "filter_alt_FILL0_wght400_GRAD0_opsz24.png");
+            this.imageList1.Images.SetKeyName(2, "search_FILL0_wght400_GRAD0_opsz24.png");
+            this.imageList1.Images.SetKeyName(3, "sort_FILL0_wght400_GRAD0_opsz24.png");
+            // 
+            // dvFilterBooks
+            // 
+            this.dvFilterBooks.BackgroundColor = System.Drawing.Color.White;
+            this.dvFilterBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvFilterBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvFilterBooks.ContextMenuStrip = this.contextMenuStrip1;
+            this.dvFilterBooks.GridColor = System.Drawing.Color.Black;
+            this.dvFilterBooks.Location = new System.Drawing.Point(10, 198);
+            this.dvFilterBooks.Name = "dvFilterBooks";
+            this.dvFilterBooks.ReadOnly = true;
+            this.dvFilterBooks.RowHeadersWidth = 51;
+            this.dvFilterBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvFilterBooks.Size = new System.Drawing.Size(882, 323);
+            this.dvFilterBooks.TabIndex = 13;
             // 
             // frmBooks
             // 
@@ -429,16 +929,33 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Books";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.frmBooks_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnBookEdit.ResumeLayout(false);
+            this.pnBookEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
             this.tcBook.ResumeLayout(false);
             this.tpEditBooks.ResumeLayout(false);
+            this.tpFilterAddSearch.ResumeLayout(false);
+            this.tpFilterAddSearch.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tpFilter.ResumeLayout(false);
+            this.pnAmount.ResumeLayout(false);
+            this.pnAmount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmToAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mmFromAmount)).EndInit();
+            this.pnFilterCatogory.ResumeLayout(false);
+            this.pnFilterCatogory.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmToPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mmFromPrice)).EndInit();
+            this.tpSort.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvFilterBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,7 +963,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnBookEdit;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
@@ -461,17 +978,52 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelet;
-        private System.Windows.Forms.ComboBox cbFilerBooka;
         private System.Windows.Forms.DataGridView dvBooks;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolTip ttMain;
         private System.Windows.Forms.NumericUpDown txtQty;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
         private System.Windows.Forms.TabControl tcBook;
-        private System.Windows.Forms.TabPage tpFilterBooks;
+        private System.Windows.Forms.TabPage tpFilterAddSearch;
         private System.Windows.Forms.TabPage tpEditBooks;
+        private System.Windows.Forms.DataGridView dvFilterBooks;
+        private System.Windows.Forms.ComboBox cbFilerBook;
+        private System.Windows.Forms.Button btnRefershBooks;
+        private System.Windows.Forms.NumericUpDown mmYear;
+        private System.Windows.Forms.Label Year;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpFilter;
+        private System.Windows.Forms.TabPage tpSort;
+        private System.Windows.Forms.TextBox txtSearchBox;
+        private System.Windows.Forms.ComboBox cbFieldSearchBook;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown mmToPrice;
+        private System.Windows.Forms.NumericUpDown mmFromPrice;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnAmount;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown mmToAmount;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown mmFromAmount;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel pnFilterCatogory;
+        private System.Windows.Forms.Button btnID;
+        private System.Windows.Forms.Button btnYear;
+        private System.Windows.Forms.Button btnPrice;
+        private System.Windows.Forms.Button btnQty;
+        private System.Windows.Forms.Button btnCategory;
+        private System.Windows.Forms.Button btnAuthor;
+        private System.Windows.Forms.Button btnTitle;
+        private System.Windows.Forms.Button btnSortBook;
+        private System.Windows.Forms.Button btnFilterPriceBooks;
+        private System.Windows.Forms.ImageList ilSort;
+        private System.Windows.Forms.Button btnFilterAmountBooks;
     }
 }

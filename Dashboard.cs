@@ -58,12 +58,12 @@ namespace BookShopManager
             sda3.Fill(dt3);
             lbMost.Text = dt3.Rows[0][0].ToString();
 
-            SqlDataAdapter sda4 = new SqlDataAdapter("SELECT TOP 1 UName, MAX(Amount) AS MaxAmount FROM BillTbl GROUP BY UName ORDER BY MaxAmount DESC", con);
-            DataTable dt4 = new DataTable();
-            sda4.Fill(dt4);
-            string originalString = dt4.Rows[0]["UName"].ToString();
-            string stringWithoutSpaces = originalString.Replace(" ", string.Empty);
-            lbUserMost.Text = stringWithoutSpaces;
+            //SqlDataAdapter sda4 = new SqlDataAdapter("SELECT TOP 1 UName, MAX(Amount) AS MaxAmount FROM BillTbl GROUP BY UName ORDER BY MaxAmount DESC", con);
+            //DataTable dt4 = new DataTable();
+            //sda4.Fill(dt4);
+            //string originalString = dt4.Rows[0]["UName"].ToString();
+            //string stringWithoutSpaces = originalString.Replace(" ", string.Empty);
+            //lbUserMost.Text = stringWithoutSpaces;
 
             //chart Bill
             string query = "SELECT UName, Amount FROM BillTbl";
