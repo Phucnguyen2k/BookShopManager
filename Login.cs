@@ -11,13 +11,12 @@ namespace BookShopManager
         {
             InitializeComponent();
         }
+        //Khoi tao datacontext LinQ
         BookShopDataContext db = new BookShopDataContext();
 
         public static string UserName = "";
         private void CheckLogin()
         {
-            //try
-            //{
             string username = txtUserName.Text;
             string password = txtPassword.Text;
 
@@ -35,11 +34,6 @@ namespace BookShopManager
             {
                 MessageBox.Show("Wrong Username or Password", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
