@@ -210,11 +210,6 @@ private void AddBook()
         NotificationHelper.ShowNotification("Success", "Book Save Successfully", ToolTipIcon.Info);
     }
 }
-private void btnSave_Click(object sender, EventArgs e)
-{
-    AddBook();
-    showDataBase();
-}
 ```
 - Reset Lai Cac TextBox
 ```cs
@@ -302,40 +297,6 @@ private void btnEdit_Click(object sender, EventArgs e)
 {
     EditBook();
 }
-
-//Hien form Users
-private void label6_Click(object sender, EventArgs e)
-{
-    frmUsers obj = new frmUsers();
-    obj.Show();
-    this.Hide();
-}
-
-//Hien form Dashboard
-private void label7_Click(object sender, EventArgs e)
-{
-    frmDashboard obj = new frmDashboard();
-    obj.Show();
-    this.Hide();
-}
-
-private void label8_Click(object sender, EventArgs e)
-{
-    frmLogin obj = new frmLogin();
-    obj.Show();
-    this.Hide();
-}
-
-private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-{
-    DeleteBook();
-}
-
-private void reToolStripMenuItem_Click(object sender, EventArgs e)
-{
-    showDataBase();
-}
-
 private void btnRefershBooks_Click(object sender, EventArgs e)
 {
     showDataBase();
@@ -384,10 +345,6 @@ private void SearchBook()
     {
         NotificationHelper.ShowNotification("Error", "Book Not Found", ToolTipIcon.Error);
     }
-}
-private void btnSearch_Click(object sender, EventArgs e)
-{
-    SearchBook();
 }
 ```
 
@@ -552,29 +509,6 @@ private void btnPrice_Click(object sender, EventArgs e)
 ![BookShopManager_yWou7qKKJB.gif](./OverView/BookShopManager_yWou7qKKJB.gif)
 
 ## User
-```cs
-public frmUsers()
-{
-    InitializeComponent();
-    ShowDataBaseUser();
-
-    dvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-}
-
-BookShopDataContext db = new BookShopDataContext();
-private void btnExit_Click(object sender, EventArgs e)
-{
-    Application.Exit();
-}
-
-/// <summary>
-/// Phuong Thuc Hien thi database
-/// </summary>
-private void ShowDataBaseUser()
-{
-    dvUser.DataSource = db.UserTbls.Select(p => p);
-}
-```
 - Them User
 ```cs
 private void addUser()
@@ -662,267 +596,283 @@ private void EditUser()
 
 ### Dashboard
 
-```cs
-
-        //Tao ket noi LinQ
-        BookShopDataContext db = new BookShopDataContext();
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-            //So luong Sach Con Trong Kho
-            var totalStock = db.BookTbls.Sum(b => b.BQty);
-            lbBooksStock.Text = totalStock.ToString();
-
-            //Tong Doanh Thu
-            var totalAmount = db.BillTbls.Sum(b => b.Amount);
-            lbToTalAmount.Text = totalAmount.ToString();
-
-            //So luong Nhan Vien
-            var userCount = db.UserTbls.Count();
-            lbUsers.Text = userCount.ToString();
-
-            //doanh Thu cao nhat
-            var maxAmount = db.BillTbls.Max(b => b.Amount);
-            lbMost.Text = maxAmount.ToString();
-
-
-
-            // Chart Books
-            var bookData = db.BookTbls.Select(b => new { BTitle = b.BTitle, BQty = b.BQty }).ToList();
-
-            cBookStorage.DataSource = bookData;
-
-            cBookStorage.Series.Clear();
-
-            Series series = new Series("Books");
-            series.ChartType = SeriesChartType.Column;
-            series.XValueMember = "BTitle";
-            series.YValueMembers = "BQty";
-            cBookStorage.Series.Add(series);
-
-            cBookStorage.ChartAreas[0].AxisX.Title = "Book Title";
-            cBookStorage.ChartAreas[0].AxisY.Title = "Quantity";
-            cBookStorage.DataBind();
-
-
-        }
-
-
-```
-
-
-
 ![BookShopManager_vIP0bsEBc0.gif](./OverView/BookShopManager_vIP0bsEBc0.gif)
 
-![a](https://i.imgur.com/wUmMjPT.png)
-
-### History
-
 ```cs
-//Char history Bill
-dvHistory.DataSource = db.BillTbls.Select(p => p);
-```
+//Tao doi tuong truy van vao CSDL
+BookShopDataContext db = new BookShopDataContext();
 
-![a](.\OverView\BookShopManager_g5ercbTdsb.png)
-
-### Line
-
-![a](.\OverView\BookShopManager_IZVDYjqsFh.png)
-
-```cs
-//Bieu Do Co doanh Thu cua tung nguoi 
-cRevenuePerUser.Series.Clear();
-cRevenuePerUser.Palette = ChartColorPalette.Pastel;
-
-var userAmountData = db.BillTbls
-    .GroupBy(b => b.UName)
-    .Select(g => new
-    {
-        UName = g.Key,
-        TotalAmount = g.Sum(b => b.Amount)
-    })
-    .ToList();
-
-foreach (var item in userAmountData)
+private void Dashboard_Load(object sender, EventArgs e)
 {
-    string uname = item.UName;
+    CardView();
 
-    Series seriesItem = new Series(uname);
-    seriesItem.Points.AddXY(uname, item.TotalAmount);
-    seriesItem.IsValueShownAsLabel = true;
-    cRevenuePerUser.Series.Add(seriesItem);
-    seriesItem.Points.Last().ToolTip = uname;
+    ChartLichSuGiaoDich();
+    ChartSoLuongSachConLaiTrongKho();
+    ChartDoanhThuTungNhaVien();
 }
 ```
 
 
 
-### Chart
+![a](https://i.imgur.com/wUmMjPT.png)
 
-![a](.\OverView\BookShopManager_CbPT3TX3AB.png)
+```c
+private void CardView()
+{
+    //So luong Sach Con Trong Kho
+    var totalStock = db.BookTbls.Sum(b => b.BQty);
+    lbBooksStock.Text = totalStock.ToString();
+
+    //Tong Doanh Thu
+    var totalAmount = db.BillTbls.Sum(b => b.Amount);
+    lbToTalAmount.Text = totalAmount.ToString();
+
+    //So luong Nhan Vien
+    var userCount = db.UserTbls.Count();
+    lbUsers.Text = userCount.ToString();
+
+    //doanh Thu cao nhat
+    var maxAmount = db.BillTbls.Max(b => b.Amount);
+    lbMost.Text = maxAmount.ToString();
+}
+```
+
+
+
+### History
+
+![a](https://i.imgur.com/k1IjpeH.png)
 
 ```cs
-// Chart Bill
-var billData = db.BillTbls.Select(b => new { UName = b.UName, Amount = b.Amount }).ToList();
-
-cInCome.Series.Clear();
-
-Series series1 = new Series("BillData");
-series1.XValueMember = "UName";
-series1.YValueMembers = "Amount";
-series1.ToolTip = "#VALX: #VAL";
-series1.ChartType = SeriesChartType.Line;
-
-cInCome.Series.Add(series1);
-cInCome.DataSource = billData;
-cInCome.DataBind();
+//datagridview lish su giao dich
+dvHistory.DataSource = db.BillTbls.Select(p => p);
 ```
+
+### Line
+
+![a](https://i.imgur.com/FfK2Fn5.png)
+
+```c
+private void ChartLichSuGiaoDich()
+{
+    // Chart Bill
+    var billData = db.BillTbls.Select(b => new { UName = b.UName, Amount = b.Amount }).ToList();
+
+    //Xoa Tat Ca Du Lieu Hien Co Ten Ban
+    cInCome.Series.Clear();
+
+    //Tao dai du lieu BillData
+    Series series1 = new Series("BillData");
+    //Xac dinh truc x, y cho du lieu
+    series1.XValueMember = "UName";
+    series1.YValueMembers = "Amount";
+
+    series1.ToolTip = "#VALX: #VAL";
+    //Dung Bieu Do chart
+    series1.ChartType = SeriesChartType.Line;
+
+    //Them du lieu vao bieu do
+    cInCome.Series.Add(series1);
+
+    //Them nguon Du lieu
+    cInCome.DataSource = billData;
+
+    //Hien Thi Bieu Do
+    cInCome.DataBind();
+}
+```
+
+### Chart
+
+![a](https://i.imgur.com/DWz0DLB.png)
+
+- Bieu Do the hien doanh thu cua tung nguoi
+
+```cs
+/// <summary>
+/// Bieu Do Co doanh Thu cua tung nguoi 
+/// </summary>
+private void ChartDoanhThuTungNhaVien()
+{
+    //Xoa tat ca du lieu truoc do
+    cRevenuePerUser.Series.Clear();
+
+    //Cho mau bieu do
+    cRevenuePerUser.Palette = ChartColorPalette.Pastel;
+
+    //Lay Doanh Thu Tu nguoi Tu co so du lieu
+    var userAmountData = db.BillTbls
+        .GroupBy(b => b.UName)
+        .Select(g => new
+        {
+            UName = g.Key,
+            TotalAmount = g.Sum(b => b.Amount)
+        })
+        .ToList();
+
+    //duyen tung nguoi dung va theo cok CSDL 
+    foreach (var item in userAmountData)
+    {
+        string uname = item.UName;
+
+        Series seriesItem = new Series(uname);
+        seriesItem.Points.AddXY(uname, item.TotalAmount);
+        seriesItem.IsValueShownAsLabel = true;
+        cRevenuePerUser.Series.Add(seriesItem);
+        seriesItem.Points.Last().ToolTip = uname;
+    }
+}
+```
+
+- So Luong Sach Con Lai Trong Kho
+
+  ```c
+  private void ChartSoLuongSachConLaiTrongKho()
+  {
+      // Chart Books
+      //Lay Ten Sach Va So Luong Con Lai Trong Sach
+      var bookData = db.BookTbls.Select(b => new { BTitle = b.BTitle, BQty = b.BQty }).ToList();
+  
+      //Gan nguon Du lieu
+      cBookStorage.DataSource = bookData;
+  
+      cBookStorage.Series.Clear();
+  
+      Series series = new Series("Books");
+      series.ChartType = SeriesChartType.Column;
+  
+      series.XValueMember = "BTitle";
+      series.YValueMembers = "BQty";
+  
+      cBookStorage.Series.Add(series);
+  
+      cBookStorage.ChartAreas[0].AxisX.Title = "Book Title";
+      cBookStorage.ChartAreas[0].AxisY.Title = "Quantity";
+  
+      //Hien Thi Du Lieu
+      cBookStorage.DataBind();
+  
+  }
+  ```
 
 ## Bill
 
 ![BookShopManager_1U79ZIrwV8.gif](./OverView/BookShopManager_1U79ZIrwV8.gif)
 
-![a](.\OverView\BookShopManager_pQ71b8nyuD.png)
+![a](https://i.imgur.com/t5u6aYI.png)
 
 ```cs
-using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 
-namespace BookShopManager
+public Billing()
 {
-    public partial class Billing : Form
+    InitializeComponent();
+    //populate();
+    ShowBook();
+}
+
+private void Billing_Load(object sender, EventArgs e)
+{
+    lbUserName.Text = frmLogin.UserName;
+    dvBill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+    dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+}
+//SqlConnection con = new SqlConnection(
+//    @"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
+BookShopDataContext db = new BookShopDataContext();
+
+private void ShowBook()
+{
+    dvBooks.DataSource = db.BookTbls;
+}
+private void UpdateBook()
+{
+    int newQty = stock - Convert.ToInt32(txtQty.Value);
+    var bookToUpdate = db.BookTbls.SingleOrDefault(b => b.BId == key);
+
+    if (bookToUpdate != null)
     {
-        public Billing()
-        {
-            InitializeComponent();
-            //populate();
-            ShowBook();
-        }
+        bookToUpdate.BQty = newQty;
+        db.SubmitChanges();
+        ShowBook();
+    }
+}
+int n = 0, GrdTotal = 0;
 
-        private void Billing_Load(object sender, EventArgs e)
-        {
-            lbUserName.Text = frmLogin.UserName;
-            dvBill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        }
-        //SqlConnection con = new SqlConnection(
-        //    @"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
-        BookShopDataContext db = new BookShopDataContext();
+private void btnSave_Click(object sender, EventArgs e)
+{
+    if (txtQty.Value == 0 || Convert.ToInt32(txtQty.Value) > stock)
+    {
+        MessageBox.Show("No Enough Stock");
+    }
+    else
+    {
+        int total = Convert.ToInt32(txtQty.Value) * Convert.ToInt32(txtPrice.Value);
+        DataGridViewRow newRow = new DataGridViewRow();
+        newRow.CreateCells(dvBill);
+        newRow.Cells[0].Value = n + 1;
+        newRow.Cells[1].Value = txtTitle.Text.Trim();
+        newRow.Cells[2].Value = txtQty.Value;
+        newRow.Cells[3].Value = txtPrice.Value;
+        newRow.Cells[4].Value = total;
+        dvBill.Rows.Add(newRow);
+        n++;
+        UpdateBook();
+        GrdTotal = GrdTotal + total;
+        lbTotal.Text = "Total $: " + GrdTotal;
+    }
+}
 
-        private void ShowBook()
-        {
-            dvBooks.DataSource = db.BookTbls;
-        }
-        private void UpdateBook()
-        {
-            int newQty = stock - Convert.ToInt32(txtQty.Value);
-            //try
-            //{
-            //    con.Open();
-            //    //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
-            //    string query = "update BookTbl set BQty=" + newQty + " where BId=" + key + ";";
+int key = 0, stock = 0;
 
-            //    SqlCommand cmd = new SqlCommand(query, con);
-            //    cmd.ExecuteNonQuery();
-            //    con.Close();
-            //    //populate();
-            //    ShowBook();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            var bookToUpdate = db.BookTbls.SingleOrDefault(b => b.BId == key);
+private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+{
+    //reset bill
+    btnReset_Click(sender, e);
+    txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
+    txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
 
-            if (bookToUpdate != null)
-            {
-                bookToUpdate.BQty = newQty;
-                db.SubmitChanges();
-                ShowBook();
-            }
-        }
-        int n = 0, GrdTotal = 0;
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (txtQty.Value == 0 || Convert.ToInt32(txtQty.Value) > stock)
-            {
-                MessageBox.Show("No Enough Stock");
-            }
-            else
-            {
-                int total = Convert.ToInt32(txtQty.Value) * Convert.ToInt32(txtPrice.Value);
-                DataGridViewRow newRow = new DataGridViewRow();
-                newRow.CreateCells(dvBill);
-                newRow.Cells[0].Value = n + 1;
-                newRow.Cells[1].Value = txtTitle.Text.Trim();
-                newRow.Cells[2].Value = txtQty.Value;
-                newRow.Cells[3].Value = txtPrice.Value;
-                newRow.Cells[4].Value = total;
-                dvBill.Rows.Add(newRow);
-                n++;
-                UpdateBook();
-                GrdTotal = GrdTotal + total;
-                lbTotal.Text = "Total $: " + GrdTotal;
-            }
-        }
-
-        int key = 0, stock = 0;
-
-        private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //reset bill
-            btnReset_Click(sender, e);
-            txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
-            txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
-
-            //string s;
-            //s = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
-            if (txtTitle.Text == "")
-            {
-                key = 0;
-                stock = 0;
-            }
-            else
-            {
-                key = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[0].Value.ToString());
-                stock = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
-            }
-        }
+    if (txtTitle.Text == "")
+    {
+        key = 0;
+        stock = 0;
+    }
+    else
+    {
+        key = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[0].Value.ToString());
+        stock = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
+    }
+}
  
 ```
 
 ### Print
 
 ```cs
-       private void PrintBill()
-        {
-            // Tạo một đối tượng hóa đơn mới
-            BillTbl newBill = new BillTbl
-            {
-                UName = lbUserName.Text,
-                ClineName = txtClientName.Text,
-                Amount = GrdTotal,
-                UDate = DateTime.Now
-            };
+private void PrintBill()
+{
+    // Tạo một đối tượng hóa đơn mới
+    BillTbl newBill = new BillTbl
+    {
+        UName = lbUserName.Text,
+        ClineName = txtClientName.Text,
+        Amount = GrdTotal,
+        UDate = DateTime.Now
+    };
 
-            // Thêm hóa đơn vào cơ sở dữ liệu bằng LINQ to SQL
-            db.BillTbls.InsertOnSubmit(newBill);
-            db.SubmitChanges();
+    // Thêm hóa đơn vào cơ sở dữ liệu bằng LINQ to SQL
+    db.BillTbls.InsertOnSubmit(newBill);
+    db.SubmitChanges();
 
-            // Hiển thị thông báo hoặc thực hiện các công việc cần thiết sau khi thêm hóa đơn thành công
-            NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
-
-
-            printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
-
-            printPreviewDialog1.PointToScreen(Cursor.Position);
-            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-                printDocument1.Print();
-        }
+    // Hiển thị thông báo hoặc thực hiện các công việc cần thiết sau khi thêm hóa đơn thành công
+    NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
 
 
+    printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
+
+    printPreviewDialog1.PointToScreen(Cursor.Position);
+    if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+        printDocument1.Print();
+}
 ```
 
 
@@ -999,6 +949,4 @@ private void printDocument1_PrintPage(object sender, System.Drawing.Printing.Pri
     }
 ```
 
-
-
-![a](.\OverView\BookShopManager_wQS4XZyO5M.png)
+![a](https://i.imgur.com/0WECJZO.png)
