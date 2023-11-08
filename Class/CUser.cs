@@ -7,5 +7,6 @@
         public string Address { get; set; }
         public string Pass { get; set; }
         public string Yob { get; set; }
+        public string Sex { get; set; }
     }
 }

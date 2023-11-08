@@ -89,12 +89,22 @@ namespace BookShopManager
                 //tao lop de chen du lieu vao database
                 BookTbl insert = new BookTbl();
 
-                insert.BTitle = txtTitle.Text;
-                insert.BAuthor = txtAuthor.Text;
-                insert.BCat = cbCate.SelectedItem.ToString();
-                insert.BQty = Convert.ToInt32(txtQty.Value);
-                insert.BPrice = Convert.ToInt32(txtPrice.Value);
-                insert.BYear = Convert.ToInt32(mmYear.Value);
+                CBooks books = new CBooks()
+                {
+                    Title = txtTitle.Text,
+                    Author = txtAuthor.Text,
+                    Category = cbCate.SelectedItem.ToString(),
+                    Qty = Convert.ToInt32(txtQty.Value),
+                    Price = Convert.ToInt32(btnPrice),
+                    Year = Convert.ToInt32(mmYear.Value)
+                };
+
+                insert.BTitle = books.Title;
+                insert.BAuthor = books.Author;
+                insert.BCat = books.Category;
+                insert.BQty = books.Qty;
+                insert.BPrice = books.Price;
+                insert.BYear = books.Year;
 
                 db.BookTbls.InsertOnSubmit(insert); // Chen du lieu vao database
                 db.SubmitChanges(); //Luu thay doi vao data base
@@ -126,7 +136,7 @@ namespace BookShopManager
         /// <summary>
         /// Phuong Thuc Hien Thi Dua lieu tu DataView len cac truong du lieu
         /// </summary>
-        private void ShowBookInFilde()
+        private void DisplaySelectedBookDetails()
         {
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
             txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
@@ -137,7 +147,7 @@ namespace BookShopManager
         }
         private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            ShowBookInFilde();
+            DisplaySelectedBookDetails();
         }
 
         /// <summary>

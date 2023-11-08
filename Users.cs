@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
+
 
 namespace BookShopManager
 {
@@ -10,71 +11,53 @@ namespace BookShopManager
         public frmUsers()
         {
             InitializeComponent();
-            populate();
+            ShowDataBaseUser();
 
-            user = txtUser.Text;
-            password = txtPassword.Text;
-            address = txtAddress.Text;
-            phone = txtPhone.Text;
             dvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //dvUser.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
-        SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
 
+        BookShopDataContext db = new BookShopDataContext();
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        private string user;
-        private string password;
-        private string address;
-        private string phone;
 
-        private void populate()
+        /// <summary>
+        /// Phuong Thuc Hien thi database
+        /// </summary>
+        private void ShowDataBaseUser()
         {
-            try
-            {
-                con.Open();
-                string query = "select * from UserTbl";
-                SqlDataAdapter sda = new SqlDataAdapter(query, con);
-                SqlCommandBuilder builder = new SqlCommandBuilder(sda);
-                var ds = new DataSet();
-                sda.Fill(ds);
-                dvUser.DataSource = ds.Tables[0];
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            dvUser.DataSource = db.UserTbls.Select(p => p);
         }
-        private void btnSave_Click(object sender, EventArgs e)
+        private void addUser()
         {
-            Console.WriteLine(txtAddress.Text);
-
-            if (txtUser.Text == "" || txtPhone.Text == "" || txtAddress.Text == "" || txtPassword.Text == "")
-                MessageBox.Show("Missing Infor User");
+            if (txtUser.Text == "" || txtPassword.Text == "" || txtPhone.Text == "" || txtAddress.Text == "" || dtYob.Value == null)
+            {
+                NotificationHelper.ShowNotification("Miss", "Missing Infor User", ToolTipIcon.Info);
+            }
             else
             {
-                try
-                {
-                    con.Open();
-                    string query = "insert into UserTbl values('" + txtUser.Text + "','" + txtPhone.Text + "','" + txtAddress.Text + "','" + txtPassword.Text + "')";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("User Saved Successfully");
-                    con.Close();
-                    populate();
-                    //RestColum();
-                    Reset();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                UserTbl user = new UserTbl();
+
+                user.UName = txtUser.Text;
+                user.UPass = txtPassword.Text;
+                user.UPhone = txtPhone.Text;
+                user.UAdd = txtAddress.Text;
+                user.UYob = dtYob.Value;
+
+                db.UserTbls.InsertOnSubmit(user);
+                db.SubmitChanges();
+                NotificationHelper.ShowNotification("Success", "Add User Success", ToolTipIcon.Info);
+
+                ShowDataBaseUser();
             }
         }
+        private void btnSave_Click(object sender, EventArgs e) => addUser();
 
+        /// <summary>
+        /// Phuong thuc reset cac textbox
+        /// </summary>
         private void Reset()
         {
             txtUser.Text = "";
@@ -85,98 +68,59 @@ namespace BookShopManager
         private void btnReset_Click(object sender, EventArgs e)
         {
             Reset();
+            ShowDataBaseUser();
+        }
+        private void DeleteUser()
+        {
+            if (dvUser.SelectedRows.Count == 0)
+                return;
+            string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
+            UserTbl delete = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
+            db.UserTbls.DeleteOnSubmit(delete);
+            db.SubmitChanges();
         }
 
         private void btnDelet_Click(object sender, EventArgs e)
         {
-            if (key == 0)
-                MessageBox.Show("Missing Infor Books");
-            else
-            {
-                try
-                {
-                    con.Open();
-                    string query = "delete from UserTbl  where UId=" + key + ";";
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Book deleted Successfully");
-                    con.Close();
-                    populate();
-                    Reset();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
+            DeleteUser();
+            ShowDataBaseUser();
         }
 
-        int key = 0;
-        private void dvUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Hien thi thong tin nguoi dung khi nhan vao ban
+        /// </summary>
+        private void DisplaySelectedUserDetails()
         {
             txtUser.Text = dvUser.SelectedRows[0].Cells[1].Value.ToString();
             txtPhone.Text = dvUser.SelectedRows[0].Cells[2].Value.ToString();
             txtAddress.Text = dvUser.SelectedRows[0].Cells[3].Value.ToString();
             txtPassword.Text = dvUser.SelectedRows[0].Cells[4].Value.ToString();
+            string dateString = dvUser.SelectedRows[0].Cells[5].Value.ToString();
+            if (DateTime.TryParse(dateString, out DateTime date))
+                dtYob.Value = date;
+        }
+        private void dvUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DisplaySelectedUserDetails();
+        }
+        private void EditUser()
+        {
+            string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
+            UserTbl user = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
 
-            string s;
-            s = dvUser.SelectedRows[0].Cells[3].Value.ToString();
-            if (txtUser.Text == "")
-            {
-                key = 0;
-            }
-            else
-            {
-                key = Convert.ToInt32(dvUser.SelectedRows[0].Cells[0].Value.ToString());
-            }
+            user.UName = txtUser.Text;
+            user.UPass = txtPassword.Text;
+            user.UPhone = txtPhone.Text;
+            user.UAdd = txtAddress.Text;
+            user.UYob = dtYob.Value;
+
+            db.SubmitChanges();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (user == "" || phone == "" || address == "" || password == "")
-                MessageBox.Show("Missing Infor User");
-            else
-            {
-                try
-                {
-                    con.Open();
-                    //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
-                    string query = "UPDATE UserTbl SET UName='" + txtUser.Text + "', UPhone='" + txtPhone.Text + "', UAdd='" + txtAddress.Text + "', UPass='" + txtPassword.Text + "' WHERE UId=" + key + ";";
-
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    //MessageBox.Show("User Updated Successfully");
-                    NotificationHelper.ShowNotification("Updated", "User Updated Successfully", ToolTipIcon.Info);
-                    con.Close();
-                    populate();
-                    Reset();
-                    //con.Open();
-
-                    //string query = "UPDATE BookTbl SET BTitle=@BTitle, BAuthor=@BAuthor, BCat=@BCat, BQty=@BQty, BPrice=@BPrice WHERE BId=@BId";
-                    //SqlCommand cmd = new SqlCommand(query, con);
-
-                    //cmd.Parameters.AddWithValue("@BTitle", txtTitle.Text);
-                    //cmd.Parameters.AddWithValue("@BAuthor", txtAuthor.Text);
-                    //cmd.Parameters.AddWithValue("@BCat", cbCate.SelectedItem.ToString());
-                    //cmd.Parameters.AddWithValue("@BQty", txtQty.Text);
-                    //cmd.Parameters.AddWithValue("@BPrice", txtPrice.Value);
-                    //cmd.Parameters.AddWithValue("@BId", key);
-
-                    //cmd.ExecuteNonQuery();
-
-                    //MessageBox.Show("Book Updated Successfully");
-
-                    //con.Close();
-                    //populate();
-                    //Reset();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
+            EditUser();
+            ShowDataBaseUser();
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -184,10 +128,6 @@ namespace BookShopManager
             frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -203,6 +143,7 @@ namespace BookShopManager
             obj.Show();
             this.Hide();
         }
+
 
     }
 }
