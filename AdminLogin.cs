@@ -10,6 +10,7 @@ namespace BookShopManager
             InitializeComponent();
         }
 
+        //Mat Khau la admin
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtPassword.Text == "admin")

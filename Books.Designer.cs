@@ -34,9 +34,6 @@
             this.mmYear = new System.Windows.Forms.NumericUpDown();
             this.Year = new System.Windows.Forms.Label();
             this.dvBooks = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtQty = new System.Windows.Forms.NumericUpDown();
             this.txtPrice = new System.Windows.Forms.NumericUpDown();
             this.cbCate = new System.Windows.Forms.ComboBox();
@@ -64,6 +61,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpFilter = new System.Windows.Forms.TabPage();
             this.pnAmount = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnFilterAmountBooks = new System.Windows.Forms.Button();
             this.ilSort = new System.Windows.Forms.ImageList(this.components);
             this.label14 = new System.Windows.Forms.Label();
@@ -73,6 +71,7 @@
             this.cbFilerBook = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFilterPriceBooks = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.mmToPrice = new System.Windows.Forms.NumericUpDown();
@@ -88,12 +87,9 @@
             this.btnID = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dvFilterBooks = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnBookEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mmYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
             this.tcBook.SuspendLayout();
@@ -102,16 +98,16 @@
             this.tabControl1.SuspendLayout();
             this.tpFilter.SuspendLayout();
             this.pnAmount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmToAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmFromAmount)).BeginInit();
             this.pnFilterCatogory.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmToPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmFromPrice)).BeginInit();
             this.tpSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvFilterBooks)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnBookEdit
@@ -175,7 +171,6 @@
             this.dvBooks.BackgroundColor = System.Drawing.Color.White;
             this.dvBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvBooks.ContextMenuStrip = this.contextMenuStrip1;
             this.dvBooks.GridColor = System.Drawing.Color.Black;
             this.dvBooks.Location = new System.Drawing.Point(0, 170);
             this.dvBooks.Name = "dvBooks";
@@ -185,31 +180,6 @@
             this.dvBooks.Size = new System.Drawing.Size(882, 348);
             this.dvBooks.TabIndex = 10;
             this.dvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvBooks_CellContentClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem,
-            this.reToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 56);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // reToolStripMenuItem
-            // 
-            this.reToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reToolStripMenuItem.Image")));
-            this.reToolStripMenuItem.Name = "reToolStripMenuItem";
-            this.reToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
-            this.reToolStripMenuItem.Text = "ReFersh";
-            this.reToolStripMenuItem.Click += new System.EventHandler(this.reToolStripMenuItem_Click);
             // 
             // txtQty
             // 
@@ -547,6 +517,16 @@
             this.pnAmount.Size = new System.Drawing.Size(294, 101);
             this.pnAmount.TabIndex = 22;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(93, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 21;
+            this.pictureBox2.TabStop = false;
+            // 
             // btnFilterAmountBooks
             // 
             this.btnFilterAmountBooks.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -649,6 +629,16 @@
             this.panel1.Size = new System.Drawing.Size(353, 100);
             this.panel1.TabIndex = 21;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(106, 58);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnFilterPriceBooks
             // 
             this.btnFilterPriceBooks.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -660,7 +650,7 @@
             this.btnFilterPriceBooks.ImageList = this.ilSort;
             this.btnFilterPriceBooks.Location = new System.Drawing.Point(250, 9);
             this.btnFilterPriceBooks.Name = "btnFilterPriceBooks";
-            this.btnFilterPriceBooks.Size = new System.Drawing.Size(82, 83);
+            this.btnFilterPriceBooks.Size = new System.Drawing.Size(100, 83);
             this.btnFilterPriceBooks.TabIndex = 18;
             this.btnFilterPriceBooks.UseVisualStyleBackColor = true;
             this.btnFilterPriceBooks.Click += new System.EventHandler(this.btnFilterPriceBooks_Click);
@@ -706,7 +696,7 @@
             this.tpSort.Location = new System.Drawing.Point(4, 25);
             this.tpSort.Name = "tpSort";
             this.tpSort.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSort.Size = new System.Drawing.Size(871, 117);
+            this.tpSort.Size = new System.Drawing.Size(871, 120);
             this.tpSort.TabIndex = 1;
             this.tpSort.Text = "Sort";
             this.tpSort.UseVisualStyleBackColor = true;
@@ -858,7 +848,6 @@
             this.dvFilterBooks.BackgroundColor = System.Drawing.Color.White;
             this.dvFilterBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dvFilterBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvFilterBooks.ContextMenuStrip = this.contextMenuStrip1;
             this.dvFilterBooks.GridColor = System.Drawing.Color.Black;
             this.dvFilterBooks.Location = new System.Drawing.Point(10, 197);
             this.dvFilterBooks.Name = "dvFilterBooks";
@@ -867,26 +856,6 @@
             this.dvFilterBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvFilterBooks.Size = new System.Drawing.Size(882, 324);
             this.dvFilterBooks.TabIndex = 13;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(106, 58);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 21;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(93, 61);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
             // 
             // frmBooks
             // 
@@ -909,7 +878,6 @@
             this.pnBookEdit.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mmYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
             this.tcBook.ResumeLayout(false);
@@ -920,18 +888,18 @@
             this.tpFilter.ResumeLayout(false);
             this.pnAmount.ResumeLayout(false);
             this.pnAmount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmToAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmFromAmount)).EndInit();
             this.pnFilterCatogory.ResumeLayout(false);
             this.pnFilterCatogory.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmToPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmFromPrice)).EndInit();
             this.tpSort.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvFilterBooks)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -958,9 +926,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip ttMain;
         private System.Windows.Forms.NumericUpDown txtQty;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reToolStripMenuItem;
         private System.Windows.Forms.TabControl tcBook;
         private System.Windows.Forms.TabPage tpFilterAddSearch;
         private System.Windows.Forms.TabPage tpEditBooks;

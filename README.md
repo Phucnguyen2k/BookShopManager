@@ -662,11 +662,65 @@ private void EditUser()
 
 ### Dashboard
 
+```cs
+
+        //Tao ket noi LinQ
+        BookShopDataContext db = new BookShopDataContext();
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            //So luong Sach Con Trong Kho
+            var totalStock = db.BookTbls.Sum(b => b.BQty);
+            lbBooksStock.Text = totalStock.ToString();
+
+            //Tong Doanh Thu
+            var totalAmount = db.BillTbls.Sum(b => b.Amount);
+            lbToTalAmount.Text = totalAmount.ToString();
+
+            //So luong Nhan Vien
+            var userCount = db.UserTbls.Count();
+            lbUsers.Text = userCount.ToString();
+
+            //doanh Thu cao nhat
+            var maxAmount = db.BillTbls.Max(b => b.Amount);
+            lbMost.Text = maxAmount.ToString();
+
+
+
+            // Chart Books
+            var bookData = db.BookTbls.Select(b => new { BTitle = b.BTitle, BQty = b.BQty }).ToList();
+
+            cBookStorage.DataSource = bookData;
+
+            cBookStorage.Series.Clear();
+
+            Series series = new Series("Books");
+            series.ChartType = SeriesChartType.Column;
+            series.XValueMember = "BTitle";
+            series.YValueMembers = "BQty";
+            cBookStorage.Series.Add(series);
+
+            cBookStorage.ChartAreas[0].AxisX.Title = "Book Title";
+            cBookStorage.ChartAreas[0].AxisY.Title = "Quantity";
+            cBookStorage.DataBind();
+
+
+        }
+
+
+```
+
+
+
 ![BookShopManager_vIP0bsEBc0.gif](./OverView/BookShopManager_vIP0bsEBc0.gif)
 
 ![a](https://i.imgur.com/wUmMjPT.png)
 
 ### History
+
+```cs
+//Char history Bill
+dvHistory.DataSource = db.BillTbls.Select(p => p);
+```
 
 ![a](.\OverView\BookShopManager_g5ercbTdsb.png)
 
@@ -674,9 +728,54 @@ private void EditUser()
 
 ![a](.\OverView\BookShopManager_IZVDYjqsFh.png)
 
+```cs
+//Bieu Do Co doanh Thu cua tung nguoi 
+cRevenuePerUser.Series.Clear();
+cRevenuePerUser.Palette = ChartColorPalette.Pastel;
+
+var userAmountData = db.BillTbls
+    .GroupBy(b => b.UName)
+    .Select(g => new
+    {
+        UName = g.Key,
+        TotalAmount = g.Sum(b => b.Amount)
+    })
+    .ToList();
+
+foreach (var item in userAmountData)
+{
+    string uname = item.UName;
+
+    Series seriesItem = new Series(uname);
+    seriesItem.Points.AddXY(uname, item.TotalAmount);
+    seriesItem.IsValueShownAsLabel = true;
+    cRevenuePerUser.Series.Add(seriesItem);
+    seriesItem.Points.Last().ToolTip = uname;
+}
+```
+
+
+
 ### Chart
 
 ![a](.\OverView\BookShopManager_CbPT3TX3AB.png)
+
+```cs
+// Chart Bill
+var billData = db.BillTbls.Select(b => new { UName = b.UName, Amount = b.Amount }).ToList();
+
+cInCome.Series.Clear();
+
+Series series1 = new Series("BillData");
+series1.XValueMember = "UName";
+series1.YValueMembers = "Amount";
+series1.ToolTip = "#VALX: #VAL";
+series1.ChartType = SeriesChartType.Line;
+
+cInCome.Series.Add(series1);
+cInCome.DataSource = billData;
+cInCome.DataBind();
+```
 
 ## Bill
 
@@ -684,6 +783,222 @@ private void EditUser()
 
 ![a](.\OverView\BookShopManager_pQ71b8nyuD.png)
 
+```cs
+using System;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace BookShopManager
+{
+    public partial class Billing : Form
+    {
+        public Billing()
+        {
+            InitializeComponent();
+            //populate();
+            ShowBook();
+        }
+
+        private void Billing_Load(object sender, EventArgs e)
+        {
+            lbUserName.Text = frmLogin.UserName;
+            dvBill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        }
+        //SqlConnection con = new SqlConnection(
+        //    @"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
+        BookShopDataContext db = new BookShopDataContext();
+
+        private void ShowBook()
+        {
+            dvBooks.DataSource = db.BookTbls;
+        }
+        private void UpdateBook()
+        {
+            int newQty = stock - Convert.ToInt32(txtQty.Value);
+            //try
+            //{
+            //    con.Open();
+            //    //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
+            //    string query = "update BookTbl set BQty=" + newQty + " where BId=" + key + ";";
+
+            //    SqlCommand cmd = new SqlCommand(query, con);
+            //    cmd.ExecuteNonQuery();
+            //    con.Close();
+            //    //populate();
+            //    ShowBook();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            var bookToUpdate = db.BookTbls.SingleOrDefault(b => b.BId == key);
+
+            if (bookToUpdate != null)
+            {
+                bookToUpdate.BQty = newQty;
+                db.SubmitChanges();
+                ShowBook();
+            }
+        }
+        int n = 0, GrdTotal = 0;
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtQty.Value == 0 || Convert.ToInt32(txtQty.Value) > stock)
+            {
+                MessageBox.Show("No Enough Stock");
+            }
+            else
+            {
+                int total = Convert.ToInt32(txtQty.Value) * Convert.ToInt32(txtPrice.Value);
+                DataGridViewRow newRow = new DataGridViewRow();
+                newRow.CreateCells(dvBill);
+                newRow.Cells[0].Value = n + 1;
+                newRow.Cells[1].Value = txtTitle.Text.Trim();
+                newRow.Cells[2].Value = txtQty.Value;
+                newRow.Cells[3].Value = txtPrice.Value;
+                newRow.Cells[4].Value = total;
+                dvBill.Rows.Add(newRow);
+                n++;
+                UpdateBook();
+                GrdTotal = GrdTotal + total;
+                lbTotal.Text = "Total $: " + GrdTotal;
+            }
+        }
+
+        int key = 0, stock = 0;
+
+        private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //reset bill
+            btnReset_Click(sender, e);
+            txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
+            txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
+
+            //string s;
+            //s = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+            if (txtTitle.Text == "")
+            {
+                key = 0;
+                stock = 0;
+            }
+            else
+            {
+                key = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[0].Value.ToString());
+                stock = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
+            }
+        }
+ 
+```
+
 ### Print
+
+```cs
+       private void PrintBill()
+        {
+            // Tạo một đối tượng hóa đơn mới
+            BillTbl newBill = new BillTbl
+            {
+                UName = lbUserName.Text,
+                ClineName = txtClientName.Text,
+                Amount = GrdTotal,
+                UDate = DateTime.Now
+            };
+
+            // Thêm hóa đơn vào cơ sở dữ liệu bằng LINQ to SQL
+            db.BillTbls.InsertOnSubmit(newBill);
+            db.SubmitChanges();
+
+            // Hiển thị thông báo hoặc thực hiện các công việc cần thiết sau khi thêm hóa đơn thành công
+            NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
+
+
+            printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
+
+            printPreviewDialog1.PointToScreen(Cursor.Position);
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                printDocument1.Print();
+        }
+
+
+```
+
+
+
+```cs
+int prodid, prodqty, prodprice, tottal, pos = 60;
+string prodname;
+private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics
+                .DrawString("      Book Shop", new Font("Courier New", 18, FontStyle.Bold), Brushes.Blue, new Point(80, 15));
+            e.Graphics
+                .DrawString(
+                    "ID PRODUCT            PRICE QTY TOTAL",
+                    new Font("Courier New", 9, FontStyle.Bold),
+                    Brushes.Blue,
+                    new Point(26, 40));
+            foreach (DataGridViewRow row in dvBill.Rows)
+            {
+                prodid = Convert.ToInt32(row.Cells["Column1"].Value);
+                prodname = "" + row.Cells["Column2"].Value;
+                prodprice = Convert.ToInt32(row.Cells["Column3"].Value);
+                prodqty = Convert.ToInt32(row.Cells["Column4"].Value);
+                //tottal = Convert.ToInt32(row.Cells[row.Cells["Column5"].Value);
+                tottal = Convert.ToInt32(row.Cells["Column5"].Value);
+                e.Graphics
+                    .DrawString(
+                        "" + prodid,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(26, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodname,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(45, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodprice,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(200, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + prodqty,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(230, pos));
+                e.Graphics
+                    .DrawString(
+                        "" + tottal,
+                        new Font("Courier New", 9, FontStyle.Bold),
+                        Brushes.Black,
+                        new Point(265, pos));
+                pos = pos + 20;
+            }
+            e.Graphics
+                .DrawString(
+                    "       Grand ToTal: $" + GrdTotal,
+                    new Font("Courier New", 12, FontStyle.Bold),
+                    Brushes.Blue,
+                    new Point(60, pos + 50));
+            e.Graphics
+                .DrawString(
+                    "       =========== BookStore ===========",
+                    new Font("Courier New", 10, FontStyle.Bold),
+                    Brushes.Blue,
+                    new Point(40, pos + 85));
+            dvBill.Rows.Clear();
+            dvBill.Refresh();
+            pos = 100;
+            GrdTotal = 0;
+    }
+```
+
+
 
 ![a](.\OverView\BookShopManager_wQS4XZyO5M.png)

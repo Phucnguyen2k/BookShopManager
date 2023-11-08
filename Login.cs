@@ -14,7 +14,10 @@ namespace BookShopManager
         //Khoi tao datacontext LinQ
         BookShopDataContext db = new BookShopDataContext();
 
+        //Hien Thi Ten Nguoi dung
         public static string UserName = "";
+
+        //Kiem Tra dang nhap
         private void CheckLogin()
         {
             string username = txtUserName.Text;
@@ -28,6 +31,7 @@ namespace BookShopManager
                 Billing obj = new Billing();
                 obj.Show();
                 this.Hide();
+
                 NotificationHelper.ShowNotification("Login", "Login Successful", ToolTipIcon.Info);
             }
             else
@@ -41,6 +45,7 @@ namespace BookShopManager
             CheckLogin();
         }
 
+        //Show Form dang nhap admin
         private void label3_Click(object sender, EventArgs e)
         {
             AdminLogin obj = new AdminLogin();
@@ -48,6 +53,7 @@ namespace BookShopManager
             this.Hide();
         }
 
+        //An/ Hien mat khau
         private void btnShowPass_Click(object sender, EventArgs e)
         {
             if (txtPassword.PasswordChar == '\0')
@@ -65,6 +71,11 @@ namespace BookShopManager
         private void Login_Load(object sender, EventArgs e)
         {
             btnShowPass.ImageIndex = 1;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

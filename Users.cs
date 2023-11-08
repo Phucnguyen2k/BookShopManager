@@ -14,9 +14,9 @@ namespace BookShopManager
             ShowDataBaseUser();
 
             dvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //dvUser.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
+        // Tao Doi Tuong De Truy Cap Vao Co So Du Lieu
         BookShopDataContext db = new BookShopDataContext();
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -30,6 +30,10 @@ namespace BookShopManager
         {
             dvUser.DataSource = db.UserTbls.Select(p => p);
         }
+
+        /// <summary>
+        /// Phuong thuc Them Nguoi Dung Voa CSDL
+        /// </summary>
         private void addUser()
         {
             if (txtUser.Text == "" || txtPassword.Text == "" || txtPhone.Text == "" || txtAddress.Text == "" || dtYob.Value == null)
@@ -46,10 +50,13 @@ namespace BookShopManager
                 user.UAdd = txtAddress.Text.Trim();
                 user.UYob = dtYob.Value;
 
+                //chen nguoi dung vao database
                 db.UserTbls.InsertOnSubmit(user);
-                db.SubmitChanges();
-                NotificationHelper.ShowNotification("Success", "Add User Success", ToolTipIcon.Info);
 
+                //Luu database
+                db.SubmitChanges();
+
+                NotificationHelper.ShowNotification("Success", "Add User Success", ToolTipIcon.Info);
                 ShowDataBaseUser();
             }
         }
@@ -74,7 +81,11 @@ namespace BookShopManager
         {
             if (dvUser.SelectedRows.Count == 0)
                 return;
+
+            // Xac Dinh ID nguoi Dung
             string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
+
+            //Tao Lop De Xoa Nguoi Dung Trong CSDL
             UserTbl delete = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
             db.UserTbls.DeleteOnSubmit(delete);
             db.SubmitChanges();
@@ -96,6 +107,7 @@ namespace BookShopManager
             txtAddress.Text = dvUser.SelectedRows[0].Cells[3].Value.ToString();
             txtPassword.Text = dvUser.SelectedRows[0].Cells[4].Value.ToString();
             string dateString = dvUser.SelectedRows[0].Cells[5].Value.ToString();
+            //ep kiep cho datatime
             if (DateTime.TryParse(dateString, out DateTime date))
                 dtYob.Value = date;
         }
@@ -103,9 +115,14 @@ namespace BookShopManager
         {
             DisplaySelectedUserDetails();
         }
+
+        /// <summary>
+        /// Phuong Thuc Chinh Su Nguoi Dung Trong CSDL
+        /// </summary>
         private void EditUser()
         {
             string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
+            //Tao Lop de chinh sua nguoi dung
             UserTbl user = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
 
             user.UName = txtUser.Text;
@@ -123,6 +140,8 @@ namespace BookShopManager
             ShowDataBaseUser();
         }
 
+
+        //hien form login
         private void label8_Click(object sender, EventArgs e)
         {
             frmLogin obj = new frmLogin();
@@ -130,6 +149,7 @@ namespace BookShopManager
             this.Hide();
         }
 
+        //hien form Books
         private void label5_Click(object sender, EventArgs e)
         {
             frmBooks obj = new frmBooks();
@@ -137,6 +157,7 @@ namespace BookShopManager
             this.Hide();
         }
 
+        //hien form Dashboard
         private void label7_Click(object sender, EventArgs e)
         {
             frmDashboard obj = new frmDashboard();

@@ -80,7 +80,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(13, 60);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(194, 27);
+            this.label4.Size = new System.Drawing.Size(249, 34);
             this.label4.TabIndex = 5;
             this.label4.Text = "Đồ Án Winfom ";
             // 
@@ -132,6 +132,7 @@
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // label3
             // 
@@ -140,7 +141,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(113, 272);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 21);
+            this.label3.Size = new System.Drawing.Size(82, 27);
             this.label3.TabIndex = 3;
             this.label3.Text = "Admin";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -195,7 +196,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(21, 171);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 21);
+            this.label2.Size = new System.Drawing.Size(124, 27);
             this.label2.TabIndex = 0;
             this.label2.Text = "Password";
             // 
@@ -206,7 +207,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(21, 129);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 21);
+            this.label1.Size = new System.Drawing.Size(138, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "User Name";
             // 
@@ -217,14 +218,14 @@
             this.lbTitle.ForeColor = System.Drawing.Color.Black;
             this.lbTitle.Location = new System.Drawing.Point(113, 23);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(109, 22);
+            this.lbTitle.Size = new System.Drawing.Size(138, 27);
             this.lbTitle.TabIndex = 0;
             this.lbTitle.Text = "Book Shop";
             // 
             // frmLogin
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(94)))), ((int)(((byte)(255)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

@@ -14,24 +14,6 @@ namespace BookShopManager
         /// <summary>
         /// Phuong Thuc Hien Tool Tip cho cac button
         /// </summary>
-        private void ToolTipMain()
-        {
-            ttMain.SetToolTip(btnSearch, "Search");
-            ttMain.SetToolTip(btnRefershBooks, "Refresh");
-            ttMain.SetToolTip(btnFilterAmountBooks, "Loc Sach theo So luong");
-            ttMain.SetToolTip(btnFilterPriceBooks, "Loc Sach Theo Gia");
-            if (sort)
-                ttMain.SetToolTip(btnSortBook, "Sap Xep Tang Dan");
-            else
-                ttMain.SetToolTip(btnSortBook, "Sap Xep Giam Dan");
-            ttMain.SetToolTip(btnID, "Sap Xep Theo ID");
-            ttMain.SetToolTip(btnTitle, "Sap Xep Theo Ten Sach");
-            ttMain.SetToolTip(btnAuthor, "Sap Xep Theo Tac Gia");
-            ttMain.SetToolTip(btnCategory, "Sap Xep Theo The Loai");
-            ttMain.SetToolTip(btnYear, "Sap Xep Theo Nam");
-            ttMain.SetToolTip(btnPrice, "Sap Xep Theo Gia");
-            ttMain.SetToolTip(btnQty, "Sap Xep Theo So Luong");
-        }
         public frmBooks()
         {
             InitializeComponent();
@@ -181,12 +163,6 @@ namespace BookShopManager
         private void EditBook()
         {
             string id = dvBooks.SelectedCells[0].OwningRow.Cells["BId"].Value.ToString();
-            //string title = dvBooks.SelectedCells[0].OwningRow.Cells["BTitle"].Value.ToString();
-            //string author = dvBooks.SelectedCells[0].OwningRow.Cells["BAuthor"].Value.ToString();
-            //string cate = dvBooks.SelectedCells[0].OwningRow.Cells["BCat"].Value.ToString();
-            //int qty = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BQty"].Value.ToString());
-            //int price = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BPrice"].Value.ToString());
-            //int year = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BYear"].Value.ToString());
 
             BookTbl edit = db.BookTbls.Where(p => p.BId.Equals(id)).FirstOrDefault(); // First or Default: lay gia tri dau tien nieu khog thi null
 
@@ -410,6 +386,25 @@ namespace BookShopManager
                 dvFilterBooks.DataSource = db.BookTbls.OrderBy(p => p.BPrice).ToList();
             else
                 dvFilterBooks.DataSource = db.BookTbls.OrderByDescending(p => p.BPrice).ToList();
+        }
+        //Hien Chu Thich Khi Re Chuot Vao Cac Button
+        private void ToolTipMain()
+        {
+            ttMain.SetToolTip(btnSearch, "Search");
+            ttMain.SetToolTip(btnRefershBooks, "Refresh");
+            ttMain.SetToolTip(btnFilterAmountBooks, "Loc Sach theo So luong");
+            ttMain.SetToolTip(btnFilterPriceBooks, "Loc Sach Theo Gia");
+            if (sort)
+                ttMain.SetToolTip(btnSortBook, "Sap Xep Tang Dan");
+            else
+                ttMain.SetToolTip(btnSortBook, "Sap Xep Giam Dan");
+            ttMain.SetToolTip(btnID, "Sap Xep Theo ID");
+            ttMain.SetToolTip(btnTitle, "Sap Xep Theo Ten Sach");
+            ttMain.SetToolTip(btnAuthor, "Sap Xep Theo Tac Gia");
+            ttMain.SetToolTip(btnCategory, "Sap Xep Theo The Loai");
+            ttMain.SetToolTip(btnYear, "Sap Xep Theo Nam");
+            ttMain.SetToolTip(btnPrice, "Sap Xep Theo Gia");
+            ttMain.SetToolTip(btnQty, "Sap Xep Theo So Luong");
         }
     }
 }

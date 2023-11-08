@@ -10,18 +10,19 @@ namespace BookShopManager
         public Billing()
         {
             InitializeComponent();
-            //populate();
+
             ShowBook();
         }
 
         private void Billing_Load(object sender, EventArgs e)
         {
             lbUserName.Text = frmLogin.UserName;
+
+            //Cang Chinh Bang
             dvBill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-        //SqlConnection con = new SqlConnection(
-        //    @"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
+
         BookShopDataContext db = new BookShopDataContext();
 
         private void ShowBook()
@@ -30,23 +31,9 @@ namespace BookShopManager
         }
         private void UpdateBook()
         {
+            //So luong sach sau khi khach hang mua
             int newQty = stock - Convert.ToInt32(txtQty.Value);
-            //try
-            //{
-            //    con.Open();
-            //    //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
-            //    string query = "update BookTbl set BQty=" + newQty + " where BId=" + key + ";";
 
-            //    SqlCommand cmd = new SqlCommand(query, con);
-            //    cmd.ExecuteNonQuery();
-            //    con.Close();
-            //    //populate();
-            //    ShowBook();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
             var bookToUpdate = db.BookTbls.SingleOrDefault(b => b.BId == key);
 
             if (bookToUpdate != null)
@@ -82,8 +69,8 @@ namespace BookShopManager
             }
         }
 
+        //Hien thi thong tin sach
         int key = 0, stock = 0;
-
         private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //reset bill
@@ -106,7 +93,7 @@ namespace BookShopManager
         }
         private void PrintBill()
         {
-            // Tạo một đối tượng hóa đơn mới
+            //Tao Doi Tuong Hoa Don
             BillTbl newBill = new BillTbl
             {
                 UName = lbUserName.Text,
@@ -115,14 +102,13 @@ namespace BookShopManager
                 UDate = DateTime.Now
             };
 
-            // Thêm hóa đơn vào cơ sở dữ liệu bằng LINQ to SQL
+            //Them Hoa Don Vao Co So Du Lieu
             db.BillTbls.InsertOnSubmit(newBill);
             db.SubmitChanges();
 
-            // Hiển thị thông báo hoặc thực hiện các công việc cần thiết sau khi thêm hóa đơn thành công
             NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
 
-
+            //In ra hoa don
             printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
 
             printPreviewDialog1.PointToScreen(Cursor.Position);
@@ -130,61 +116,23 @@ namespace BookShopManager
                 printDocument1.Print();
 
         }
-        private void OldPrint()
-        {
-            if (txtClientName.Text == "" || txtTitle.Text == "")
-                MessageBox.Show("Select Client Name");
-            else
-            {
-                try
-                {
-                    //con.Open();
-                    //string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
-                    //string query = "insert into BillTbl values('" +
-                    //    lbUserName.Text +
-                    //    "','" +
-                    //    txtClientName.Text +
-                    //    "'," +
-                    //    GrdTotal +
-                    //    formattedDate +
-                    //    "')";
-
-                    //SqlCommand cmd = new SqlCommand(query, con);
-                    //cmd.ExecuteNonQuery();
-                    ////MessageBox.Show("Bill Saved Successfully");
-                    //NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
-                    //con.Close();
-                    //populate();
-                    //RestColum();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
-
-        }
         private void btnPrint_Click(object sender, EventArgs e)
         {
             PrintBill();
         }
 
-        int prodid, prodqty, prodprice, tottal, pos = 60;
-        private void label8_Click(object sender, EventArgs e)
-        {
-            frmLogin obj = new frmLogin();
-            obj.Show();
-            this.Hide();
-        }
 
-
-
+        //Thoat Ung Dung
         private void btnExit_Click(object sender, EventArgs e) { Application.Exit(); }
 
-
+        int prodid, prodqty, prodprice, tottal, pos = 60;
         string prodname;
 
+        /// <summary>
+        /// In Bill
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics
@@ -253,6 +201,17 @@ namespace BookShopManager
             GrdTotal = 0;
         }
 
+        /// <summary>
+        /// Dang Xua 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void label8_Click(object sender, EventArgs e)
+        {
+            frmLogin obj = new frmLogin();
+            obj.Show();
+            this.Hide();
+        }
         private void Reset()
         {
             txtClientName.Text = "";

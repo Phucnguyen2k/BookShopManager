@@ -103,7 +103,6 @@
       <DependentUpon>BookShop.dbml</DependentUpon>
     </Compile>
     <Compile Include="Class\CBooks.cs" />
-    <Compile Include="Class\CUser.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
