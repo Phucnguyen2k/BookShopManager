@@ -68,9 +68,7 @@
             this.ilSort = new System.Windows.Forms.ImageList(this.components);
             this.label14 = new System.Windows.Forms.Label();
             this.mmToAmount = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
             this.mmFromAmount = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
             this.pnFilterCatogory = new System.Windows.Forms.Panel();
             this.cbFilerBook = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,9 +76,7 @@
             this.btnFilterPriceBooks = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.mmToPrice = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.mmFromPrice = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             this.tpSort = new System.Windows.Forms.TabPage();
             this.btnSortBook = new System.Windows.Forms.Button();
             this.btnYear = new System.Windows.Forms.Button();
@@ -92,6 +88,8 @@
             this.btnID = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dvFilterBooks = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnBookEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mmYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvBooks)).BeginInit();
@@ -112,6 +110,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mmFromPrice)).BeginInit();
             this.tpSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvFilterBooks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnBookEdit
@@ -506,7 +506,7 @@
             this.btnSearch.Location = new System.Drawing.Point(802, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(40, 30);
-            this.btnSearch.TabIndex = 15;
+            this.btnSearch.TabIndex = 0;
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -518,7 +518,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 46);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(879, 146);
+            this.tabControl1.Size = new System.Drawing.Size(879, 149);
             this.tabControl1.TabIndex = 14;
             // 
             // tpFilter
@@ -530,19 +530,18 @@
             this.tpFilter.Location = new System.Drawing.Point(4, 25);
             this.tpFilter.Name = "tpFilter";
             this.tpFilter.Padding = new System.Windows.Forms.Padding(3);
-            this.tpFilter.Size = new System.Drawing.Size(871, 117);
+            this.tpFilter.Size = new System.Drawing.Size(871, 120);
             this.tpFilter.TabIndex = 0;
             this.tpFilter.Text = "Filter";
             this.tpFilter.UseVisualStyleBackColor = true;
             // 
             // pnAmount
             // 
+            this.pnAmount.Controls.Add(this.pictureBox2);
             this.pnAmount.Controls.Add(this.btnFilterAmountBooks);
             this.pnAmount.Controls.Add(this.label14);
             this.pnAmount.Controls.Add(this.mmToAmount);
-            this.pnAmount.Controls.Add(this.label15);
             this.pnAmount.Controls.Add(this.mmFromAmount);
-            this.pnAmount.Controls.Add(this.label16);
             this.pnAmount.Location = new System.Drawing.Point(571, 10);
             this.pnAmount.Name = "pnAmount";
             this.pnAmount.Size = new System.Drawing.Size(294, 101);
@@ -581,7 +580,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(71, 5);
+            this.label14.Location = new System.Drawing.Point(66, 12);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(76, 21);
             this.label14.TabIndex = 12;
@@ -596,36 +595,14 @@
             this.mmToAmount.Size = new System.Drawing.Size(72, 25);
             this.mmToAmount.TabIndex = 20;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(129, 39);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 21);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "From";
-            // 
             // mmFromAmount
             // 
             this.mmFromAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mmFromAmount.Font = new System.Drawing.Font("Courier New", 14.25F);
-            this.mmFromAmount.Location = new System.Drawing.Point(120, 63);
+            this.mmFromAmount.Location = new System.Drawing.Point(130, 63);
             this.mmFromAmount.Name = "mmFromAmount";
             this.mmFromAmount.Size = new System.Drawing.Size(73, 25);
             this.mmFromAmount.TabIndex = 20;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(56, 36);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(32, 21);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "To";
             // 
             // pnFilterCatogory
             // 
@@ -662,12 +639,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnFilterPriceBooks);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.mmToPrice);
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.mmFromPrice);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(212, 11);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(353, 100);
@@ -703,40 +679,18 @@
             // mmToPrice
             // 
             this.mmToPrice.Font = new System.Drawing.Font("Courier New", 14.25F);
-            this.mmToPrice.Location = new System.Drawing.Point(30, 62);
+            this.mmToPrice.Location = new System.Drawing.Point(29, 58);
             this.mmToPrice.Name = "mmToPrice";
             this.mmToPrice.Size = new System.Drawing.Size(64, 29);
             this.mmToPrice.TabIndex = 20;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(159, 36);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 21);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Form";
-            // 
             // mmFromPrice
             // 
             this.mmFromPrice.Font = new System.Drawing.Font("Courier New", 14.25F);
-            this.mmFromPrice.Location = new System.Drawing.Point(151, 65);
+            this.mmFromPrice.Location = new System.Drawing.Point(152, 60);
             this.mmFromPrice.Name = "mmFromPrice";
             this.mmFromPrice.Size = new System.Drawing.Size(75, 29);
             this.mmFromPrice.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(46, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 21);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "To";
             // 
             // tpSort
             // 
@@ -906,13 +860,33 @@
             this.dvFilterBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dvFilterBooks.ContextMenuStrip = this.contextMenuStrip1;
             this.dvFilterBooks.GridColor = System.Drawing.Color.Black;
-            this.dvFilterBooks.Location = new System.Drawing.Point(10, 198);
+            this.dvFilterBooks.Location = new System.Drawing.Point(10, 197);
             this.dvFilterBooks.Name = "dvFilterBooks";
             this.dvFilterBooks.ReadOnly = true;
             this.dvFilterBooks.RowHeadersWidth = 51;
             this.dvFilterBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvFilterBooks.Size = new System.Drawing.Size(882, 323);
+            this.dvFilterBooks.Size = new System.Drawing.Size(882, 324);
             this.dvFilterBooks.TabIndex = 13;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(106, 58);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(93, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 21;
+            this.pictureBox2.TabStop = false;
             // 
             // frmBooks
             // 
@@ -956,6 +930,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.mmFromPrice)).EndInit();
             this.tpSort.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvFilterBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1003,16 +979,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown mmToPrice;
         private System.Windows.Forms.NumericUpDown mmFromPrice;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnAmount;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown mmToAmount;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown mmFromAmount;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel pnFilterCatogory;
         private System.Windows.Forms.Button btnID;
         private System.Windows.Forms.Button btnYear;
@@ -1025,5 +997,7 @@
         private System.Windows.Forms.Button btnFilterPriceBooks;
         private System.Windows.Forms.ImageList ilSort;
         private System.Windows.Forms.Button btnFilterAmountBooks;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

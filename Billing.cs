@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace BookShopManager
@@ -11,49 +10,51 @@ namespace BookShopManager
         public Billing()
         {
             InitializeComponent();
-            populate();
+            //populate();
+            ShowBook();
         }
 
-        SqlConnection con = new SqlConnection(
-            @"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
-        private void populate()
+        private void Billing_Load(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                string query = "select * from BookTbl";
-                SqlDataAdapter sda = new SqlDataAdapter(query, con);
-                SqlCommandBuilder builder = new SqlCommandBuilder(sda);
-                var ds = new DataSet();
-                sda.Fill(ds);
-                dvBooks.DataSource = ds.Tables[0];
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            lbUserName.Text = frmLogin.UserName;
+            dvBill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+        //SqlConnection con = new SqlConnection(
+        //    @"Data Source=LAPTOP-59C9UNMJ\KI;Initial Catalog=BOOKSHOPSDB;Integrated Security=True");
+        BookShopDataContext db = new BookShopDataContext();
 
+        private void ShowBook()
+        {
+            dvBooks.DataSource = db.BookTbls;
+        }
         private void UpdateBook()
         {
             int newQty = stock - Convert.ToInt32(txtQty.Value);
-            try
-            {
-                con.Open();
-                //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
-                string query = "update BookTbl set BQty=" + newQty + " where BId=" + key + ";";
+            //try
+            //{
+            //    con.Open();
+            //    //string query = "update BookTbl set BTitle='" + txtTitle.Text + "',BAuthor='" + txtAuthor.Text + "',BCat=" + cbCate.SelectedIndex.ToString() + "',BQty=" + txtQty.Text + ",BPrice" + txtPrice.Value + " where BId" + key + ";";
+            //    string query = "update BookTbl set BQty=" + newQty + " where BId=" + key + ";";
 
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                populate();
-            }
-            catch (Exception ex)
+            //    SqlCommand cmd = new SqlCommand(query, con);
+            //    cmd.ExecuteNonQuery();
+            //    con.Close();
+            //    //populate();
+            //    ShowBook();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            var bookToUpdate = db.BookTbls.SingleOrDefault(b => b.BId == key);
+
+            if (bookToUpdate != null)
             {
-                MessageBox.Show(ex.Message);
+                bookToUpdate.BQty = newQty;
+                db.SubmitChanges();
+                ShowBook();
             }
-            //RestColum();
         }
         int n = 0, GrdTotal = 0;
 
@@ -69,7 +70,7 @@ namespace BookShopManager
                 DataGridViewRow newRow = new DataGridViewRow();
                 newRow.CreateCells(dvBill);
                 newRow.Cells[0].Value = n + 1;
-                newRow.Cells[1].Value = txtTitle.Text;
+                newRow.Cells[1].Value = txtTitle.Text.Trim();
                 newRow.Cells[2].Value = txtQty.Value;
                 newRow.Cells[3].Value = txtPrice.Value;
                 newRow.Cells[4].Value = total;
@@ -88,13 +89,10 @@ namespace BookShopManager
             //reset bill
             btnReset_Click(sender, e);
             txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
-            //txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
-            //cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
-            //txtQty.Text = dvBooks.SelectedRows[0].Cells[4].Value.ToString();
             txtPrice.Value = decimal.Parse(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
 
-            string s;
-            s = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+            //string s;
+            //s = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
             if (txtTitle.Text == "")
             {
                 key = 0;
@@ -106,7 +104,33 @@ namespace BookShopManager
                 stock = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
             }
         }
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void PrintBill()
+        {
+            // Tạo một đối tượng hóa đơn mới
+            BillTbl newBill = new BillTbl
+            {
+                UName = lbUserName.Text,
+                ClineName = txtClientName.Text,
+                Amount = GrdTotal,
+                UDate = DateTime.Now
+            };
+
+            // Thêm hóa đơn vào cơ sở dữ liệu bằng LINQ to SQL
+            db.BillTbls.InsertOnSubmit(newBill);
+            db.SubmitChanges();
+
+            // Hiển thị thông báo hoặc thực hiện các công việc cần thiết sau khi thêm hóa đơn thành công
+            NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
+
+
+            printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
+
+            printPreviewDialog1.PointToScreen(Cursor.Position);
+            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                printDocument1.Print();
+
+        }
+        private void OldPrint()
         {
             if (txtClientName.Text == "" || txtTitle.Text == "")
                 MessageBox.Show("Select Client Name");
@@ -114,22 +138,22 @@ namespace BookShopManager
             {
                 try
                 {
-                    con.Open();
-                    string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
-                    string query = "insert into BillTbl values('" +
-                        lbUserName.Text +
-                        "','" +
-                        txtClientName.Text +
-                        "'," +
-                        GrdTotal +
-                        formattedDate +
-                        "')";
+                    //con.Open();
+                    //string formattedDate = DateTime.Now.ToString("yyyy-MM-dd");
+                    //string query = "insert into BillTbl values('" +
+                    //    lbUserName.Text +
+                    //    "','" +
+                    //    txtClientName.Text +
+                    //    "'," +
+                    //    GrdTotal +
+                    //    formattedDate +
+                    //    "')";
 
-                    SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Bill Saved Successfully");
-                    NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
-                    con.Close();
+                    //SqlCommand cmd = new SqlCommand(query, con);
+                    //cmd.ExecuteNonQuery();
+                    ////MessageBox.Show("Bill Saved Successfully");
+                    //NotificationHelper.ShowNotification("Bill", "Bill Saved Successfully", ToolTipIcon.Info);
+                    //con.Close();
                     //populate();
                     //RestColum();
                 }
@@ -138,12 +162,12 @@ namespace BookShopManager
                     MessageBox.Show(ex.Message);
                 }
 
-                printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("pprnm", 600, 800);
-
-                printPreviewDialog1.PointToScreen(Cursor.Position);
-                if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-                    printDocument1.Print();
             }
+
+        }
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            PrintBill();
         }
 
         int prodid, prodqty, prodprice, tottal, pos = 60;
@@ -158,7 +182,6 @@ namespace BookShopManager
 
         private void btnExit_Click(object sender, EventArgs e) { Application.Exit(); }
 
-        private void Billing_Load(object sender, EventArgs e) { lbUserName.Text = frmLogin.UserName; }
 
         string prodname;
 

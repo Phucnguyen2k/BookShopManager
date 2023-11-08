@@ -24,6 +24,13 @@ namespace BookShopManager
                 ttMain.SetToolTip(btnSortBook, "Sap Xep Tang Dan");
             else
                 ttMain.SetToolTip(btnSortBook, "Sap Xep Giam Dan");
+            ttMain.SetToolTip(btnID, "Sap Xep Theo ID");
+            ttMain.SetToolTip(btnTitle, "Sap Xep Theo Ten Sach");
+            ttMain.SetToolTip(btnAuthor, "Sap Xep Theo Tac Gia");
+            ttMain.SetToolTip(btnCategory, "Sap Xep Theo The Loai");
+            ttMain.SetToolTip(btnYear, "Sap Xep Theo Nam");
+            ttMain.SetToolTip(btnPrice, "Sap Xep Theo Gia");
+            ttMain.SetToolTip(btnQty, "Sap Xep Theo So Luong");
         }
         public frmBooks()
         {
@@ -95,7 +102,7 @@ namespace BookShopManager
                     Author = txtAuthor.Text,
                     Category = cbCate.SelectedItem.ToString(),
                     Qty = Convert.ToInt32(txtQty.Value),
-                    Price = Convert.ToInt32(btnPrice),
+                    Price = Convert.ToInt32(txtPrice.Value),
                     Year = Convert.ToInt32(mmYear.Value)
                 };
 
@@ -174,21 +181,21 @@ namespace BookShopManager
         private void EditBook()
         {
             string id = dvBooks.SelectedCells[0].OwningRow.Cells["BId"].Value.ToString();
-            string title = dvBooks.SelectedCells[0].OwningRow.Cells["BTitle"].Value.ToString();
-            string author = dvBooks.SelectedCells[0].OwningRow.Cells["BAuthor"].Value.ToString();
-            string cate = dvBooks.SelectedCells[0].OwningRow.Cells["BCat"].Value.ToString();
-            int qty = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BQty"].Value.ToString());
-            int price = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BPrice"].Value.ToString());
-            int year = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BYear"].Value.ToString());
+            //string title = dvBooks.SelectedCells[0].OwningRow.Cells["BTitle"].Value.ToString();
+            //string author = dvBooks.SelectedCells[0].OwningRow.Cells["BAuthor"].Value.ToString();
+            //string cate = dvBooks.SelectedCells[0].OwningRow.Cells["BCat"].Value.ToString();
+            //int qty = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BQty"].Value.ToString());
+            //int price = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BPrice"].Value.ToString());
+            //int year = Convert.ToInt32(dvBooks.SelectedCells[0].OwningRow.Cells["BYear"].Value.ToString());
 
             BookTbl edit = db.BookTbls.Where(p => p.BId.Equals(id)).FirstOrDefault(); // First or Default: lay gia tri dau tien nieu khog thi null
 
             edit.BTitle = txtTitle.Text;
             edit.BAuthor = txtAuthor.Text;
             edit.BCat = cbCate.SelectedItem.ToString();
-            edit.BQty = qty;
-            edit.BPrice = price;
-            edit.BYear = year;
+            edit.BQty = Convert.ToInt32(txtQty.Value);
+            edit.BPrice = Convert.ToInt32(txtPrice.Value);
+            edit.BYear = Convert.ToInt32(mmYear.Value);
 
             db.SubmitChanges(); //Luu Database sau khi xoa
         }

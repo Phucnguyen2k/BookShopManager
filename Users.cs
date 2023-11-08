@@ -40,10 +40,10 @@ namespace BookShopManager
             {
                 UserTbl user = new UserTbl();
 
-                user.UName = txtUser.Text;
-                user.UPass = txtPassword.Text;
-                user.UPhone = txtPhone.Text;
-                user.UAdd = txtAddress.Text;
+                user.UName = txtUser.Text.Trim();
+                user.UPass = txtPassword.Text.Trim();
+                user.UPhone = txtPhone.Text.Trim();
+                user.UAdd = txtAddress.Text.Trim();
                 user.UYob = dtYob.Value;
 
                 db.UserTbls.InsertOnSubmit(user);
