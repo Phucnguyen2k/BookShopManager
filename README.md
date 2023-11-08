@@ -4,16 +4,83 @@
 
 ### Login
 
-![](.\OverView\BookShopManager_qujwpfnpXv.png)
+![](https://i.imgur.com/kKjNp5g.png)
 
 User Name: Yuri
 
 - PassWord: 123
 - Admin Password: Admin
 
+```cs
+BookShopDataContext db = new BookShopDataContext();
+
+public static string UserName = "";
+private void CheckLogin()
+{
+    string username = txtUserName.Text;
+    string password = txtPassword.Text;
+
+    var user = db.UserTbls.SingleOrDefault(u => u.UName == username && u.UPass == password);
+
+    if (user != null)
+    {
+        UserName = user.UName;
+        Billing obj = new Billing();
+        obj.Show();
+        this.Hide();
+        NotificationHelper.ShowNotification("Login", "Login Successful", ToolTipIcon.Info);
+    }
+    else
+    {
+        MessageBox.Show("Wrong Username or Password", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+}
+// Check Login and Password
+private void btnLogin_Click(object sender, EventArgs e)
+{
+    CheckLogin();
+}
+```
+- Hien Form Admin
+```cs
+private void label3_Click(object sender, EventArgs e)
+{
+    AdminLogin obj = new AdminLogin();
+    obj.Show();
+    this.Hide();
+}
+
+```
+- An Password
+
+```cs
+private void Login_Load(object sender, EventArgs e)
+{    
+    btnShowPass.ImageIndex = 1;
+}
+```
+
+```cs
+private void btnShowPass_Click(object sender, EventArgs e)
+{
+    if (txtPassword.PasswordChar == '\0')
+    {
+        txtPassword.PasswordChar = '*';
+        btnShowPass.ImageIndex = 1;
+    }
+    else
+    {
+        txtPassword.PasswordChar = '\0';
+        btnShowPass.ImageIndex = 0;
+    }
+}
+```
+
 ## Login Admin
 
 ![a](https://i.imgur.com/7rvDXnv.png)
+
+PassWord: Admin
 
 ## Books
 
