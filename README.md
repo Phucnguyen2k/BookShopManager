@@ -452,6 +452,21 @@ private void btnFilterAmountBooks_Click(object sender, EventArgs e)
 }
 ```
 
+
+
+### Edits Books
+
+![BookShopManager_KpLYLJtWjc.gif](./OverView/BookShopManager_KpLYLJtWjc.gif)
+
+![a](https://i.imgur.com/nhUncRR.png)
+
+
+### Filter Add Search Books
+
+![BookShopManager_ufEKttWSCM.gif](./OverView/BookShopManager_ufEKttWSCM.gif)
+
+![BookShopManager_tfGbi0mHZ7.gif](./OverView/BookShopManager_tfGbi0mHZ7.gif)
+
 //Xap xep sach theo tung danh muc
 ```cs
 private void btnSortBook_Click(object sender, EventArgs e)
@@ -525,22 +540,10 @@ private void btnPrice_Click(object sender, EventArgs e)
 
 ```
 
-### Edits Books
-
-![BookShopManager_KpLYLJtWjc.gif](./OverView/BookShopManager_KpLYLJtWjc.gif)
-
-![a](https://i.imgur.com/nhUncRR.png)
-
-
-### Filter Add Search Books
-
-![BookShopManager_ufEKttWSCM.gif](./OverView/BookShopManager_ufEKttWSCM.gif)
-
-![BookShopManager_tfGbi0mHZ7.gif](./OverView/BookShopManager_tfGbi0mHZ7.gif)
-
 #### Filter
 
 ![a](https://i.imgur.com/2syDXFs.png)
+
 
 #### Sort
 
@@ -549,6 +552,107 @@ private void btnPrice_Click(object sender, EventArgs e)
 ![BookShopManager_yWou7qKKJB.gif](./OverView/BookShopManager_yWou7qKKJB.gif)
 
 ## User
+```cs
+public frmUsers()
+{
+    InitializeComponent();
+    ShowDataBaseUser();
+
+    dvUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+}
+
+BookShopDataContext db = new BookShopDataContext();
+private void btnExit_Click(object sender, EventArgs e)
+{
+    Application.Exit();
+}
+
+/// <summary>
+/// Phuong Thuc Hien thi database
+/// </summary>
+private void ShowDataBaseUser()
+{
+    dvUser.DataSource = db.UserTbls.Select(p => p);
+}
+```
+- Them User
+```cs
+private void addUser()
+{
+    if (txtUser.Text == "" || txtPassword.Text == "" || txtPhone.Text == "" || txtAddress.Text == "" || dtYob.Value == null)
+    {
+        NotificationHelper.ShowNotification("Miss", "Missing Infor User", ToolTipIcon.Info);
+    }
+    else
+    {
+        UserTbl user = new UserTbl();
+
+        user.UName = txtUser.Text.Trim();
+        user.UPass = txtPassword.Text.Trim();
+        user.UPhone = txtPhone.Text.Trim();
+        user.UAdd = txtAddress.Text.Trim();
+        user.UYob = dtYob.Value;
+
+        db.UserTbls.InsertOnSubmit(user);
+        db.SubmitChanges();
+        NotificationHelper.ShowNotification("Success", "Add User Success", ToolTipIcon.Info);
+
+        ShowDataBaseUser();
+    }
+}
+```
+
+- DeleteUser
+```cs
+private void DeleteUser()
+{
+    if (dvUser.SelectedRows.Count == 0)
+        return;
+    string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
+    UserTbl delete = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
+    db.UserTbls.DeleteOnSubmit(delete);
+    db.SubmitChanges();
+}
+
+```
+
+- Show Thong Tin Nguoi dung Khi Nhan Vao
+```cs
+/// <summary>
+/// Hien thi thong tin nguoi dung khi nhan vao ban
+/// </summary>
+private void DisplaySelectedUserDetails()
+{
+    txtUser.Text = dvUser.SelectedRows[0].Cells[1].Value.ToString();
+    txtPhone.Text = dvUser.SelectedRows[0].Cells[2].Value.ToString();
+    txtAddress.Text = dvUser.SelectedRows[0].Cells[3].Value.ToString();
+    txtPassword.Text = dvUser.SelectedRows[0].Cells[4].Value.ToString();
+    string dateString = dvUser.SelectedRows[0].Cells[5].Value.ToString();
+    if (DateTime.TryParse(dateString, out DateTime date))
+        dtYob.Value = date;
+}
+private void dvUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+{
+    DisplaySelectedUserDetails();
+}
+```
+
+- Edit User Details
+```cs
+private void EditUser()
+{
+    string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
+    UserTbl user = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
+
+    user.UName = txtUser.Text;
+    user.UPass = txtPassword.Text;
+    user.UPhone = txtPhone.Text;
+    user.UAdd = txtAddress.Text;
+    user.UYob = dtYob.Value;
+
+    db.SubmitChanges();
+}
+```
 
 ![a](https://i.imgur.com/RNxBoAR.png)
 
