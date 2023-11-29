@@ -24,15 +24,22 @@ namespace BookShopManager
             string password = txtPassword.Text;
 
             var user = db.UserTbls.SingleOrDefault(u => u.UName == username && u.UPass == password);
+            var checkAdmin = db.UserTbls.SingleOrDefault(u => u.UName == username && u.UType == true);
 
-            if (user != null)
+            if (user != null && checkAdmin == null)
             {
                 UserName = user.UName;
-                Billing obj = new Billing();
+                frmBillInfo obj = new frmBillInfo();
                 obj.Show();
                 this.Hide();
 
                 NotificationHelper.ShowNotification("Login", "Login Successful", ToolTipIcon.Info);
+            }
+            else if (checkAdmin != null)
+            {
+                frmMain obj = new frmMain();
+                obj.Show();
+                this.Hide();
             }
             else
             {
@@ -48,7 +55,7 @@ namespace BookShopManager
         //Show Form dang nhap admin
         private void label3_Click(object sender, EventArgs e)
         {
-            AdminLogin obj = new AdminLogin();
+            frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
         }

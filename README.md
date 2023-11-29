@@ -43,16 +43,7 @@ private void btnLogin_Click(object sender, EventArgs e)
     CheckLogin();
 }
 ```
-- Hien Form Admin
-```cs
-private void label3_Click(object sender, EventArgs e)
-{
-    AdminLogin obj = new AdminLogin();
-    obj.Show();
-    this.Hide();
-}
 
-```
 - An Password
 
 ```cs
@@ -87,12 +78,13 @@ PassWord: Admin
 ## Books
 
 - Hien Chu Thi Button khi re chuot toi
-```cs
-/// <summary>
-/// Phuong Thuc Hien Tool Tip cho cac button
-/// </summary>
-private void ToolTipMain()
-{
+  
+  ```cs
+  /// <summary>
+  /// Phuong Thuc Hien Tool Tip cho cac button
+  /// </summary>
+  private void ToolTipMain()
+  {
     ttMain.SetToolTip(btnSearch, "Search");
     ttMain.SetToolTip(btnRefershBooks, "Refresh");
     ttMain.SetToolTip(btnFilterAmountBooks, "Loc Sach theo So luong");
@@ -108,20 +100,21 @@ private void ToolTipMain()
     ttMain.SetToolTip(btnYear, "Sap Xep Theo Nam");
     ttMain.SetToolTip(btnPrice, "Sap Xep Theo Gia");
     ttMain.SetToolTip(btnQty, "Sap Xep Theo So Luong");
-}
-public frmBooks()
-{
+  }
+  public frmBooks()
+  {
     InitializeComponent();
     showDataBase();
-}
+  }
+  ```
 
 ```
 - Khoi tao Chuoi ket Noi
 ```cs
 ///khoi tao ket noi linQ
 BookShopDataContext db = new BookShopDataContext();
-
 ```
+
 ```cs
 /// <summary>
 /// phuong thuc dinh dang lai dataview 
@@ -137,43 +130,45 @@ private void AutoSizeData()
 ```
 
 - Tao Co Danh Dau Tim Kiem
-```cs
-//tao co cho button sort
-bool sort = true;
-private void frmBooks_Load(object sender, EventArgs e)
-{
+  
+  ```cs
+  //tao co cho button sort
+  bool sort = true;
+  private void frmBooks_Load(object sender, EventArgs e)
+  {
     //Hien thi du lieu
     showDataBase();
-
+  
     //Dinh dang lai bang
     AutoSizeData();
-
+  
     //Dua cac the loai sach vao cac combox
     foreach (var item in CBooks.Cate)
     {
         cbCate.Items.Add(item);
         cbFilerBook.Items.Add(item);
     }
-
+  
     //Hien Thong tin toolTip
     ToolTipMain();
     sort = true;
-}
-```
+  }
+  ```
 
 - Hien thi Co So Du Lieu Vao DatagridView
-```cs
-/// <summary>
-/// Phuong Thuc Hien Shơ Database bang LinQ to SQL
-/// </summary>
-private void showDataBase()
-{
+  
+  ```cs
+  /// <summary>
+  /// Phuong Thuc Hien Shơ Database bang LinQ to SQL
+  /// </summary>
+  private void showDataBase()
+  {
     dvFilterBooks.DataSource = db.BookTbls.Select(p => p);
     dvBooks.DataSource = db.BookTbls.Select(p => p);
-}
+  }
+  ```
 
 ```
-
 - Them Sach Vao dataview
 ```cs
 /// <summary>
@@ -213,44 +208,48 @@ private void AddBook()
     }
 }
 ```
+
 - Reset Lai Cac TextBox
-```cs
-/// <summary>
-/// Phuong Thuc Reset lai Cac textbox
-/// </summary>
-private void RestColum()
-{
+  
+  ```cs
+  /// <summary>
+  /// Phuong Thuc Reset lai Cac textbox
+  /// </summary>
+  private void RestColum()
+  {
     txtTitle.Text = "";
     txtAuthor.Text = "";
     cbCate.SelectedIndex = -1;
     txtQty.Value = 0;
     txtPrice.Value = 0;
-}
-private void btnReset_Click(object sender, EventArgs e)
-{
+  }
+  private void btnReset_Click(object sender, EventArgs e)
+  {
     RestColum();
     showDataBase();
     cbFilerBook.SelectedIndex = -1;
-}
-```
--  Hien Thi Sach
-```cs
-/// <summary>
-/// Phuong Thuc Hien Thi Dua lieu tu DataView len cac truong du lieu
-/// </summary>
-private void DisplaySelectedBookDetails()
-{
-    txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
-    txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
-    cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
-    txtQty.Value = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
-    txtPrice.Value = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
-    mmYear.Value = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[6].Value.ToString());
-}
-private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
-{
-    DisplaySelectedBookDetails();
-}
+  }
+  ```
+- Hien Thi Sach
+  
+  ```cs
+  /// <summary>
+  /// Phuong Thuc Hien Thi Dua lieu tu DataView len cac truong du lieu
+  /// </summary>
+  private void DisplaySelectedBookDetails()
+  {
+   txtTitle.Text = dvBooks.SelectedRows[0].Cells[1].Value.ToString();
+   txtAuthor.Text = dvBooks.SelectedRows[0].Cells[2].Value.ToString();
+   cbCate.SelectedItem = dvBooks.SelectedRows[0].Cells[3].Value.ToString();
+   txtQty.Value = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
+   txtPrice.Value = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[5].Value.ToString());
+   mmYear.Value = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[6].Value.ToString());
+  }
+  private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+  {
+   DisplaySelectedBookDetails();
+  }
+  ```
 
 ```
 - Xoa Sach Khi Chon
@@ -275,25 +274,27 @@ private void btnDelet_Click(object sender, EventArgs e)
     DeleteBook();
     showDataBase();
 }
-
 ```
+
 - Edit Sach
-```cs
-private void EditBook()
-{
+  
+  ```cs
+  private void EditBook()
+  {
     string id = dvBooks.SelectedCells[0].OwningRow.Cells["BId"].Value.ToString();
-
+  
     BookTbl edit = db.BookTbls.Where(p => p.BId.Equals(id)).FirstOrDefault(); // First or Default: lay gia tri dau tien nieu khog thi null
-
+  
     edit.BTitle = txtTitle.Text;
     edit.BAuthor = txtAuthor.Text;
     edit.BCat = cbCate.SelectedItem.ToString();
     edit.BQty = Convert.ToInt32(txtQty.Value);
     edit.BPrice = Convert.ToInt32(txtPrice.Value);
     edit.BYear = Convert.ToInt32(mmYear.Value);
-
+  
     db.SubmitChanges(); //Luu Database sau khi xoa
-}
+  }
+  ```
 
 private void btnEdit_Click(object sender, EventArgs e)
 {
@@ -307,7 +308,6 @@ private void btnRefershBooks_Click(object sender, EventArgs e)
 }
 
 ```
-
 - Tim Kiem Sach
 ```cs
 /// <summary>
@@ -351,39 +351,43 @@ private void SearchBook()
 ```
 
 - Loc Sach Theo gia
-```cs
-/// <summary>
-/// Phuong Thuc Loc Sach Theo Gia
-/// </summary>
-private void FilterPriceBook()
-{
+  
+  ```cs
+  /// <summary>
+  /// Phuong Thuc Loc Sach Theo Gia
+  /// </summary>
+  private void FilterPriceBook()
+  {
     int min = Convert.ToInt32(mmToPrice.Value);
     int max = Convert.ToInt32(mmFromPrice.Value);
-
+  
     dvFilterBooks.DataSource = db.BookTbls.Where(pv => pv.BPrice >= min && pv.BPrice <= max).ToList();
-}
-```
+  }
+  ```
+
 - Loc Sach Theo So Luong
-```cs
-/// <summary>
-/// Phuong Thuc Loc Sach Theo So Luong
-/// </summary>
-private void FilterAmountBook()
-{
+  
+  ```cs
+  /// <summary>
+  /// Phuong Thuc Loc Sach Theo So Luong
+  /// </summary>
+  private void FilterAmountBook()
+  {
     int min = Convert.ToInt32(mmToAmount.Value);
     int max = Convert.ToInt32(mmFromAmount.Value);
-
+  
     dvFilterBooks.DataSource = db.BookTbls.Where(pv => pv.BQty >= min && pv.BQty <= max).ToList();
-}
-```
+  }
+  ```
 
 - Loc Sach Theo The Loai
-```cs
-/// <summary>
-/// Ham Loc Sach Theo The loai
-/// </summary>
-private void FilterCategory()
-{
+  
+  ```cs
+  /// <summary>
+  /// Ham Loc Sach Theo The loai
+  /// </summary>
+  private void FilterCategory()
+  {
     if (cbFilerBook.SelectedItem == "All")
     {
         //populate();
@@ -392,33 +396,31 @@ private void FilterCategory()
     }
     string cate = cbFilerBook.SelectedItem.ToString();
     dvFilterBooks.DataSource = db.BookTbls.Where(p => p.BCat.Equals(cate));
-}
-```
+  }
+  ```
 
 - Loc Sach 
-```cs
-private void cbFilerBooka_SelectedIndexChanged(object sender, EventArgs e)
-{
+  
+  ```cs
+  private void cbFilerBooka_SelectedIndexChanged(object sender, EventArgs e)
+  {
     FilterCategory();
-}
-private void btnFilterPriceBooks_Click(object sender, EventArgs e)
-{
+  }
+  private void btnFilterPriceBooks_Click(object sender, EventArgs e)
+  {
     FilterPriceBook();
-}
-private void btnFilterAmountBooks_Click(object sender, EventArgs e)
-{
+  }
+  private void btnFilterAmountBooks_Click(object sender, EventArgs e)
+  {
     FilterAmountBook();
-}
-```
-
-
+  }
+  ```
 
 ### Edits Books
 
 ![BookShopManager_KpLYLJtWjc.gif](./OverView/BookShopManager_KpLYLJtWjc.gif)
 
 ![a](https://i.imgur.com/nhUncRR.png)
-
 
 ### Filter Add Search Books
 
@@ -427,6 +429,7 @@ private void btnFilterAmountBooks_Click(object sender, EventArgs e)
 ![BookShopManager_tfGbi0mHZ7.gif](./OverView/BookShopManager_tfGbi0mHZ7.gif)
 
 //Xap xep sach theo tung danh muc
+
 ```cs
 private void btnSortBook_Click(object sender, EventArgs e)
 {
@@ -496,13 +499,11 @@ private void btnPrice_Click(object sender, EventArgs e)
     else
         dvFilterBooks.DataSource = db.BookTbls.OrderByDescending(p => p.BPrice).ToList();
 }
-
 ```
 
 #### Filter
 
 ![a](https://i.imgur.com/2syDXFs.png)
-
 
 #### Sort
 
@@ -511,10 +512,12 @@ private void btnPrice_Click(object sender, EventArgs e)
 ![BookShopManager_yWou7qKKJB.gif](./OverView/BookShopManager_yWou7qKKJB.gif)
 
 ## User
+
 - Them User
-```cs
-private void addUser()
-{
+  
+  ```cs
+  private void addUser()
+  {
     if (txtUser.Text == "" || txtPassword.Text == "" || txtPhone.Text == "" || txtAddress.Text == "" || dtYob.Value == null)
     {
         NotificationHelper.ShowNotification("Miss", "Missing Infor User", ToolTipIcon.Info);
@@ -522,36 +525,37 @@ private void addUser()
     else
     {
         UserTbl user = new UserTbl();
-
+  
         user.UName = txtUser.Text.Trim();
         user.UPass = txtPassword.Text.Trim();
         user.UPhone = txtPhone.Text.Trim();
         user.UAdd = txtAddress.Text.Trim();
         user.UYob = dtYob.Value;
-
+  
         db.UserTbls.InsertOnSubmit(user);
         db.SubmitChanges();
         NotificationHelper.ShowNotification("Success", "Add User Success", ToolTipIcon.Info);
-
+  
         ShowDataBaseUser();
     }
-}
-```
+  }
+  ```
 
 - DeleteUser
-```cs
-private void DeleteUser()
-{
+  
+  ```cs
+  private void DeleteUser()
+  {
     if (dvUser.SelectedRows.Count == 0)
         return;
     string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
     UserTbl delete = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
     db.UserTbls.DeleteOnSubmit(delete);
     db.SubmitChanges();
-}
+  }
+  ```
 
 ```
-
 - Show Thong Tin Nguoi dung Khi Nhan Vao
 ```cs
 /// <summary>
@@ -574,21 +578,22 @@ private void dvUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
 ```
 
 - Edit User Details
-```cs
-private void EditUser()
-{
+  
+  ```cs
+  private void EditUser()
+  {
     string id = dvUser.SelectedCells[0].OwningRow.Cells["UId"].Value.ToString();
     UserTbl user = db.UserTbls.Where(p => p.UId.Equals(id)).FirstOrDefault();
-
+  
     user.UName = txtUser.Text;
     user.UPass = txtPassword.Text;
     user.UPhone = txtPhone.Text;
     user.UAdd = txtAddress.Text;
     user.UYob = dtYob.Value;
-
+  
     db.SubmitChanges();
-}
-```
+  }
+  ```
 
 ![a](https://i.imgur.com/RNxBoAR.png)
 
@@ -614,8 +619,6 @@ private void Dashboard_Load(object sender, EventArgs e)
 }
 ```
 
-
-
 ![a](https://i.imgur.com/wUmMjPT.png)
 
 ```c
@@ -638,8 +641,6 @@ private void CardView()
     lbMost.Text = maxAmount.ToString();
 }
 ```
-
-
 
 ### History
 
@@ -727,7 +728,7 @@ private void ChartDoanhThuTungNhaVien()
 ```
 
 - So Luong Sach Con Lai Trong Kho
-
+  
   ```c
   private void ChartSoLuongSachConLaiTrongKho()
   {
@@ -764,7 +765,6 @@ private void ChartDoanhThuTungNhaVien()
 ![a](https://i.imgur.com/t5u6aYI.png)
 
 ```cs
-
 public Billing()
 {
     InitializeComponent();
@@ -844,7 +844,6 @@ private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e
         stock = Convert.ToInt32(dvBooks.SelectedRows[0].Cells[4].Value.ToString());
     }
 }
- 
 ```
 
 ### Print
@@ -876,8 +875,6 @@ private void PrintBill()
         printDocument1.Print();
 }
 ```
-
-
 
 ```cs
 int prodid, prodqty, prodprice, tottal, pos = 60;

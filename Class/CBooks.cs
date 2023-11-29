@@ -17,7 +17,7 @@
             "Novels",
             "Light Novel",
             "Nofiction",
-            "Self-Help"
+            "Self-Help",
         };
     }
 }

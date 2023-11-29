@@ -9,7 +9,13 @@ namespace BookShopManager
         {
             InitializeComponent();
         }
+
         private Form currentFormChild;
+
+        /// <summary>
+        /// Tao form con
+        /// </summary>
+        /// <param name="childForm"></param>
         private void OpenChildForm(Form childForm)
         {
             if (currentFormChild != null)
@@ -26,64 +32,53 @@ namespace BookShopManager
         private Color ColorMain = Color.FromArgb(152, 94, 255);
         private Color ColorSecond = Color.FromArgb(219, 178, 255);
 
-        void changeColor()
-        {
-            pBook.BackColor = ColorMain;
-            pUser.BackColor = ColorMain;
-            pLogout.BackColor = ColorMain;
-            pDashboard.BackColor = ColorMain;
 
+        private void btnHome_Click(object sender, System.EventArgs e)
+        {
+
+            OpenChildForm(new frmHome());
+        }
+        private void frmMain_Load(object sender, System.EventArgs e)
+        {
+            OpenChildForm(new frmHome());
         }
 
-        private void lbUser_Click(object sender, System.EventArgs e)
+        private void btnLogout_Click(object sender, System.EventArgs e)
         {
-            pBook.BackColor = ColorMain;
-            pUser.BackColor = ColorSecond;
-            pLogout.BackColor = ColorMain;
-            pDashboard.BackColor = ColorMain;
-
-            OpenChildForm(new frmUsers());
-        }
-
-        private void lbBooks_Click(object sender, System.EventArgs e)
-        {
-            pBook.BackColor = ColorSecond;
-            pUser.BackColor = ColorMain;
-            pLogout.BackColor = ColorMain;
-            pDashboard.BackColor = ColorMain;
-
-            OpenChildForm(new frmBooks());
-        }
-
-        private void lbDashboard_Click(object sender, System.EventArgs e)
-        {
-            pBook.BackColor = ColorMain;
-            pUser.BackColor = ColorMain;
-            pLogout.BackColor = ColorMain;
-            pDashboard.BackColor = ColorSecond;
-
-            OpenChildForm(new frmDashboard());
-        }
-
-        private void lbLogout_Click(object sender, System.EventArgs e)
-        {
-            pBook.BackColor = ColorMain;
-            pUser.BackColor = ColorMain;
-            pLogout.BackColor = ColorSecond;
-            pDashboard.BackColor = ColorMain;
-
             frmLogin obj = new frmLogin();
             obj.Show();
             this.Hide();
         }
-        private void frmMain_Load(object sender, System.EventArgs e)
+
+        private void btnUser_Click(object sender, System.EventArgs e) => OpenChildForm(new frmMainAcc());
+
+        private void btnDashboard_Click(object sender, System.EventArgs e) => OpenChildForm(new frmDashboard());
+
+        private void btnInfo_Click(object sender, System.EventArgs e) => OpenChildForm(new frmInfo());
+
+        private void btnBooks_Click(object sender, System.EventArgs e)
         {
             OpenChildForm(new frmBooks());
+            //OpenChildForm(new frmMainBooks());
+        }
+        private void btnExit_Click(object sender, System.EventArgs e) => Application.Exit();
+
+
+        private void btnHistory_Click(object sender, System.EventArgs e)
+        {
+            OpenChildForm(new frmMainBill());
         }
 
-        private void btnExit_Click(object sender, System.EventArgs e)
+        private void btnExit_Click_1(object sender, System.EventArgs e) => Application.Exit();
+
+        private void pictureBox1_Click(object sender, System.EventArgs e)
         {
-            Application.Exit();
+
+        }
+
+        private void pMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

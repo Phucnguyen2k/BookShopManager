@@ -15,7 +15,21 @@ namespace BookShopManager
 
         //Tao lop truy cap vao database
         BookShopDataContext db = new BookShopDataContext();
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            CardView();
 
+            //datagridview lish su giao dich
+            //dvHistory.DataSource = db.BillTbls.Select(p => p);
+
+            ChartLichSuGiaoDich();
+            ChartSoLuongSachConLaiTrongKho();
+            ChartDoanhThuTungNhaVien();
+        }
+
+        /// <summary>
+        /// Show card view
+        /// </summary>
         private void CardView()
         {
             //So luong Sach Con Trong Kho
@@ -23,29 +37,21 @@ namespace BookShopManager
             lbBooksStock.Text = totalStock.ToString();
 
             //Tong Doanh Thu
-            var totalAmount = db.BillTbls.Sum(b => b.Amount);
-            lbToTalAmount.Text = totalAmount.ToString();
+            //var totalAmount = db.BillTbls.Sum(b => b.Amount);
+            //lbToTalAmount.Text = totalAmount.ToString();
 
             //So luong Nhan Vien
             var userCount = db.UserTbls.Count();
             lbUsers.Text = userCount.ToString();
 
             //doanh Thu cao nhat
-            var maxAmount = db.BillTbls.Max(b => b.Amount);
-            lbMost.Text = maxAmount.ToString();
+            //var maxAmount = db.BillTbls.Max(b => b.Amount);
+            //lbMost.Text = maxAmount.ToString();
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-            CardView();
-
-            //datagridview lish su giao dich
-            dvHistory.DataSource = db.BillTbls.Select(p => p);
-
-            ChartLichSuGiaoDich();
-            ChartSoLuongSachConLaiTrongKho();
-            ChartDoanhThuTungNhaVien();
-        }
+        /// <summary>
+        /// Bieu Do The Hien Lich Su Giao Dich
+        /// </summary>
 
         private void ChartLichSuGiaoDich()
         {
@@ -74,6 +80,10 @@ namespace BookShopManager
             //Hien Thi Bieu Do
             cInCome.DataBind();
         }
+
+        /// <summary>
+        /// Bieu Do The Hien So Luong Sach Con Lai Trong Kho
+        /// </summary>
         private void ChartSoLuongSachConLaiTrongKho()
         {
             // Chart Books
@@ -143,9 +153,6 @@ namespace BookShopManager
         }
 
         //Thoat Ung Dung
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        private void btnExit_Click(object sender, EventArgs e) => Application.Exit();
     }
 }

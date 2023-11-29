@@ -30,15 +30,21 @@ namespace BookShopManager
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertBillTbl(BillTbl instance);
-    partial void UpdateBillTbl(BillTbl instance);
-    partial void DeleteBillTbl(BillTbl instance);
+    partial void InsertBillDetailTbl(BillDetailTbl instance);
+    partial void UpdateBillDetailTbl(BillDetailTbl instance);
+    partial void DeleteBillDetailTbl(BillDetailTbl instance);
     partial void InsertUserTbl(UserTbl instance);
     partial void UpdateUserTbl(UserTbl instance);
     partial void DeleteUserTbl(UserTbl instance);
+    partial void InsertBillTbl(BillTbl instance);
+    partial void UpdateBillTbl(BillTbl instance);
+    partial void DeleteBillTbl(BillTbl instance);
     partial void InsertBookTbl(BookTbl instance);
     partial void UpdateBookTbl(BookTbl instance);
     partial void DeleteBookTbl(BookTbl instance);
+    partial void InsertCategoryTbl(CategoryTbl instance);
+    partial void UpdateCategoryTbl(CategoryTbl instance);
+    partial void DeleteCategoryTbl(CategoryTbl instance);
     #endregion
 		
 		public BookShopDataContext() : 
@@ -71,11 +77,11 @@ namespace BookShopManager
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<BillTbl> BillTbls
+		public System.Data.Linq.Table<BillDetailTbl> BillDetailTbls
 		{
 			get
 			{
-				return this.GetTable<BillTbl>();
+				return this.GetTable<BillDetailTbl>();
 			}
 		}
 		
@@ -87,6 +93,14 @@ namespace BookShopManager
 			}
 		}
 		
+		public System.Data.Linq.Table<BillTbl> BillTbls
+		{
+			get
+			{
+				return this.GetTable<BillTbl>();
+			}
+		}
+		
 		public System.Data.Linq.Table<BookTbl> BookTbls
 		{
 			get
@@ -94,141 +108,214 @@ namespace BookShopManager
 				return this.GetTable<BookTbl>();
 			}
 		}
+		
+		public System.Data.Linq.Table<CategoryTbl> CategoryTbls
+		{
+			get
+			{
+				return this.GetTable<CategoryTbl>();
+			}
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BillTbl")]
-	public partial class BillTbl : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BillDetailTbl")]
+	public partial class BillDetailTbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _BillId;
+		private int _BillDetailId;
 		
-		private string _UName;
+		private string _NameBook;
 		
-		private string _ClineName;
+		private System.Nullable<int> _PriceBook;
 		
-		private int _Amount;
+		private System.Nullable<int> _Quanlity;
 		
-		private System.Nullable<System.DateTime> _UDate;
+		private System.Nullable<int> _Total;
+		
+		private int _IdBill;
+		
+		private EntityRef<BillTbl> _BillTbl;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnBillIdChanging(int value);
-    partial void OnBillIdChanged();
-    partial void OnUNameChanging(string value);
-    partial void OnUNameChanged();
-    partial void OnClineNameChanging(string value);
-    partial void OnClineNameChanged();
-    partial void OnAmountChanging(int value);
-    partial void OnAmountChanged();
-    partial void OnUDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnUDateChanged();
+    partial void OnBillDetailIdChanging(int value);
+    partial void OnBillDetailIdChanged();
+    partial void OnNameBookChanging(string value);
+    partial void OnNameBookChanged();
+    partial void OnPriceBookChanging(System.Nullable<int> value);
+    partial void OnPriceBookChanged();
+    partial void OnQuanlityChanging(System.Nullable<int> value);
+    partial void OnQuanlityChanged();
+    partial void OnTotalChanging(System.Nullable<int> value);
+    partial void OnTotalChanged();
+    partial void OnIdBillChanging(int value);
+    partial void OnIdBillChanged();
     #endregion
 		
-		public BillTbl()
+		public BillDetailTbl()
 		{
+			this._BillTbl = default(EntityRef<BillTbl>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int BillId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillDetailId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BillDetailId
 		{
 			get
 			{
-				return this._BillId;
+				return this._BillDetailId;
 			}
 			set
 			{
-				if ((this._BillId != value))
+				if ((this._BillDetailId != value))
 				{
-					this.OnBillIdChanging(value);
+					this.OnBillDetailIdChanging(value);
 					this.SendPropertyChanging();
-					this._BillId = value;
-					this.SendPropertyChanged("BillId");
-					this.OnBillIdChanged();
+					this._BillDetailId = value;
+					this.SendPropertyChanged("BillDetailId");
+					this.OnBillDetailIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UName", DbType="NChar(50) NOT NULL", CanBeNull=false)]
-		public string UName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameBook", DbType="NVarChar(50)")]
+		public string NameBook
 		{
 			get
 			{
-				return this._UName;
+				return this._NameBook;
 			}
 			set
 			{
-				if ((this._UName != value))
+				if ((this._NameBook != value))
 				{
-					this.OnUNameChanging(value);
+					this.OnNameBookChanging(value);
 					this.SendPropertyChanging();
-					this._UName = value;
-					this.SendPropertyChanged("UName");
-					this.OnUNameChanged();
+					this._NameBook = value;
+					this.SendPropertyChanged("NameBook");
+					this.OnNameBookChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClineName", DbType="NChar(50) NOT NULL", CanBeNull=false)]
-		public string ClineName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriceBook", DbType="Int")]
+		public System.Nullable<int> PriceBook
 		{
 			get
 			{
-				return this._ClineName;
+				return this._PriceBook;
 			}
 			set
 			{
-				if ((this._ClineName != value))
+				if ((this._PriceBook != value))
 				{
-					this.OnClineNameChanging(value);
+					this.OnPriceBookChanging(value);
 					this.SendPropertyChanging();
-					this._ClineName = value;
-					this.SendPropertyChanged("ClineName");
-					this.OnClineNameChanged();
+					this._PriceBook = value;
+					this.SendPropertyChanged("PriceBook");
+					this.OnPriceBookChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
-		public int Amount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quanlity", DbType="Int")]
+		public System.Nullable<int> Quanlity
 		{
 			get
 			{
-				return this._Amount;
+				return this._Quanlity;
 			}
 			set
 			{
-				if ((this._Amount != value))
+				if ((this._Quanlity != value))
 				{
-					this.OnAmountChanging(value);
+					this.OnQuanlityChanging(value);
 					this.SendPropertyChanging();
-					this._Amount = value;
-					this.SendPropertyChanged("Amount");
-					this.OnAmountChanged();
+					this._Quanlity = value;
+					this.SendPropertyChanged("Quanlity");
+					this.OnQuanlityChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UDate", DbType="Date")]
-		public System.Nullable<System.DateTime> UDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Int")]
+		public System.Nullable<int> Total
 		{
 			get
 			{
-				return this._UDate;
+				return this._Total;
 			}
 			set
 			{
-				if ((this._UDate != value))
+				if ((this._Total != value))
 				{
-					this.OnUDateChanging(value);
+					this.OnTotalChanging(value);
 					this.SendPropertyChanging();
-					this._UDate = value;
-					this.SendPropertyChanged("UDate");
-					this.OnUDateChanged();
+					this._Total = value;
+					this.SendPropertyChanged("Total");
+					this.OnTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdBill", DbType="Int NOT NULL")]
+		public int IdBill
+		{
+			get
+			{
+				return this._IdBill;
+			}
+			set
+			{
+				if ((this._IdBill != value))
+				{
+					if (this._BillTbl.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdBillChanging(value);
+					this.SendPropertyChanging();
+					this._IdBill = value;
+					this.SendPropertyChanged("IdBill");
+					this.OnIdBillChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BillTbl_BillDetailTbl", Storage="_BillTbl", ThisKey="IdBill", OtherKey="BillId", IsForeignKey=true)]
+		public BillTbl BillTbl
+		{
+			get
+			{
+				return this._BillTbl.Entity;
+			}
+			set
+			{
+				BillTbl previousValue = this._BillTbl.Entity;
+				if (((previousValue != value) 
+							|| (this._BillTbl.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BillTbl.Entity = null;
+						previousValue.BillDetailTbls.Remove(this);
+					}
+					this._BillTbl.Entity = value;
+					if ((value != null))
+					{
+						value.BillDetailTbls.Add(this);
+						this._IdBill = value.BillId;
+					}
+					else
+					{
+						this._IdBill = default(int);
+					}
+					this.SendPropertyChanged("BillTbl");
 				}
 			}
 		}
@@ -270,7 +357,11 @@ namespace BookShopManager
 		
 		private string _UPass;
 		
-		private System.Nullable<System.DateTime> _UYob;
+		private System.DateTime _UYob;
+		
+		private System.Nullable<bool> _UType;
+		
+		private System.Data.Linq.Binary _UAvatar;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -286,8 +377,12 @@ namespace BookShopManager
     partial void OnUAddChanged();
     partial void OnUPassChanging(string value);
     partial void OnUPassChanged();
-    partial void OnUYobChanging(System.Nullable<System.DateTime> value);
+    partial void OnUYobChanging(System.DateTime value);
     partial void OnUYobChanged();
+    partial void OnUTypeChanging(System.Nullable<bool> value);
+    partial void OnUTypeChanged();
+    partial void OnUAvatarChanging(System.Data.Linq.Binary value);
+    partial void OnUAvatarChanged();
     #endregion
 		
 		public UserTbl()
@@ -315,7 +410,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UName", DbType="NChar(20) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UName", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
 		public string UName
 		{
 			get
@@ -335,7 +430,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPhone", DbType="NChar(12) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPhone", DbType="NVarChar(14) NOT NULL", CanBeNull=false)]
 		public string UPhone
 		{
 			get
@@ -355,7 +450,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UAdd", DbType="NChar(12) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UAdd", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
 		public string UAdd
 		{
 			get
@@ -375,7 +470,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPass", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPass", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string UPass
 		{
 			get
@@ -395,8 +490,8 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UYob", DbType="Date")]
-		public System.Nullable<System.DateTime> UYob
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UYob", DbType="Date NOT NULL")]
+		public System.DateTime UYob
 		{
 			get
 			{
@@ -411,6 +506,46 @@ namespace BookShopManager
 					this._UYob = value;
 					this.SendPropertyChanged("UYob");
 					this.OnUYobChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UType", DbType="Bit")]
+		public System.Nullable<bool> UType
+		{
+			get
+			{
+				return this._UType;
+			}
+			set
+			{
+				if ((this._UType != value))
+				{
+					this.OnUTypeChanging(value);
+					this.SendPropertyChanging();
+					this._UType = value;
+					this.SendPropertyChanged("UType");
+					this.OnUTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UAvatar", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary UAvatar
+		{
+			get
+			{
+				return this._UAvatar;
+			}
+			set
+			{
+				if ((this._UAvatar != value))
+				{
+					this.OnUAvatarChanging(value);
+					this.SendPropertyChanging();
+					this._UAvatar = value;
+					this.SendPropertyChanged("UAvatar");
+					this.OnUAvatarChanged();
 				}
 			}
 		}
@@ -436,6 +571,192 @@ namespace BookShopManager
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BillTbl")]
+	public partial class BillTbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _BillId;
+		
+		private string _UName;
+		
+		private string _ClineName;
+		
+		private int _Amount;
+		
+		private System.DateTime _UDate;
+		
+		private EntitySet<BillDetailTbl> _BillDetailTbls;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBillIdChanging(int value);
+    partial void OnBillIdChanged();
+    partial void OnUNameChanging(string value);
+    partial void OnUNameChanged();
+    partial void OnClineNameChanging(string value);
+    partial void OnClineNameChanged();
+    partial void OnAmountChanging(int value);
+    partial void OnAmountChanged();
+    partial void OnUDateChanging(System.DateTime value);
+    partial void OnUDateChanged();
+    #endregion
+		
+		public BillTbl()
+		{
+			this._BillDetailTbls = new EntitySet<BillDetailTbl>(new Action<BillDetailTbl>(this.attach_BillDetailTbls), new Action<BillDetailTbl>(this.detach_BillDetailTbls));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int BillId
+		{
+			get
+			{
+				return this._BillId;
+			}
+			set
+			{
+				if ((this._BillId != value))
+				{
+					this.OnBillIdChanging(value);
+					this.SendPropertyChanging();
+					this._BillId = value;
+					this.SendPropertyChanged("BillId");
+					this.OnBillIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UName", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string UName
+		{
+			get
+			{
+				return this._UName;
+			}
+			set
+			{
+				if ((this._UName != value))
+				{
+					this.OnUNameChanging(value);
+					this.SendPropertyChanging();
+					this._UName = value;
+					this.SendPropertyChanged("UName");
+					this.OnUNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClineName", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string ClineName
+		{
+			get
+			{
+				return this._ClineName;
+			}
+			set
+			{
+				if ((this._ClineName != value))
+				{
+					this.OnClineNameChanging(value);
+					this.SendPropertyChanging();
+					this._ClineName = value;
+					this.SendPropertyChanged("ClineName");
+					this.OnClineNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Int NOT NULL")]
+		public int Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UDate", DbType="Date NOT NULL")]
+		public System.DateTime UDate
+		{
+			get
+			{
+				return this._UDate;
+			}
+			set
+			{
+				if ((this._UDate != value))
+				{
+					this.OnUDateChanging(value);
+					this.SendPropertyChanging();
+					this._UDate = value;
+					this.SendPropertyChanged("UDate");
+					this.OnUDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BillTbl_BillDetailTbl", Storage="_BillDetailTbls", ThisKey="BillId", OtherKey="IdBill")]
+		public EntitySet<BillDetailTbl> BillDetailTbls
+		{
+			get
+			{
+				return this._BillDetailTbls;
+			}
+			set
+			{
+				this._BillDetailTbls.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BillDetailTbls(BillDetailTbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.BillTbl = this;
+		}
+		
+		private void detach_BillDetailTbls(BillDetailTbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.BillTbl = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BookTbl")]
 	public partial class BookTbl : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -454,7 +775,13 @@ namespace BookShopManager
 		
 		private int _BPrice;
 		
-		private System.Nullable<int> _BYear;
+		private int _BYear;
+		
+		private string _BImage;
+		
+		private System.Data.Linq.Binary _BPic;
+		
+		private EntityRef<CategoryTbl> _CategoryTbl;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -472,12 +799,17 @@ namespace BookShopManager
     partial void OnBQtyChanged();
     partial void OnBPriceChanging(int value);
     partial void OnBPriceChanged();
-    partial void OnBYearChanging(System.Nullable<int> value);
+    partial void OnBYearChanging(int value);
     partial void OnBYearChanged();
+    partial void OnBImageChanging(string value);
+    partial void OnBImageChanged();
+    partial void OnBPicChanging(System.Data.Linq.Binary value);
+    partial void OnBPicChanged();
     #endregion
 		
 		public BookTbl()
 		{
+			this._CategoryTbl = default(EntityRef<CategoryTbl>);
 			OnCreated();
 		}
 		
@@ -501,7 +833,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BTitle", DbType="NChar(30) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BTitle", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string BTitle
 		{
 			get
@@ -521,7 +853,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BAuthor", DbType="NChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BAuthor", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
 		public string BAuthor
 		{
 			get
@@ -541,7 +873,7 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BCat", DbType="NChar(15) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BCat", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
 		public string BCat
 		{
 			get
@@ -552,6 +884,10 @@ namespace BookShopManager
 			{
 				if ((this._BCat != value))
 				{
+					if (this._CategoryTbl.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnBCatChanging(value);
 					this.SendPropertyChanging();
 					this._BCat = value;
@@ -601,8 +937,8 @@ namespace BookShopManager
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BYear", DbType="Int")]
-		public System.Nullable<int> BYear
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BYear", DbType="Int NOT NULL")]
+		public int BYear
 		{
 			get
 			{
@@ -617,6 +953,80 @@ namespace BookShopManager
 					this._BYear = value;
 					this.SendPropertyChanged("BYear");
 					this.OnBYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BImage", DbType="NVarChar(50)")]
+		public string BImage
+		{
+			get
+			{
+				return this._BImage;
+			}
+			set
+			{
+				if ((this._BImage != value))
+				{
+					this.OnBImageChanging(value);
+					this.SendPropertyChanging();
+					this._BImage = value;
+					this.SendPropertyChanged("BImage");
+					this.OnBImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BPic", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary BPic
+		{
+			get
+			{
+				return this._BPic;
+			}
+			set
+			{
+				if ((this._BPic != value))
+				{
+					this.OnBPicChanging(value);
+					this.SendPropertyChanging();
+					this._BPic = value;
+					this.SendPropertyChanged("BPic");
+					this.OnBPicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CategoryTbl_BookTbl", Storage="_CategoryTbl", ThisKey="BCat", OtherKey="Category", IsForeignKey=true)]
+		public CategoryTbl CategoryTbl
+		{
+			get
+			{
+				return this._CategoryTbl.Entity;
+			}
+			set
+			{
+				CategoryTbl previousValue = this._CategoryTbl.Entity;
+				if (((previousValue != value) 
+							|| (this._CategoryTbl.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CategoryTbl.Entity = null;
+						previousValue.BookTbls.Remove(this);
+					}
+					this._CategoryTbl.Entity = value;
+					if ((value != null))
+					{
+						value.BookTbls.Add(this);
+						this._BCat = value.Category;
+					}
+					else
+					{
+						this._BCat = default(string);
+					}
+					this.SendPropertyChanged("CategoryTbl");
 				}
 			}
 		}
@@ -639,6 +1049,120 @@ namespace BookShopManager
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CategoryTbl")]
+	public partial class CategoryTbl : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Category;
+		
+		private EntitySet<BookTbl> _BookTbls;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCategoryChanging(string value);
+    partial void OnCategoryChanged();
+    #endregion
+		
+		public CategoryTbl()
+		{
+			this._BookTbls = new EntitySet<BookTbl>(new Action<BookTbl>(this.attach_BookTbls), new Action<BookTbl>(this.detach_BookTbls));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="NVarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CategoryTbl_BookTbl", Storage="_BookTbls", ThisKey="Category", OtherKey="BCat")]
+		public EntitySet<BookTbl> BookTbls
+		{
+			get
+			{
+				return this._BookTbls;
+			}
+			set
+			{
+				this._BookTbls.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_BookTbls(BookTbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.CategoryTbl = this;
+		}
+		
+		private void detach_BookTbls(BookTbl entity)
+		{
+			this.SendPropertyChanging();
+			entity.CategoryTbl = null;
 		}
 	}
 }
