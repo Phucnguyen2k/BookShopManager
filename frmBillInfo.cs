@@ -41,7 +41,33 @@ namespace BookShopManager
             ShowAvatar();
 
             NameBook();
+            showInfoUser();
+
+            BillUser();
         }
+
+
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            FormLoad();
+        }
+        private void BillUser()
+        {
+            bsBillUser.DataSource = db.BillTbls
+                                    .Where(p => p.UName.Equals(lbUserName.Text))
+                                    .Select(p => new { ID = p.BillId, Clent = p.ClineName, TongTien = p.Amount, Date = p.UDate })
+                                    .OrderByDescending(p => p.ID)
+                                    .ToList();
+
+            bsBillDetailUser.DataSource = db.BillDetailTbls
+                                        .Select(p => new { ID = p.BillDetailId, Name = p.NameBook, Price = p.PriceBook, Quality = p.Quanlity, ToTal = p.Total, IDBill = p.IdBill })
+                                        .ToList();
+
+            dvBillUser.DataSource = bsBillUser;
+            dvBillDetailUser.DataSource = bsBillDetailUser;
+        }
+
         private void NameBook()
         {
             string id = dvBooks.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
@@ -61,6 +87,26 @@ namespace BookShopManager
                                "Gia ban:  " + price + "\n";
 
             ttMain.SetToolTip(picBook, InforBook);
+        }
+        private void showInfoUser()
+        {
+            string Name = lbUserName.Text;
+
+            lbUserBill.Text = Name;
+
+            var doanhThu = (from bt in db.BillTbls
+                            join bdt in db.BillDetailTbls on bt.BillId equals bdt.IdBill
+                            where bt.UName == lbUserBill.Text
+                            select bt.Amount).Sum();
+            lbDoanhThuBill.Text = doanhThu.ToString();
+
+            var TongSoSach = (from bt in db.BillTbls
+                              join bdt in db.BillDetailTbls on bt.BillId equals bdt.IdBill
+                              where bt.UName == lbUserBill.Text
+                              select bdt.Quanlity).Sum();
+
+            lbSoSachDaBanBill.Text = TongSoSach.ToString();
+
         }
         int Amount = 0, PriceBook = 0, SumBooks = 0;
         private void AddCart()
@@ -163,6 +209,14 @@ namespace BookShopManager
             bill.Clear();
             dvBillBook.DataSource = bill;
             ShowBook();
+
+            //info bill
+            BillUser();
+            showInfoUser();
+
+            btnBuy.Text = "";
+            txtAmount.Text = "";
+            btnPrintBillBook.Text = "Pay";
         }
 
         static int IdBill;
@@ -253,6 +307,7 @@ namespace BookShopManager
             {
                 MemoryStream stream = new MemoryStream(user.UAvatar.ToArray());
                 picUser.Image = Image.FromStream(stream);
+                picAvaterBill.Image = Image.FromStream(stream);
             }
         }
         private void ShowPic()
@@ -331,6 +386,31 @@ namespace BookShopManager
         private void btnPreviousBook_Click(object sender, EventArgs e) => bsBill.MovePrevious();
 
         private void btnNextBook_Click(object sender, EventArgs e) => bsBill.MoveNext();
+
+        private void bsBillUser_PositionChanged(object sender, EventArgs e)
+        {
+            if (dvBillUser.SelectedCells.Count == 0)
+                return;
+
+            string id = dvBillUser.SelectedCells[0].OwningRow.Cells[0].Value.ToString();
+            bsBillDetailUser.Clear();
+            bsBillDetailUser.DataSource = db.BillDetailTbls.Where(p => p.IdBill.Equals(id))
+                                                        .Select(p => new { ID = p.BillDetailId, Name = p.NameBook, Price = p.PriceBook, Quality = p.Quanlity, ToTal = p.Total, IDBill = p.IdBill })
+                                                        .ToList();
+
+            dvBillDetailUser.DataSource = bsBillDetailUser;
+        }
+
+        private void btnFirstBill_Click(object sender, EventArgs e) => bsBillUser.MoveFirst();
+
+        private void btnLastBill_Click(object sender, EventArgs e) => bsBillUser.MoveLast();
+
+        private void btnPreviousBill_Click(object sender, EventArgs e) => bsBillUser.MovePrevious();
+
+        private void btnNext_Click(object sender, EventArgs e) => bsBillUser.MoveNext();
+
+        private void btnExitApp_Click(object sender, EventArgs e) => Application.Exit();
+
 
         private void btnFirstBook_Click(object sender, EventArgs e) => bsBill.MoveFirst();
 

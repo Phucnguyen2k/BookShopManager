@@ -206,7 +206,7 @@
             this.btnOpenFile.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenFile.Location = new System.Drawing.Point(21, 337);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(240, 39);
+            this.btnOpenFile.Size = new System.Drawing.Size(243, 39);
             this.btnOpenFile.TabIndex = 18;
             this.btnOpenFile.Text = "Browser";
             this.btnOpenFile.UseVisualStyleBackColor = true;
@@ -230,7 +230,7 @@
             this.btnResetBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetBooks.ForeColor = System.Drawing.Color.Transparent;
             this.btnResetBooks.Image = ((System.Drawing.Image)(resources.GetObject("btnResetBooks.Image")));
-            this.btnResetBooks.Location = new System.Drawing.Point(148, 554);
+            this.btnResetBooks.Location = new System.Drawing.Point(144, 554);
             this.btnResetBooks.Name = "btnResetBooks";
             this.btnResetBooks.Size = new System.Drawing.Size(32, 30);
             this.btnResetBooks.TabIndex = 16;
@@ -703,7 +703,11 @@
             this.cbFilerBook.FormattingEnabled = true;
             this.cbFilerBook.ItemHeight = 16;
             this.cbFilerBook.Items.AddRange(new object[] {
-            "All"});
+            "All",
+            "Programming",
+            "Novels",
+            "Light Novel",
+            "Nofiction"});
             this.cbFilerBook.Location = new System.Drawing.Point(16, 58);
             this.cbFilerBook.Name = "cbFilerBook";
             this.cbFilerBook.Size = new System.Drawing.Size(173, 24);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -45,7 +46,16 @@ namespace BookShopManager
         /// </summary>
         private void ShowDataBase()
         {
-            bindingSourceBooks.DataSource = db.BookTbls.Select(p => new { ID = p.BId, Title = p.BTitle, Author = p.BAuthor, Category = p.BCat, Qty = p.BQty, Year = p.BYear, Price = p.BPrice, Path = p.BImage }).ToList();
+            bindingSourceBooks.DataSource = db.BookTbls.Select(selector: p => new
+            {
+                ID = p.BId,
+                Title = p.BTitle,
+                Author = p.BAuthor,
+                Category = p.BCat,
+                Qty = p.BQty,
+                Year = p.BYear,
+                Price = p.BPrice
+            }).ToList();
 
             dvBooks.DataSource = bindingSourceBooks;
             dvBooks.Refresh();
@@ -84,6 +94,7 @@ namespace BookShopManager
             cbCategory.Items.Clear();
             var CategoryBooks = db.CategoryTbls.Select(p => p.Category).ToList();
             cbCategory.Items.AddRange(CategoryBooks.ToArray());
+
         }
 
         private void UpdatePosition()
@@ -160,6 +171,7 @@ namespace BookShopManager
             cbCategory.SelectedIndex = -1;
             txtPrice.Value = 0;
             mmYear.Value = 0;
+            picBook.Image = null;
         }
         /// <summary>
         /// Phuong Thuc Hien Thi Dua lieu tu DataView len cac truong du lieu
@@ -198,7 +210,7 @@ namespace BookShopManager
             if (book.BPic != null)
             {
                 MemoryStream stream = new MemoryStream(book.BPic.ToArray());
-                picBook.Image = Image.FromStream(stream);
+                picBook.Image = System.Drawing.Image.FromStream(stream);
             }
             else picBook.Image = null;
         }
@@ -227,7 +239,7 @@ namespace BookShopManager
                 if (string.IsNullOrEmpty(file))
                     return;
 
-                Image myImage = Image.FromFile(file);
+                System.Drawing.Image myImage = System.Drawing.Image.FromFile(file);
                 picBook.Image = myImage;
             }
         }
@@ -325,51 +337,51 @@ namespace BookShopManager
         private void UpdateImage()
         {
 
-            if (dvBooks.SelectedCells.Count > 0)
-            {
-                // Kiểm tra null cho đối tượng trước khi truy cập
-                if (dvBooks.SelectedCells[0].OwningRow.Cells["ID"] != null)
-                {
-                    string id = dvBooks.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString();
+            //if (dvBooks.SelectedCells.Count > 0)
+            //{
+            //    // Kiểm tra null cho đối tượng trước khi truy cập
+            //    if (dvBooks.SelectedCells[0].OwningRow.Cells["ID"] != null)
+            //    {
+            //        string id = dvBooks.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString();
 
-                    // Sử dụng một câu truy vấn duy nhất để lấy dữ liệu từ cơ sở dữ liệu
-                    var bookInfo = db.BookTbls
-                                    .Where(p => p.BId.Equals(id))
-                                    .Select(p => new { PathImage = p.BImage, Price = p.BPrice })
-                                    .FirstOrDefault();
+            //        // Sử dụng một câu truy vấn duy nhất để lấy dữ liệu từ cơ sở dữ liệu
+            //        var bookInfo = db.BookTbls
+            //                        .Where(p => p.BId.Equals(id))
+            //                        .Select(p => new { PathImage = p.BImage, Price = p.BPrice })
+            //                        .FirstOrDefault();
 
-                    if (bookInfo != null)
-                    {
-                        string pathImage = bookInfo.PathImage;
-                        decimal priceBook = bookInfo.Price;
-                        // Sử dụng Path.Combine một cách an toàn
-                        string pathFolder = Path.Combine(projectRootDirectory, "Images");
+            //        if (bookInfo != null)
+            //        {
+            //            string pathImage = bookInfo.PathImage;
+            //            decimal priceBook = bookInfo.Price;
+            //            // Sử dụng Path.Combine một cách an toàn
+            //            string pathFolder = Path.Combine(projectRootDirectory, "Images");
 
-                        if (pathImage == null)
-                        {
-                            // Set một hình ảnh mặc định trong trường hợp có lỗi
-                            picBook.Image = Image.FromFile(Path.Combine(pathFolder, "NoImage.png"));
-                            picBook.ImageLocation = Path.Combine(pathFolder, "NoImage.png");
-                            return;
-                        }
-                        string fullPath = Path.Combine(pathFolder, pathImage);
+            //            if (pathImage == null)
+            //            {
+            //                // Set một hình ảnh mặc định trong trường hợp có lỗi
+            //                picBook.Image = Image.FromFile(Path.Combine(pathFolder, "NoImage.png"));
+            //                picBook.ImageLocation = Path.Combine(pathFolder, "NoImage.png");
+            //                return;
+            //            }
+            //            string fullPath = Path.Combine(pathFolder, pathImage);
 
-                        lbIdBook.Text = id;
-                        lbPriceBook.Text = priceBook.ToString();
+            //            lbIdBook.Text = id;
+            //            lbPriceBook.Text = priceBook.ToString();
 
-                        try
-                        {
-                            picBook.Image = Image.FromFile(fullPath);
-                        }
-                        catch
-                        {
-                            // Set một hình ảnh mặc định trong trường hợp có lỗi
-                            picBook.Image = Image.FromFile(Path.Combine(pathFolder, "NoImage.png"));
-                            picBook.ImageLocation = Path.Combine(pathFolder, "NoImage.png");
-                        }
-                    }
-                }
-            }
+            //            try
+            //            {
+            //                picBook.Image = Image.FromFile(fullPath);
+            //            }
+            //            catch
+            //            {
+            //                // Set một hình ảnh mặc định trong trường hợp có lỗi
+            //                picBook.Image = Image.FromFile(Path.Combine(pathFolder, "NoImage.png"));
+            //                picBook.ImageLocation = Path.Combine(pathFolder, "NoImage.png");
+            //            }
+            //        }
+            //    }
+            //}
         }
         private void dvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e) => DisplaySelectedBookDetails();
 
@@ -495,7 +507,7 @@ namespace BookShopManager
 
         private void cbFieldSearchBook_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox selectedComboBox = (ComboBox)sender;
+            //ComboBox selectedComboBox = (com)sender;
         }
 
         private void btnSearch_Click(object sender, EventArgs e) => SearchBook();
@@ -669,5 +681,19 @@ namespace BookShopManager
 
         private void btnFirstBook_Click(object sender, EventArgs e) => bindingSourceBooks.MoveFirst();
 
+
+
+        private void btnSeachWeb_Click(object sender, EventArgs e)
+        {
+
+            string searchText = txtTitle.Text;
+
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                string bingSearchUrl = $"https://www.bing.com/search?q={Uri.EscapeDataString(searchText)}";
+                Process.Start(bingSearchUrl);
+                Process.Start("notepad.exe");
+            }
+        }
     }
 }

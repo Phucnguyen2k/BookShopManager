@@ -43,6 +43,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picAvata)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -57,7 +58,7 @@
             // 
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitle.Location = new System.Drawing.Point(371, 93);
+            this.lbTitle.Location = new System.Drawing.Point(353, 147);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(193, 30);
             this.lbTitle.TabIndex = 1;
@@ -87,7 +88,7 @@
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.picAvata);
-            this.groupBox1.Location = new System.Drawing.Point(26, 156);
+            this.groupBox1.Location = new System.Drawing.Point(22, 206);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(197, 246);
             this.groupBox1.TabIndex = 2;
@@ -98,7 +99,7 @@
             // 
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Location = new System.Drawing.Point(246, 156);
+            this.groupBox2.Location = new System.Drawing.Point(242, 206);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(197, 246);
             this.groupBox2.TabIndex = 2;
@@ -129,7 +130,7 @@
             // 
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.pictureBox2);
-            this.groupBox3.Location = new System.Drawing.Point(465, 156);
+            this.groupBox3.Location = new System.Drawing.Point(461, 206);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(197, 246);
             this.groupBox3.TabIndex = 2;
@@ -160,7 +161,7 @@
             // 
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.pictureBox3);
-            this.groupBox4.Location = new System.Drawing.Point(684, 156);
+            this.groupBox4.Location = new System.Drawing.Point(680, 206);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(197, 246);
             this.groupBox4.TabIndex = 2;
@@ -201,11 +202,21 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 48);
+            this.label5.Location = new System.Drawing.Point(23, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 17);
             this.label5.TabIndex = 1;
             this.label5.Text = "22TH";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(22, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(143, 21);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Khoa: Công Nghệ";
             // 
             // frmInfo
             // 
@@ -217,6 +228,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lbTitle);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,5 +270,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }

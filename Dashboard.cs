@@ -15,16 +15,64 @@ namespace BookShopManager
 
         //Tao lop truy cap vao database
         BookShopDataContext db = new BookShopDataContext();
+        private void dataShow()
+        {
+            var result = db.BookTbls
+            .GroupBy(bt => bt.BCat)
+                .Select(g => new
+                {
+                    BCat = g.Key,
+                    SoLuongSach = g.Count()
+                });
+            dvTheLoai.DataSource = result; //Hien thi th
+
+            var doanhthu = from bt in db.BillTbls
+                           group bt by bt.UName into g
+                           select new
+                           {
+                               UName = g.Key,
+                               TotalAmount = g.Sum(bt => bt.Amount)
+                           };
+            dvDoanhThu.DataSource = doanhthu;
+
+            var doanhthusach = from bt in db.BillTbls
+                               join bdt in db.BillDetailTbls on bt.BillId equals bdt.IdBill
+                               group bdt by bdt.NameBook into g
+                               select new
+                               {
+                                   NameBook = g.Key,
+                                   SoSachDaBan = g.Count(),
+                                   TongTien = g.Sum(bt => bt.Total)
+                               };
+            dvDoanhThuTungCuon.DataSource = doanhthusach;
+        }
         private void Dashboard_Load(object sender, EventArgs e)
         {
             CardView();
 
+            dataShow();
             //datagridview lish su giao dich
             //dvHistory.DataSource = db.BillTbls.Select(p => p);
+            CTheLoai();
 
             ChartLichSuGiaoDich();
             ChartSoLuongSachConLaiTrongKho();
             ChartDoanhThuTungNhaVien();
+        }
+        private void CTheLoai()
+        {
+            var result = db.BookTbls
+                .GroupBy(bt => bt.BCat)
+                .Select(g => new
+                {
+                    BCat = g.Key,
+                    SoLuongSach = g.Count()
+                });
+
+            foreach (var item in result)
+            {
+                cTheLoaiSach.Series["Series1"].Points.AddXY(item.BCat, item.SoLuongSach);
+            }
         }
 
         /// <summary>
@@ -37,16 +85,16 @@ namespace BookShopManager
             lbBooksStock.Text = totalStock.ToString();
 
             //Tong Doanh Thu
-            //var totalAmount = db.BillTbls.Sum(b => b.Amount);
-            //lbToTalAmount.Text = totalAmount.ToString();
+            var totalAmount = db.BillTbls.Sum(b => b.Amount);
+            lbToTalAmount.Text = totalAmount.ToString();
 
             //So luong Nhan Vien
             var userCount = db.UserTbls.Count();
             lbUsers.Text = userCount.ToString();
 
             //doanh Thu cao nhat
-            //var maxAmount = db.BillTbls.Max(b => b.Amount);
-            //lbMost.Text = maxAmount.ToString();
+            var maxAmount = db.BillTbls.Max(b => b.Amount);
+            lbMost.Text = maxAmount.ToString();
         }
 
         /// <summary>
@@ -123,15 +171,13 @@ namespace BookShopManager
             cRevenuePerUser.Palette = ChartColorPalette.Pastel;
 
             //Lay Doanh Thu Tu nguoi Tu co so du lieu
-            var userAmountData = db.BillTbls
-                .GroupBy(b => b.UName)
-                .Select(g => new
-                {
-                    UName = g.Key,
-                    TotalAmount = g.Sum(b => b.Amount)
-                })
-                .ToList();
-
+            var userAmountData = from bt in db.BillTbls
+                                 group bt by bt.UName into g
+                                 select new
+                                 {
+                                     UName = g.Key,
+                                     TotalAmount = g.Sum(bt => bt.Amount)
+                                 };
             //duyen tung nguoi dung va theo cok CSDL 
             foreach (var item in userAmountData)
             {
